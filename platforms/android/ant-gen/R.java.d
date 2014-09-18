@@ -10,7 +10,11 @@
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable-land-xhdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable-ldpi/icon.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable-port-ldpi/screen.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable/ldpi.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable/mdpi.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable/icon.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable/hdpi.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable/xhdpi.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable-land-hdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/drawable-port-mdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/res/xml/config.xml \
@@ -24,7 +28,11 @@
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable-land-xhdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable-ldpi/icon.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable-port-ldpi/screen.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable/ldpi.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable/mdpi.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable/icon.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable/hdpi.png \
+/home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable/xhdpi.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable-land-hdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/res/drawable-port-mdpi/screen.png \
 /home/pablolizardo/sources/soki.numbers/platforms/android/ant-build/AndroidManifest.xml \

@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+
     },
     // deviceready Event Handler
     //
@@ -34,57 +35,23 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log("corre");
+        // $('.brick').each(function() {
+        //     $('.brick').text = $('.brick').data('number');
+        // });
         $.each($('.brick'), function(index, val) {
-             $('this').html= $('this').data('number');
+             $(this).text = $(this).data('number');
+             $(this).click(function(event) {
+                   //$(this).hide('fast');
+                   $(this).fadeOut('fast');
+                    console.log("hiciste clic");
+               });
         });
-        $(document).keydown(keyHandler);
-        setInterval( "gameLoop()", 1000);
-        function drawBlock(x, y) {
-            var block = $("<div class='brick'></div>").css('top', (17 - x) * 20).css('left', y * 20);
-            $('#bricks').append(block);
-        }
-        function clearBlocks() {
-            $('.brick').remove();
-        }
-        var verticalPosition = 18;
-        var horizontalPosition = 5;
-         
-        function gameLoop() {
-            verticalPosition--;
-            clearBlocks();
-            drawBlock(verticalPosition, horizontalPosition);
-        }
-        const keyCodeMoveLeft = 100;
-        const keyCodeMoveRight = 102;
-        const keyCodeMoveDown = 98;
-         
-        function keyHandler(keyEvent) {
-         
-            if(keyEvent.keyCode === keyCodeMoveLeft) {
-                horizontalPosition--;
-            }
-         
-            if(keyEvent.keyCode === keyCodeMoveRight) {
-                horizontalPosition++;
-            }
-            
-            if(keyEvent.keyCode === keyCodeMoveDown) {
-                verticalPosition--;
-            }
-            
-            clearBlocks();
-            drawBlock(verticalPosition, horizontalPosition);
-        }
+       
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
     }
 };

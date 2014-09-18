@@ -8,13 +8,21 @@
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
+    <icon density="ldpi" src="www/img/icon/ldpi.png" />
+    <icon density="mdpi" src="www/img/icon/mdpi.png" />
+    <icon density="hdpi" src="www/img/icon/hdpi.png" />
+    <icon density="xhdpi" src="www/img/icon/xhdpi.png" />
     <name>Numbers</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A Game about Numbers.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="info@sokistudio.com" href="http://www.sokistudio.com">
+        Soki Studio
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
 </widget>
