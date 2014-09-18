@@ -1,28 +1,32 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.soki.numbers" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+-->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        id        = "io.cordova.helloCordova"
+        version   = "2.0.0">
+
+    <!-- Preferences for Android -->
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidLaunchMode" value="singleTop" />
+
+    <!-- This is required for native Android hooks -->
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-    </feature>
-    <icon density="ldpi" src="www/img/icon/ldpi.png" />
-    <icon density="mdpi" src="www/img/icon/mdpi.png" />
-    <icon density="hdpi" src="www/img/icon/hdpi.png" />
-    <icon density="xhdpi" src="www/img/icon/xhdpi.png" />
-    <name>Numbers</name>
-    <description>
-        A Game about Numbers.
-    </description>
-    <author email="info@sokistudio.com" href="http://www.sokistudio.com">
-        Soki Studio
-    </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
-    <preference name="Fullscreen" value="true" />
-    <preference name="Orientation" value="portrait" />
 </widget>
