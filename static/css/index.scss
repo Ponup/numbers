@@ -27,7 +27,7 @@ $color-rojo-light : #fb6e52;
 $color-verde-light: #48cfae;
 
 /* :: MIXINS :: */
-@mixin transition($transition:1s) {
+@mixin transition($transition:.2s) {
   -webkit-transition: $transition;
      -moz-transition: $transition;
       -ms-transition: $transition;
@@ -43,7 +43,7 @@ $color-verde-light: #48cfae;
              text-shadow: $horizOffset $vertOffset $blur $color;
 }
 
-@mixin border-radius ( $value: 3px ) {
+@mixin border-radius ( $value: 5px ) {
   -webkit-border-radius: $value;
   -moz-border-radius: $value;
   border-radius: $value;
@@ -164,49 +164,56 @@ header {
     //justify-content: center;
     align-items: flex-start;
     // box properties
-    
+    box-sizing: content-box;
     position: fixed;
     top: 0;
     left:0;
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 300px;
-    //height: 300px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    // border: 3px solid $color-negro-dark;
-    // box-shadow: 0px 3px 0px rgba(0,0,0,.1);
-    // -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    // width: 300px;
+    // height: 300px;
+    @include border-radius(10px);
+    border: 3px solid $color-negro-dark;
+    box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
     overflow: hidden;
         background-clip: content-box;
         text-shadow : 0px 1px 0px rgba(255,255,255,.1);
 
     .brick {
+        box-sizing: padding-box;
+        padding: 3px;
+
         position: relative;
         color: $color-negro-light;
-        font-size: 1.8em;
-        width: 60px;
-        height: 60px;
-        //background-image: url('../img/noise.png') ;
+        font-size: 2.4em;
         background: #666d78 ;
-        @include transition(1s);
+        @include transition(.2s);
+        
+        
         bottom:0px;
+        &:hover, &:active {
+            top:-5px;
+            z-index: 5;
+            box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+        }
     }
     #cut{
         height: 7px;
         position: absolute;
-        bottom:-1px; left: -1px; right: -1px;
-        width: 120%;
+        bottom:-1px; 
+        // width: 120%;
         background-image: url('../img/cut.png');
         z-index: 6;
     }
 }
 .clicked {
-    bottom:-5px;
+    top:-5px;
     opacity: .9;
     -webkit-opacity: .9;
-    z-index: -1;
+    z-index: 5;
 }
 .puntos-hey{
     animation: puntos-hey .3s;

@@ -20,8 +20,8 @@ var game_moves = 4;
 var game_goal = 20;
 var game_points = 0;
 var game_seconds = 20;
-var game_width = 5;
-var game_height = 4;
+var game_width = 2.4;
+var game_height = 2.4;
 var game_level = 1;
 var game_max_number = 3;
 var game_bricks = 60;
@@ -30,10 +30,26 @@ var game_brick_size = 60;
 
 $(function() {
     
-
     // setea el tamaño de la cuadricula y el tamaño de los bricks
-    $('#bricks').css({width: game_width*game_brick_size, height: game_height*game_brick_size });
-    $('.brick').css({width: game_brick_size, height: game_brick_size });
+    $('#bricks').css({
+        width: game_width*100, 
+        height: game_height*100
+    });
+
+    // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
+    for (var i = 0; i < game_bricks; i++) {
+      random = Math.floor((Math.random() * game_max_number) + 1);
+      $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')
+    };
+
+    $('.brick').css({
+        width: game_brick_size+'px', 
+        height: game_brick_size+'px' 
+    });
+    //$('#bricks').css('transform', 'scale(1)');
+
+
+
     // animaciones de inicio
     $('header').animate({top:'0px'}, 400);
     $('footer').delay(500).animate({bottom:'30px'}, 400);
@@ -48,11 +64,7 @@ $(function() {
         location.reload();
     });
 
-    // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
-    for (var i = 0; i < game_bricks; i++) {
-      random = Math.floor((Math.random() * game_max_number) + 1);
-      $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')
-    };
+    
 
     $('.brick').each(function() {
         // codigo horrible, por cada brick asigna un fondo y un color de acuerdo al numero... .. mejorar
