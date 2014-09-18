@@ -30,6 +30,7 @@ body {
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #424b52;
+  background-image: url("../img/noise.png");
   font-family: 'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
   font-weight: 100 !important;
   font-size: 24px;
@@ -70,50 +71,109 @@ body {
 header {
   height: 100px;
   position: fixed;
-  top: 0;
+  top: -120px;
   left: 0;
   right: 0;
   padding-top: 10px;
-  background: #363c42;
-  color: #abb1bd; }
+  background: #363c42 url("../img/noise.png");
+  color: #666d78;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
   header small {
-    font-size: 16px; }
+    font-size: 18px; }
   header #moves {
     font-size: 48px;
     color: #f6f7fb; }
+  header #bars {
+    background: #666d78;
+    height: 10px;
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
+    header #bars #bar-goal {
+      background: #fb6e52;
+      height: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      width: 75%; }
+    header #bars #bar-points {
+      background: #48cfae;
+      height: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      width: 5%;
+      transition: 1s;
+      -webkit-transition: 1s;
+      -webkit-border-top-right-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      -moz-border-radius-topright: 5px;
+      -moz-border-radius-bottomright: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
 
 #bricks {
+  opacity: 0;
+  flex-direction: column-reverse;
+  display: flex;
+  /* or inline-flex */
+  flex-wrap: wrap;
+  align-items: flex-start;
+  box-sizing: content-box;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 150px;
-  height: 150px;
-  border: 3px solid #363c42; }
+  width: 200px;
+  height: 200px;
+  border: 3px solid #363c42;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-clip: content-box;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1); }
   #bricks .brick {
     color: #424b52;
     font-size: 36px;
     width: 50px;
     height: 50px;
     background: #666d78;
-    float: left; }
+    transition: .2s;
+    -webkit-transition: .2s; }
+
+.clicked {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  opacity: .9;
+  -webkit-opacity: .9; }
 
 footer {
   position: fixed;
-  bottom: 20px;
+  bottom: -220px;
   left: 0;
-  right: 0; }
-  footer #puntos {
+  right: 0;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
+  footer #points {
     position: relative;
     background: #fb6e52;
     color: #f6f7fb;
     font-size: 36px;
     width: 30%;
     margin: auto;
-    padding: 15px; }
-  footer #puntos:after {
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
+  footer #points:after {
     bottom: 100%;
     left: 50%;
     border: solid transparent;

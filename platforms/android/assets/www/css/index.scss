@@ -19,9 +19,11 @@
 
 $color-negro-light : #424b52;
 $color-negro-dark : #363c42;
-$color-gris-dark : #abb1bd;
+$color-gris-dark : #666d78;
+$color-gris-light : #abb1bd;
 $color-blanco-light : #f6f7fb;
 $color-rojo-light : #fb6e52;
+$color-verde-light: #48cfae;
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     margin: 0; padding: 0;
@@ -32,6 +34,7 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:$color-negro-light;
+    background-image:url('../img/noise.png');
     font-family:'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight: 100 !important;
     font-size:24px;
@@ -40,6 +43,7 @@ body {
     padding:0px;
     width:100%;
     text-align: center;
+
 }
 
 /* Portrait layout (default) */
@@ -69,29 +73,80 @@ body {
 header {
     height: 100px;
     position:fixed;
-    top:0; left: 0; right:0;
+    top:-120px; left: 0; right:0;
     padding-top: 10px;
-    background: $color-negro-dark;
+    background: $color-negro-dark url('../img/noise.png');
     color: $color-gris-dark;
+    text-shadow : 0px 1px 0px rgba(0,0,0,.2);
     small {
-        font-size: 16px;
+        font-size: 18px;
     }
     #moves {
         font-size: 48px;
         color: $color-blanco-light;
     }
+    #bars {
+        background: $color-gris-dark;
+        height: 10px;
+        position: absolute;
+        bottom: -5px; left: 0px; right: 0px;
+        width:100%;
+        box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+
+        #bar-goal {
+            background: $color-rojo-light;
+            height: 10px;
+            position: absolute;
+            bottom: 0; left: 0px;
+            width:75%;
+        }
+        #bar-points {
+            background: $color-verde-light;
+            height: 10px;
+            position: absolute;
+            bottom: 0; left: 0px;
+            width:5%;
+            transition: 1s;
+            -webkit-transition: 1s;
+            -webkit-border-top-right-radius: 5px;
+            -webkit-border-bottom-right-radius: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomright: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
 }
 
 #bricks {
+    opacity: 0;
+    //-webkit-transform: scale(.1);
+    // display properties
+    flex-direction: column-reverse;
+    display: flex; /* or inline-flex */
+    flex-wrap: wrap;
+    //justify-content: center;
+    align-items: flex-start;
+    // box properties
+    box-sizing: content-box;
     position: fixed;
     top: 0;
     left:0;
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border: 3px solid $color-negro-dark;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    overflow: hidden;
+        background-clip: content-box;
+        text-shadow : 0px 1px 0px rgba(255,255,255,.1);
+
     .brick {
         // position: absolute;
         color: $color-negro-light;
@@ -99,15 +154,26 @@ header {
         width: 50px;
         height: 50px;
         background: #666d78;
-        float: left;
+
+        transition: .2s;
+        -webkit-transition: .2s;
+
+
     }
+}
+.clicked {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    opacity: .9;
+    -webkit-opacity: .9;
 }
 footer {
     position: fixed;
-    bottom:20px;
+    bottom:-220px;
     left: 0;
     right: 0;
-    #puntos {
+    text-shadow : 0px 1px 0px rgba(0,0,0,.2);
+    #points {
         position: relative;
         background: $color-rojo-light;
         color: $color-blanco-light;
@@ -115,9 +181,13 @@ footer {
         width: 30%;
         margin:auto;
         padding: 15px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
 
     }
-    #puntos:after {
+    #points:after {
         bottom: 100%;
         left: 50%;
         border: solid transparent;
