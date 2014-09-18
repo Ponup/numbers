@@ -20,11 +20,12 @@ var game_moves = 4;
 var game_goal = 20;
 var game_points = 0;
 var game_seconds = 20;
-var game_width = 3;
-var game_height = 3;
+var game_width = 5;
+var game_height = 4;
 var game_level = 1;
-var game_max_number = 6;
+var game_max_number = 3;
 var game_bricks = 60;
+var game_brick_size = 60;
 
 
 var app = {
@@ -45,7 +46,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
+        // setea el tamaño de la cuadricula y el tamaño de los bricks
+        $('#bricks').css({width: game_width*game_brick_size, height: game_height*game_brick_size });
+        $('.brick').css({width: game_brick_size, height: game_brick_size });
         // animaciones de inicio
         $('header').animate({top:'0px'}, 400);
         $('footer').delay(500).animate({bottom:'30px'}, 400);
@@ -92,9 +95,7 @@ var app = {
                 }
 
                 // codigo para ejecutar la animacion sobre el brick cada vez que se hace clic. 
-                $(this).addClass('clicked');
-                // esta linea detecta cuando termina la animacion para que luego el objeto desaparezca
-                $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',  $(this).hide('fast') );
+                $(this).fadeOut('fast');
 
                 // control de variables 
                 $('#moves').text(--game_moves);
