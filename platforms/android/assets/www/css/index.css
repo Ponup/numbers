@@ -20,7 +20,9 @@
   -webkit-tap-highlight-color: transparent;
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: 'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-weight: 100 !important; }
 
 body {
   -webkit-touch-callout: none;
@@ -31,8 +33,6 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #424b52;
   background-image: url("../img/noise.png");
-  font-family: 'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-  font-weight: 100 !important;
   font-size: 24px;
   height: 100%;
   margin: 0px;
@@ -117,6 +117,7 @@ header {
       border-bottom-right-radius: 5px; }
 
 #bricks {
+  z-index: 3;
   opacity: 0;
   flex-direction: column-reverse;
   display: flex;
@@ -132,11 +133,8 @@ header {
   margin: auto;
   width: 200px;
   height: 200px;
-  border: 3px solid #363c42;
   border-radius: 5px;
   -webkit-border-radius: 5px;
-  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-clip: content-box;
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1); }
@@ -148,6 +146,15 @@ header {
     background: #666d78;
     transition: .2s;
     -webkit-transition: .2s; }
+  #bricks #cut {
+    height: 7px;
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    width: 120%;
+    background-image: url("../img/cut.png");
+    z-index: 6; }
 
 .clicked {
   transform: scale(1.2);
@@ -155,6 +162,20 @@ header {
   opacity: .9;
   -webkit-opacity: .9; }
 
+.puntos-hey {
+  animation: puntos-hey .3s;
+  -webkit-animation: puntos-hey .3s; }
+
+@keyframes puntos-hey {
+  0%,100% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); } }
+@-webkit-keyframes puntos-hey {
+  0%,100% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.1); } }
 footer {
   position: fixed;
   bottom: -220px;
@@ -163,7 +184,7 @@ footer {
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
   footer #points {
     position: relative;
-    background: #fb6e52;
+    background: #fb6e52 url("../img/noise.png");
     color: #f6f7fb;
     font-size: 36px;
     width: 30%;
@@ -186,5 +207,43 @@ footer {
     border-bottom-color: #fb6e52;
     border-width: 15px;
     margin-left: -15px; }
+
+#modal {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: -200%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: #f6f7fb; }
+  #modal h1 {
+    font-size: 130px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: -100px;
+    width: 100%;
+    height: 10px;
+    margin: auto; }
+  #modal h3 {
+    font-size: 40px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: -200px;
+    width: 100%;
+    height: 30px;
+    margin: auto; }
+
+.win {
+  background: rgba(72, 207, 174, 0.9); }
+
+.lose {
+  background: rgba(251, 110, 82, 0.9); }
 
 /*# sourceMappingURL=index.css.map */

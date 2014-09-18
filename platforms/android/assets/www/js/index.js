@@ -46,9 +46,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
       //$('#bricks').css('transform','scale(1.5)');
-      $('header').animate({top:'0px'}, 200);
-      $('footer').animate({bottom:'20px'}, 200);
-      $('#bricks').animate({opacity:'1'}, 500);
+      $('header').animate({top:'0px'}, 400);
+      $('footer').delay(500).animate({bottom:'30px'}, 400);
+      $('#bricks').delay(1000).animate({opacity:'1'}, 1000);
       $('#moves').text(game_moves);
         app.receivedEvent('deviceready');
         console.log("Corriendo Aplicacion");
@@ -63,16 +63,28 @@ var app = {
           if ( $(this).data('number') == "4")  { $(this).css({background:'#4fc0e8',color :'#3baeda'}) ;}
           if ( $(this).data('number') == "5")  { $(this).css({background:'#ed5564',color :'#da4652'}) ;}
           if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed',color :'#967bdc'}) ;}
+
              $(this).text($(this).data('number'));
              $(this).click(function(event) {
-                  $(this).addClass('clicked');
 
+                  //$('#points').removeClass('puntos-hey').addClass('puntos-hey');
+                  //$('#points').stop().addClass('puntos-hey');
+                  $('#points').removeClass('puntos-hey');
+                  setTimeout(function(){$('#points').addClass('puntos-hey')} , 1);
+
+                  if(game_points>10){
+
+                    $('#modal').addClass('win');
+                    $('#modal').animate({right:'0%'}, 200);
+                  }
+
+                  $(this).addClass('clicked');
                   $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',  $(this).hide('fast') );
 
                     console.log("hiciste clic en el " + $(this).data('number'));
                     $('#moves').text(--game_moves);
                     $('#points').text(game_points++);
-                    $('#bar-points').css('width',game_points*30);
+                    $('#bar-points').css('width',"+=20"+'%');
                });
         });
 
