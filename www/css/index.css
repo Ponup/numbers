@@ -16,13 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+/* :: VARIABLES :: */
+/* :: MIXINS :: */
+/* :: CONFIGURACIONES GLOBALES :: */
 * {
   -webkit-tap-highlight-color: transparent;
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-  font-weight: 100 !important; }
+  font-weight: 100 !important;
+  box-sizing: border-box; }
 
 body {
   -webkit-touch-callout: none;
@@ -33,41 +37,16 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #424b52;
   background-image: url("../img/noise.png");
-  font-size: 24px;
+  font-size: 1.2em;
   height: 100%;
   margin: 0px;
   padding: 0px;
   width: 100%;
   text-align: center; }
 
-/* Portrait layout (default) */
-.app {
-  background: url(../img/logo.png) no-repeat center top;
-  /* 170px x 200px */
-  position: absolute;
-  /* position in the center of the screen */
-  left: 50%;
-  top: 50%;
-  height: 50px;
-  /* text area height */
-  width: 225px;
-  /* text area width */
-  text-align: center;
-  padding: 180px 0px 0px 0px;
-  /* image height is 200px (bottom 20px are overlapped with text) */
-  margin: -115px 0px 0px -112px;
-  /* offset vertical: half of image height and text area height */
-  /* offset horizontal: half of text area width */ }
+ul {
+  list-style-type: none; }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
-  .app {
-    background-position: left center;
-    padding: 75px 0px 75px 170px;
-    /* padding-top + padding-bottom + text area = image height */
-    margin: -90px 0px 0px -198px;
-    /* offset vertical: half of image height */
-    /* offset horizontal: half of image width and text area width */ } }
 header {
   height: 100px;
   position: fixed;
@@ -77,11 +56,16 @@ header {
   padding-top: 10px;
   background: #363c42 url("../img/noise.png");
   color: #666d78;
+  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  /* IE 10+ */
+  -o-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
   header small {
-    font-size: 18px; }
+    font-size: .9em; }
   header #moves {
-    font-size: 48px;
+    font-size: 2em;
     color: #f6f7fb; }
   header #bars {
     background: #666d78;
@@ -107,8 +91,11 @@ header {
       bottom: 0;
       left: 0px;
       width: 5%;
-      transition: 1s;
       -webkit-transition: 1s;
+      -moz-transition: 1s;
+      -ms-transition: 1s;
+      -o-transition: 1s;
+      transition: 1s;
       -webkit-border-top-right-radius: 5px;
       -webkit-border-bottom-right-radius: 5px;
       -moz-border-radius-topright: 5px;
@@ -124,7 +111,6 @@ header {
   /* or inline-flex */
   flex-wrap: wrap;
   align-items: flex-start;
-  box-sizing: content-box;
   position: fixed;
   top: 0;
   left: 0;
@@ -140,12 +126,15 @@ header {
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1); }
   #bricks .brick {
     color: #424b52;
-    font-size: 36px;
+    font-size: 1.8em;
     width: 50px;
     height: 50px;
     background: #666d78;
-    transition: .2s;
-    -webkit-transition: .2s; }
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s; }
   #bricks #cut {
     height: 7px;
     position: absolute;
@@ -186,7 +175,7 @@ footer {
     position: relative;
     background: #fb6e52 url("../img/noise.png");
     color: #f6f7fb;
-    font-size: 36px;
+    font-size: 2em;
     width: 30%;
     margin: auto;
     padding: 15px;
@@ -218,32 +207,92 @@ footer {
   top: 0;
   bottom: 0;
   margin: auto;
-  color: #f6f7fb; }
-  #modal h1 {
-    font-size: 130px;
+  color: #f6f7fb;
+  -webkit-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  -moz-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  -ms-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  /* IE 10+ */
+  -o-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1); }
+  #modal #modal-points, #modal #modal-text {
     position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
+    margin: auto; }
+  #modal #modal-points {
+    font-size: 7em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 30%;
+    margin: auto; }
+  #modal #modal-text {
+    font-size: 2em;
+    position: absolute;
     top: -100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    height: 10px;
+    height: 30%;
     margin: auto; }
-  #modal h3 {
-    font-size: 40px;
+  #modal #modal-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px; }
+    #modal #modal-header li {
+      position: absolute;
+      display: block;
+      margin: auto;
+      width: 33%;
+      padding: 15px; }
+      #modal #modal-header li#modal-header-title {
+        left: 0;
+        right: 0; }
+      #modal #modal-header li:first-child {
+        left: 0px; }
+      #modal #modal-header li:last-child {
+        right: 0px; }
+      #modal #modal-header li:hover {
+        background: rgba(246, 247, 251, 0.3); }
+  #modal #modal-footer {
     position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    top: -200px;
     width: 100%;
-    height: 30px;
-    margin: auto; }
+    font-size: 1.4em; }
+    #modal #modal-footer li {
+      display: block;
+      width: 50%;
+      padding: 20px;
+      background: rgba(246, 247, 251, 0.1); }
+      #modal #modal-footer li:first-child {
+        float: left; }
+      #modal #modal-footer li:last-child {
+        float: right; }
+      #modal #modal-footer li:hover {
+        background: rgba(246, 247, 251, 0.3); }
 
 .win {
   background: rgba(72, 207, 174, 0.9); }
 
 .lose {
   background: rgba(251, 110, 82, 0.9); }
+
+/* :: MEDIA QUERIES :: */
+@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
+  .app {
+    background-position: left center;
+    padding: 75px 0px 75px 170px;
+    /* padding-top + padding-bottom + text area = image height */
+    margin: -90px 0px 0px -198px;
+    /* offset vertical: half of image height */
+    /* offset horizontal: half of image width and text area width */ } }
 
 /*# sourceMappingURL=index.css.map */

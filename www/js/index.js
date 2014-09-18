@@ -52,6 +52,12 @@ var app = {
       $('#moves').text(game_moves);
         app.receivedEvent('deviceready');
         console.log("Corriendo Aplicacion");
+
+        $('.reload').on('click', function(event) {
+            event.preventDefault();
+            location.reload();
+        });
+
         for (var i = 0; i < game_bricks; i++) {
           random = Math.floor((Math.random() * game_max_number) + 1);
           $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')

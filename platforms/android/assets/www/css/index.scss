@@ -17,6 +17,7 @@
  * under the License.
  */
 
+/* :: VARIABLES :: */
 $color-negro-light : #424b52;
 $color-negro-dark : #363c42;
 $color-gris-dark : #666d78;
@@ -24,11 +25,30 @@ $color-gris-light : #abb1bd;
 $color-blanco-light : #f6f7fb;
 $color-rojo-light : #fb6e52;
 $color-verde-light: #48cfae;
+
+/* :: MIXINS :: */
+@mixin transition($transition:1s) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin text-shadow($horizOffset:0px, $vertOffset:1px, $blur:0px, $color:rgba(0,0,0,.2)) {
+     -webkit-text-shadow: $horizOffset $vertOffset $blur $color;
+        -moz-text-shadow: $horizOffset $vertOffset $blur $color;
+         -ms-text-shadow: $horizOffset $vertOffset $blur $color; /* IE 10+ */
+          -o-text-shadow: $horizOffset $vertOffset $blur $color;
+             text-shadow: $horizOffset $vertOffset $blur $color;
+}
+/* :: CONFIGURACIONES GLOBALES :: */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     margin: 0; padding: 0;
     font-family:'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-weight: 100 !important;
+    box-sizing: border-box;
 }
 
 body {
@@ -38,7 +58,7 @@ body {
     background-color:$color-negro-light;
     background-image:url('../img/noise.png');
 
-    font-size:24px;
+    font-size:1.2em;
     height:100%;
     margin:0px;
     padding:0px;
@@ -47,29 +67,7 @@ body {
 
 }
 
-/* Portrait layout (default) */
-.app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
-}
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
+ul {   list-style-type: none; }
 
 header {
     height: 100px;
@@ -78,12 +76,12 @@ header {
     padding-top: 10px;
     background: $color-negro-dark url('../img/noise.png');
     color: $color-gris-dark;
-    text-shadow : 0px 1px 0px rgba(0,0,0,.2);
+    @include text-shadow();
     small {
-        font-size: 18px;
+        font-size: .9em;
     }
     #moves {
-        font-size: 48px;
+        font-size: 2em;
         color: $color-blanco-light;
     }
     #bars {
@@ -92,8 +90,8 @@ header {
         position: absolute;
         bottom: -5px; left: 0px; right: 0px;
         width:100%;
-        box-shadow: 0px 3px 0px rgba(0,0,0,.1);
-    -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+                box-shadow: 0px 3px 0px rgba(0,0,0,.1);
+        -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,.1);
 
         #bar-goal {
             background: $color-rojo-light;
@@ -108,8 +106,7 @@ header {
             position: absolute;
             bottom: 0; left: 0px;
             width:5%;
-            transition: 1s;
-            -webkit-transition: 1s;
+            @include transition();
             -webkit-border-top-right-radius: 5px;
             -webkit-border-bottom-right-radius: 5px;
             -moz-border-radius-topright: 5px;
@@ -131,7 +128,7 @@ header {
     //justify-content: center;
     align-items: flex-start;
     // box properties
-    box-sizing: content-box;
+    
     position: fixed;
     top: 0;
     left:0;
@@ -152,13 +149,12 @@ header {
     .brick {
         // position: absolute;
         color: $color-negro-light;
-        font-size: 36px;
+        font-size: 1.8em;
         width: 50px;
         height: 50px;
         //background-image: url('../img/noise.png') ;
         background: #666d78 ;
-        transition: .2s;
-        -webkit-transition: .2s;
+        @include transition();
     }
     #cut{
         height: 7px;
@@ -197,7 +193,7 @@ footer {
         position: relative;
         background: $color-rojo-light url('../img/noise.png');
         color: $color-blanco-light;
-        font-size: 36px;
+        font-size: 2em;
         width: 30%;
         margin:auto;
         padding: 15px;
@@ -223,33 +219,93 @@ footer {
     }
 }
 
+// MODAL 
 #modal {
+
     z-index: 10;
     position:fixed;
     width: 100%;
     height: 100%;
     left: 0; right:-200%; top:0;bottom:0;
     margin: auto;
-    //background: rgba($color-negro-dark,.9);
     color: $color-blanco-light;
-    h1{
-        font-size: 130px;
+    @include text-shadow(0px, 2px, 0px ,rgba(0,0,0,.1));
+    
+
+    #modal-points,#modal-text {
         position:absolute;
-        bottom:0px; left: 0px; right:0px;top:-100px;
-        width:100%;
-        height: 10px;
+         bottom:0px; left: 0px; right:0px;
         margin:auto;
     }
-    h3{
-        font-size: 40px;
+    #modal-points{
+        font-size: 7em;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 30%;
+        margin: auto;
+        }
+    #modal-text{
+        font-size: 2em;
+        position: absolute;
+        top: -100px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 30%;
+        margin: auto;
+    }
+    #modal-header {
         position:absolute;
-        bottom:0px; left: 0px; right:0px;top:-200px;
-        width:100%;
-        height: 30px;
-        margin:auto;
+        top:0px; left: 0px; right:0px;
+
+        li {
+            position: absolute; 
+            display: block;
+            margin: auto;
+            width: 33%;
+            padding: 15px ;
+            &#modal-header-title{
+                left:0; right:0;
+            }
+            &:first-child { left:0px;}
+            &:last-child {  right:0px;}
+            &:hover {background: rgba($color-blanco-light,.3);}
+        }
+    }
+    #modal-footer {
+        position:absolute;
+        bottom:0px; left: 0px; right:0px;
+        width: 100%;
+        font-size: 1.4em;
+        li {
+            display: block;
+            width: 50%;
+            padding:20px ;
+            background: rgba($color-blanco-light,.1);
+            &:first-child { float:left; }
+            &:last-child { float: right;}
+            &:hover {background: rgba($color-blanco-light,.3);}
+        }
     }
 
 }
-    .win  {background: rgba($color-verde-light,.9); }
-    .lose {background: rgba($color-rojo-light,.9); }
+.win  {background: rgba($color-verde-light,.9); }
+.lose {background: rgba($color-rojo-light,.9); }
 
+
+
+/* :: MEDIA QUERIES :: */
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
