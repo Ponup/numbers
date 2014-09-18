@@ -11,6 +11,10 @@
 # Java class files
 *.class
 
+# ignore jenkins build info
+/build.prop
+build.prop
+
 # Generated files
 bin/
 gen/
