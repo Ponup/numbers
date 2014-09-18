@@ -45,59 +45,69 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-      //$('#bricks').css('transform','scale(1.5)');
-      $('header').animate({top:'0px'}, 400);
-      $('footer').delay(500).animate({bottom:'30px'}, 400);
-      $('#bricks').delay(1000).animate({opacity:'1'}, 1000);
-      $('#moves').text(game_moves);
-        app.receivedEvent('deviceready');
-        console.log("Corriendo Aplicacion");
 
+        // animaciones de inicio
+        $('header').animate({top:'0px'}, 400);
+        $('footer').delay(500).animate({bottom:'30px'}, 400);
+        $('#bricks').delay(1000).animate({opacity:'1'}, 1000);
+
+        // carga de variables en el campo MOVES
+        $('#moves').text(game_moves);
+
+        // agrega accion de actualizar la pagina en el boton de jugar de nuevo
         $('.reload').on('click', function(event) {
             event.preventDefault();
             location.reload();
         });
 
+        // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
         for (var i = 0; i < game_bricks; i++) {
           random = Math.floor((Math.random() * game_max_number) + 1);
           $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')
         };
+
         $('.brick').each(function() {
-          if ( $(this).data('number') == "1")  { $(this).css({background:'#666d78',color :'#424b52'}) ;}
-          if ( $(this).data('number') == "2")  { $(this).css({background:'#48cfae',color :'#36bc9b'}) ;}
-          if ( $(this).data('number') == "3")  { $(this).css({background:'#f2c40f',color :'#f39a16'}) ;}
-          if ( $(this).data('number') == "4")  { $(this).css({background:'#4fc0e8',color :'#3baeda'}) ;}
-          if ( $(this).data('number') == "5")  { $(this).css({background:'#ed5564',color :'#da4652'}) ;}
-          if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed',color :'#967bdc'}) ;}
+            // codigo horrible, por cada brick asigna un fondo y un color de acuerdo al numero... .. mejorar
+            if ( $(this).data('number') == "1")  { $(this).css({background:'#666d78',color :'#424b52'}) ;}
+            if ( $(this).data('number') == "2")  { $(this).css({background:'#48cfae',color :'#36bc9b'}) ;}
+            if ( $(this).data('number') == "3")  { $(this).css({background:'#f2c40f',color :'#f39a16'}) ;}
+            if ( $(this).data('number') == "4")  { $(this).css({background:'#4fc0e8',color :'#3baeda'}) ;}
+            if ( $(this).data('number') == "5")  { $(this).css({background:'#ed5564',color :'#da4652'}) ;}
+            if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed',color :'#967bdc'}) ;}
 
-             $(this).text($(this).data('number'));
-             $(this).click(function(event) {
-
-                  //$('#points').removeClass('puntos-hey').addClass('puntos-hey');
-                  //$('#points').stop().addClass('puntos-hey');
-                  $('#points').removeClass('puntos-hey');
-                  setTimeout(function(){$('#points').addClass('puntos-hey')} , 1);
-
-                  if(game_points>10){
-
+            // asigna como texto del div al valor del data-number
+            $(this).text($(this).data('number'));
+            
+            // acciones a ejecutar al hacer click en los bricks
+            $(this).click(function(event) {
+                // codigo para ejecutar la animacion "puntos-hey" (en el div de puntos de la parte inferior, cada vez que se hace click
+                //(hay que limpiar esto, buscar una mejor manera de reproducir una animacion css cada vez que se hace clic)
+                $('#points').removeClass('puntos-hey');
+                setTimeout(function(){$('#points').addClass('puntos-hey')} , 1);
+                
+                // si se llegan a los 10 puntos aparece la ventana "#modal" con clase ".win"
+                if(game_points>10){
                     $('#modal').addClass('win');
                     $('#modal').animate({right:'0%'}, 200);
-                  }
+                }
 
-                  $(this).addClass('clicked');
-                  $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',  $(this).hide('fast') );
+                // codigo para ejecutar la animacion sobre el brick cada vez que se hace clic. 
+                $(this).addClass('clicked');
+                // esta linea detecta cuando termina la animacion para que luego el objeto desaparezca
+                $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',  $(this).hide('fast') );
 
-                    console.log("hiciste clic en el " + $(this).data('number'));
-                    $('#moves').text(--game_moves);
-                    $('#points').text(game_points++);
-                    $('#bar-points').css('width',"+=20"+'%');
-               });
-        });
+                // control de variables 
+                $('#moves').text(--game_moves);
+                $('#points').text(game_points++);
+                // control de la barra de puntos
+                $('#bar-points').css('width',"+=25"+'%');
+                });
+            });
 
 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        console.log('Received Event: ' + id);
+        //console.log('Received Event: ' + id);
     }
 };

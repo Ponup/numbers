@@ -42,6 +42,42 @@ $color-verde-light: #48cfae;
           -o-text-shadow: $horizOffset $vertOffset $blur $color;
              text-shadow: $horizOffset $vertOffset $blur $color;
 }
+
+@mixin border-radius ( $value: 3px ) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+ 
+  // keeps background from busting out of border 
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+@mixin opacity ( $value: 0.5 ) {
+  opacity: $value;
+  -ms-filter: “progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)”;
+  filter: alpha(opacity= $value * 100 );
+  zoom: 1;
+}
+
+@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+  -webkit-box-shadow: $horiz $vert $blur $spread $color;
+  -moz-box-shadow: $horiz $vert $blur $spread $color;
+  box-shadow: $horiz $vert $blur $spread $color;
+}
+
+@mixin hide-text {
+  font: 0/0 a; 
+  text-shadow: none;
+  color: transparent;
+}
+
+@mixin font-size( $value: 12 ) { 
+  font-size: value + px;
+  font − size: (value / 10) + rem;
+}
+
 /* :: CONFIGURACIONES GLOBALES :: */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
