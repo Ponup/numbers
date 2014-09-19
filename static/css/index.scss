@@ -196,8 +196,10 @@ header {
         color: $color-blanco-light;
         bottom:0px;
         &:hover, &:active {
-            top:5px;
+            top:3px;
              @include opacity(.5);
+             transform: scale(1.1);
+             -webkit-transform: scale(1.1);
         }
     }
     #cut{

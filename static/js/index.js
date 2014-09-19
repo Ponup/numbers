@@ -23,7 +23,7 @@ var game_seconds = 20;
 var game_width = 315;
 var game_height = 328;
 var game_level = 1;
-var game_max_number = 5;
+var game_max_number = 9;
 var game_bricks = 100;
 var game_brick_size = 35;
 
@@ -73,7 +73,11 @@ $(function() {
         if ( $(this).data('number') == "3")  { $(this).css({background:'#4fc0e8','text-shadow' :'0px -2px 0px #3baeda','box-shadow' :'0px 3px 0px #3baeda'}) ;}
         if ( $(this).data('number') == "4")  { $(this).css({background:'#ffce51','text-shadow' :'0px -2px 0px #f7ba47','box-shadow' :'0px 3px 0px #f7ba47'}) ;}
         if ( $(this).data('number') == "5")  { $(this).css({background:'#ac92ed','text-shadow' :'0px -2px 0px #967bdc','box-shadow' :'0px 3px 0px #967bdc'}) ;}
-        if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed','text-shadow' :'0px -2px 0px #967bdc','box-shadow' :'0px 3px 0px #967bdc'}) ;}
+        if ( $(this).data('number') == "6")  { $(this).css({background:'#a0d469','text-shadow' :'0px -2px 0px #8cc051','box-shadow' :'0px 3px 0px #8cc051'}) ;}
+        if ( $(this).data('number') == "7")  { $(this).css({background:'#5d9cec','text-shadow' :'0px -2px 0px #4c89d9','box-shadow' :'0px 3px 0px #4c89d9'}) ;}
+        if ( $(this).data('number') == "8")  { $(this).css({background:'#fb6e52','text-shadow' :'0px -2px 0px #e9573e','box-shadow' :'0px 3px 0px #e9573e'}) ;}
+        if ( $(this).data('number') == "9")  { $(this).css({background:'#ec87bf','text-shadow' :'0px -2px 0px #d272af','box-shadow' :'0px 3px 0px #d272af'}) ;}
+        if ( $(this).data('number') == "10")  { $(this).css({background:'#40474e','text-shadow' :'0px -2px 0px #363c42','box-shadow' :'0px 3px 0px #363c42'}) ;}
 
         // asigna como texto del div al valor del data-number
         $(this).text($(this).data('number'));

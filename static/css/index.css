@@ -144,10 +144,12 @@ header {
     color: #f6f7fb;
     bottom: 0px; }
     #bricks .brick:hover, #bricks .brick:active {
-      top: 5px;
+      top: 3px;
       opacity: 0.5;
       filter: alpha(opacity=50);
-      zoom: 1; }
+      zoom: 1;
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1); }
   #bricks #cut {
     height: 7px;
     position: absolute;
