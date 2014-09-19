@@ -20,20 +20,20 @@ var game_moves = 4;
 var game_goal = 20;
 var game_points = 0;
 var game_seconds = 20;
-var game_width = 2.6;
-var game_height = 2.6;
+var game_width = 315;
+var game_height = 328;
 var game_level = 1;
-var game_max_number = 3;
-var game_bricks = 60;
-var game_brick_size = 60;
+var game_max_number = 5;
+var game_bricks = 100;
+var game_brick_size = 35;
 
 
 $(function() {
     
     // setea el tamaño de la cuadricula y el tamaño de los bricks
     $('#bricks').css({
-        width: game_width*100, 
-        height: game_height*100
+        width: game_width, 
+        height: game_height
     });
 
     // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
@@ -68,12 +68,12 @@ $(function() {
 
     $('.brick').each(function() {
         // codigo horrible, por cada brick asigna un fondo y un color de acuerdo al numero... .. mejorar
-        if ( $(this).data('number') == "1")  { $(this).css({background:'#666d78',color :'#424b52'}) ;}
-        if ( $(this).data('number') == "2")  { $(this).css({background:'#48cfae',color :'#36bc9b'}) ;}
-        if ( $(this).data('number') == "3")  { $(this).css({background:'#f2c40f',color :'#f39a16'}) ;}
-        if ( $(this).data('number') == "4")  { $(this).css({background:'#4fc0e8',color :'#3baeda'}) ;}
-        if ( $(this).data('number') == "5")  { $(this).css({background:'#ed5564',color :'#da4652'}) ;}
-        if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed',color :'#967bdc'}) ;}
+        if ( $(this).data('number') == "1")  { $(this).css({background:'#ed5564','text-shadow' :'0px -2px 0px #da4652','box-shadow' :'0px 3px 0px #da4652'}) ;}
+        if ( $(this).data('number') == "2")  { $(this).css({background:'#48cfae','text-shadow' :'0px -2px 0px #36bc9b','box-shadow' :'0px 3px 0px #36bc9b'}) ;}
+        if ( $(this).data('number') == "3")  { $(this).css({background:'#4fc0e8','text-shadow' :'0px -2px 0px #3baeda','box-shadow' :'0px 3px 0px #3baeda'}) ;}
+        if ( $(this).data('number') == "4")  { $(this).css({background:'#ffce51','text-shadow' :'0px -2px 0px #f7ba47','box-shadow' :'0px 3px 0px #f7ba47'}) ;}
+        if ( $(this).data('number') == "5")  { $(this).css({background:'#ac92ed','text-shadow' :'0px -2px 0px #967bdc','box-shadow' :'0px 3px 0px #967bdc'}) ;}
+        if ( $(this).data('number') == "6")  { $(this).css({background:'#ac92ed','text-shadow' :'0px -2px 0px #967bdc','box-shadow' :'0px 3px 0px #967bdc'}) ;}
 
         // asigna como texto del div al valor del data-number
         $(this).text($(this).data('number'));
