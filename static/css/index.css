@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -24,19 +25,17 @@
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-  font-weight: 100 !important;
   box-sizing: border-box; }
 
+/* MAIN GAME STYLES */
 body {
+  font-family: 'Lato','Source Sans Pro Light', 'Source Sans Pro', 'HelveticaNeue', Helvetica, Arial, sans-serif;
   -webkit-touch-callout: none;
   /* prevent callout to copy image, etc when tap to hold */
   -webkit-text-size-adjust: none;
   /* prevent webkit from resizing text to fit */
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
-  background-color: #424b52;
-  background-image: url("../img/noise.png");
   font-size: 1.2em;
   height: 100%;
   margin: 0px;
@@ -44,160 +43,48 @@ body {
   width: 100%;
   text-align: center; }
 
+/*LISTAS*/
 ul {
   list-style-type: none; }
+  ul li {
+    display: inline; }
 
-header {
-  height: 100px;
-  position: fixed;
-  top: -120px;
-  left: 0;
-  right: 0;
-  padding-top: 10px;
-  background: #363c42 url("../img/noise.png");
-  color: #666d78;
-  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
-  -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
-  -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
-  /* IE 10+ */
-  -o-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
-  header small {
-    font-size: .9em; }
-  header #moves {
-    font-size: 2em;
-    color: #f6f7fb; }
-  header #bars {
-    background: #666d78;
-    height: 10px;
-    position: absolute;
-    bottom: -5px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
-    header #bars #bar-goal {
-      background: #fb6e52;
-      height: 10px;
-      position: absolute;
-      bottom: 0;
-      left: 0px;
-      width: 75%; }
-    header #bars #bar-points {
-      background: #48cfae;
-      height: 10px;
-      position: absolute;
-      bottom: 0;
-      left: 0px;
-      width: 5%;
-      -webkit-transition: 0.2s;
-      -moz-transition: 0.2s;
-      -ms-transition: 0.2s;
-      -o-transition: 0.2s;
-      transition: 0.2s;
-      -webkit-border-top-right-radius: 5px;
-      -webkit-border-bottom-right-radius: 5px;
-      -moz-border-radius-topright: 5px;
-      -moz-border-radius-bottomright: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px; }
-
-#bricks {
-  z-index: 3;
-  opacity: 0;
-  flex-direction: column-reverse;
-  display: flex;
-  /* or inline-flex */
-  flex-wrap: wrap;
-  align-items: flex-start;
-  box-sizing: content-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+#debug {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 13px;
   margin: auto;
-  overflow: hidden;
-  background-clip: content-box;
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1); }
-  #bricks .brick {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+  z-index: 10;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  font-size: .6em;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  zoom: 1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box; }
+  #debug h6 {
+    color: #f6f7fb;
+    margin-bottom: 5px; }
+  #debug li {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding;
     background-clip: padding-box;
-    box-sizing: border-box;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    position: relative;
-    color: #424b52;
-    font-size: 1.3em;
-    font-weight: bold !important;
-    background: #666d78;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
     color: #f6f7fb;
-    bottom: 0px; }
-    #bricks .brick:hover, #bricks .brick:active {
-      top: 3px;
-      opacity: 0.5;
-      filter: alpha(opacity=50);
-      zoom: 1;
-      transform: scale(1.1);
-      -webkit-transform: scale(1.1); }
-  #bricks #cut {
-    height: 7px;
-    position: absolute;
-    bottom: -1px;
-    background-image: url("../img/cut.png");
-    z-index: 6; }
-
-.clicked {
-  top: -5px;
-  opacity: .9;
-  -webkit-opacity: .9;
-  z-index: 5; }
-
-.puntos-hey {
-  animation: puntos-hey .3s;
-  -webkit-animation: puntos-hey .3s; }
-
-@keyframes puntos-hey {
-  0%,100% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.1); } }
-@-webkit-keyframes puntos-hey {
-  0%,100% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.1); } }
-footer {
-  position: fixed;
-  bottom: -220px;
-  left: 0;
-  right: 0;
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
-  footer #points {
-    position: relative;
-    background: #fb6e52 url("../img/noise.png");
-    color: #f6f7fb;
-    font-size: 2em;
-    width: 30%;
-    margin: auto;
-    padding: 15px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
-  footer #points:after {
-    bottom: 100%;
-    left: 50%;
+    padding: 5px;
+    display: inline-block; }
+  #debug li:hover, #debug li:active {
+    background: rgba(0, 0, 0, 0.1); }
+  #debug:after {
+    right: 100%;
+    top: 70%;
     border: solid transparent;
     content: " ";
     height: 0;
@@ -205,9 +92,236 @@ footer {
     position: absolute;
     pointer-events: none;
     border-color: rgba(136, 183, 213, 0);
-    border-bottom-color: #fb6e52;
-    border-width: 15px;
-    margin-left: -15px; }
+    border-right-color: rgba(0, 0, 0, 0.1);
+    border-width: 10px;
+    margin-top: -10px; }
+
+/*ENCABEZADOS */
+header {
+  height: 55px;
+  overflow: hidden;
+  position: absolute;
+  top: -120px;
+  left: 0;
+  right: 0;
+  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  /* IE 10+ */
+  -o-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1); }
+  header li {
+    position: absolute;
+    display: block;
+    margin: auto;
+    width: 33%;
+    height: 100%; }
+    header li.header-center {
+      left: 0;
+      right: 0;
+      font-size: .9em;
+      padding-top: 5px; }
+    header li:first-child {
+      left: 0px; }
+    header li:last-child {
+      right: 0px; }
+    header li:hover {
+      background: rgba(246, 247, 251, 0.3); }
+
+/*customize headaer */
+#game {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  /* PIES */ }
+  #game.black {
+    background: #424b52 url("../img/noise.png"); }
+    #game.black header, #game.black footer {
+      background: #363c42 url("../img/noise.png"); }
+      #game.black header #bar-pluses, #game.black header #bar-points, #game.black header small, #game.black footer #bar-pluses, #game.black footer #bar-points, #game.black footer small {
+        color: #424b52; }
+      #game.black header #bar-points, #game.black footer #bar-points {
+        background: #424b52; }
+  #game.pink {
+    background: #ec87bf url("../img/noise.png"); }
+    #game.pink header, #game.pink footer {
+      background: #d272af url("../img/noise.png"); }
+      #game.pink header #bar-pluses, #game.pink header #bar-points, #game.pink header small, #game.pink footer #bar-pluses, #game.pink footer #bar-points, #game.pink footer small {
+        color: #ec87bf; }
+      #game.pink header #bar-points, #game.pink footer #bar-points {
+        background: #ec87bf; }
+  #game.blue {
+    background: #5d9cec url("../img/noise.png"); }
+    #game.blue header, #game.blue footer {
+      background: #4c89d9 url("../img/noise.png"); }
+      #game.blue header #bar-pluses, #game.blue header #bar-points, #game.blue header small, #game.blue footer #bar-pluses, #game.blue footer #bar-points, #game.blue footer small {
+        color: #5d9cec; }
+      #game.blue header #bar-points, #game.blue footer #bar-points {
+        background: #5d9cec; }
+  #game.tomato {
+    background: #fb6e52 url("../img/noise.png"); }
+    #game.tomato header, #game.tomato footer {
+      background: #e9573e url("../img/noise.png"); }
+      #game.tomato header #bar-pluses, #game.tomato header #bar-points, #game.tomato header small, #game.tomato footer #bar-pluses, #game.tomato footer #bar-points, #game.tomato footer small {
+        color: #fb6e52; }
+      #game.tomato header #bar-points, #game.tomato footer #bar-points {
+        background: #fb6e52; }
+  #game header {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    color: #f6f7fb; }
+    #game header small {
+      font-size: .5em;
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      right: 0;
+      margin: auto; }
+  #game footer {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    position: fixed;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    height: 40px; }
+    #game footer #bar-pluses {
+      letter-spacing: 0.5em;
+      position: absolute;
+      bottom: 14px;
+      z-index: -1;
+      font-size: .6em; }
+    #game footer #bar-points {
+      background: #424b52 url("../img/noise.png");
+      height: 20px;
+      position: absolute;
+      bottom: 10px;
+      left: 0px;
+      width: 5%;
+      -webkit-transition: 0.2s;
+      -moz-transition: 0.2s;
+      -ms-transition: 0.2s;
+      -o-transition: 0.2s;
+      transition: 0.2s;
+      -webkit-border-top-right-radius: 10px;
+      -webkit-border-bottom-right-radius: 10px;
+      -moz-border-radius-topright: 10px;
+      -moz-border-radius-bottomright: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px; }
+      #game footer #bar-points #points {
+        position: relative;
+        top: 4px;
+        right: 4px;
+        font-size: .55em;
+        font−weight: bold !important;
+        float: right;
+        padding-right: 3px;
+        padding-left: 3px;
+        display: block;
+        height: 12px;
+        text-align: center;
+        background: #f6f7fb;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box; }
+    #game footer #bar-estrellas {
+      z-index: 15;
+      font-size: .6em;
+      font-weight: 400;
+      color: #f6f7fb;
+      padding: 13px; }
+      #game footer #bar-estrellas .bar-estrellas-1 {
+        float: left;
+        margin-left: 15%; }
+      #game footer #bar-estrellas .bar-estrellas-3 {
+        float: right;
+        margin-right: 15%; }
+  #game #plus {
+    height: 116px;
+    width: 116px;
+    position: fixed;
+    bottom: -116px;
+    left: 10%;
+    background: url("../img/char/plus_1.png"); }
+  #game #bricks {
+    z-index: 3;
+    opacity: 0;
+    flex-direction: column-reverse;
+    display: flex;
+    /* or inline-flex */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    background-clip: content-box;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s; }
+    #game #bricks .brick {
+      width: 35px;
+      height: 35px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      box-sizing: border-box;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: relative;
+      color: #424b52;
+      font-size: 1.3em;
+      font-weight: bold !important;
+      background: #666d78;
+      -webkit-transition: 1s;
+      -moz-transition: 1s;
+      -ms-transition: 1s;
+      -o-transition: 1s;
+      transition: 1s;
+      color: #f6f7fb;
+      bottom: 0px; }
+      #game #bricks .brick:hover, #game #bricks .brick:active {
+        top: 3px;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        zoom: 1; }
+
+#modal header {
+  background: #48cfae url("../img/noise.png");
+  color: #f6f7fb; }
+
+.text-big {
+  font-size: 1.9em;
+  color: #f6f7fb; }
 
 #modal {
   z-index: 10;
@@ -252,26 +366,6 @@ footer {
     width: 100%;
     height: 30%;
     margin: auto; }
-  #modal #modal-header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px; }
-    #modal #modal-header li {
-      position: absolute;
-      display: block;
-      margin: auto;
-      width: 33%;
-      padding: 15px; }
-      #modal #modal-header li#modal-header-title {
-        left: 0;
-        right: 0; }
-      #modal #modal-header li:first-child {
-        left: 0px; }
-      #modal #modal-header li:last-child {
-        right: 0px; }
-      #modal #modal-header li:hover {
-        background: rgba(246, 247, 251, 0.3); }
   #modal #modal-footer {
     position: absolute;
     bottom: 0px;

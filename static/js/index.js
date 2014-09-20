@@ -16,25 +16,52 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var game_moves = 4;
-var game_goal = 20;
+var game_moves = 14;
+// var game_goal = 20;
 var game_points = 0;
-var game_seconds = 20;
-var game_width = 315;
-var game_height = 328;
-var game_level = 1;
-var game_max_number = 9;
+// var game_seconds = 20;
+// var game_width = 320;
+// var game_height = 320;
+// var game_level = 1;
+var game_max_number = 6;
 var game_bricks = 100;
-var game_brick_size = 35;
+var game_brick_size = 40;
 
 
 $(function() {
-    
+
+    // animaciones de inicio
+    $('header').animate({top:'0px'}, 400);
+    $('footer').delay(500).animate({bottom:'0px'}, 400);
+    $('#bricks').delay(1000).animate({opacity:'1'}, 1000);
+    $('#plus').delay(1500).animate({bottom:'15px'}, 1000);
+    $('#debug').delay(2700).animate({right:'20px',opacity:1}, 1000);
+
+
+    game_size = $('#game').data('size');
     // setea el tamaño de la cuadricula y el tamaño de los bricks
     $('#bricks').css({
-        width: game_width, 
-        height: game_height
+        width: game_size*game_brick_size, 
+        height: game_size*game_brick_size
     });
+
+
+    //debug actions
+    // change game color
+    $('#config-theme li').click(function(event) {$('#game').removeClass().addClass($(this).data('config-theme')); });
+    $('#config-size li').click(function(event) {
+        //$('#game').removeClass().addClass($(this).data('config-size')); 
+        new_game_size = $(this).data('config-size');
+        $('#bricks').css({
+            width: new_game_size*game_brick_size, 
+            height: new_game_size*game_brick_size
+        });
+        console.log(new_game_size);
+
+    });
+
+
+    
 
     // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
     for (var i = 0; i < game_bricks; i++) {
@@ -42,18 +69,15 @@ $(function() {
       $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')
     };
 
-    $('.brick').css({
-        width: game_brick_size+'px', 
-        height: game_brick_size+'px' 
-    });
+    // $('.brick').css({
+    //     width: game_brick_size+'px', 
+    //     height: game_brick_size+'px' 
+    // });
     //$('#bricks').css('transform', 'scale(1)');
 
 
 
-    // animaciones de inicio
-    $('header').animate({top:'0px'}, 400);
-    $('footer').delay(500).animate({bottom:'30px'}, 400);
-    $('#bricks').delay(1000).animate({opacity:'1'}, 1000);
+
 
     // carga de variables en el campo MOVES
     $('#moves').text(game_moves);
@@ -67,6 +91,7 @@ $(function() {
     
 
     $('.brick').each(function() {
+
         // codigo horrible, por cada brick asigna un fondo y un color de acuerdo al numero... .. mejorar
         if ( $(this).data('number') == "1")  { $(this).css({background:'#ed5564','text-shadow' :'0px -2px 0px #da4652','box-shadow' :'0px 3px 0px #da4652'}) ;}
         if ( $(this).data('number') == "2")  { $(this).css({background:'#48cfae','text-shadow' :'0px -2px 0px #36bc9b','box-shadow' :'0px 3px 0px #36bc9b'}) ;}
@@ -90,16 +115,17 @@ $(function() {
             setTimeout(function(){$('#points').addClass('puntos-hey')} , 1);
             
             // si se llegan a los 10 puntos aparece la ventana "#modal" con clase ".win"
-            if(game_points>10){
+            if(game_points>150){
                 $('#modal').addClass('win');
                 $('#modal').animate({right:'0%'}, 200);
             }
 
             // codigo para ejecutar la animacion sobre el brick cada vez que se hace clic. 
             $(this).fadeOut('fast');
-
+            game_points=game_points*2;
             // control de variables 
             $('#moves').text(--game_moves);
+
             $('#points').text(game_points++);
             // control de la barra de puntos
             $('#bar-points').css('width',"+=25"+'%');
