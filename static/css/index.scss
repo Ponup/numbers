@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -59,8 +60,8 @@ $color-tomato-dark: #e9573e;
   -webkit-border-radius: $value;
   -moz-border-radius: $value;
   border-radius: $value;
- 
-  // keeps background from busting out of border 
+
+  // keeps background from busting out of border
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
@@ -80,12 +81,12 @@ $color-tomato-dark: #e9573e;
 }
 
 @mixin hide-text {
-  font: 0/0 a; 
+  font: 0/0 a;
   text-shadow: none;
   color: transparent;
 }
 
-@mixin font-size( $value: 12 ) { 
+@mixin font-size( $value: 12 ) {
   font-size: value + px;
   font − size: (value / 10) + rem;
 }
@@ -94,7 +95,7 @@ $color-tomato-dark: #e9573e;
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     margin: 0; padding: 0;
-    
+
     box-sizing: border-box;
 }
 
@@ -125,13 +126,13 @@ ul { list-style-type: none; li { display: inline;}}
     margin: auto;
     z-index: 10;
     position: absolute;
-    bottom: 50px; right: 50px; 
+    bottom: 50px; right: 50px;
     font-size: .6em;
     @include opacity(0);
     @include border-radius();
     h6 {color: $color-blanco-light; margin-bottom: 5px; }
     li { @include border-radius(); color: $color-blanco-light; padding: 5px; display:inline-block}
-    li:hover, li:active { background: rgba(0,0,0,.1);} 
+    li:hover, li:active { background: rgba(0,0,0,.1);}
     &:after {
 
         right: 100%;
@@ -155,11 +156,11 @@ header {
     overflow: hidden;
     position:absolute;
     top:-120px; left: 0; right:0;
-    
+
    @include text-shadow();
-    
+
     li {
-        position: absolute; 
+        position: absolute;
         display: block;
         margin: auto;
         width: 33%;
@@ -179,32 +180,32 @@ header {
     @include transition();
     &.black {
         background:$color-negro-light url('../img/noise.png');
-        header, footer { 
-            background: $color-negro-dark url('../img/noise.png'); 
+        header, footer {
+            background: $color-negro-dark url('../img/noise.png');
             #bar-pluses, #bar-points, small {color: $color-negro-light; }
             #bar-points { background: $color-negro-light ; }
         }
     }
     &.pink {
         background:$color-rosa-light url('../img/noise.png');
-        header, footer { 
-            background:$color-rosa-dark url('../img/noise.png'); 
+        header, footer {
+            background:$color-rosa-dark url('../img/noise.png');
             #bar-pluses, #bar-points, small {color: $color-rosa-light; }
             #bar-points { background: $color-rosa-light ; }
         }
     }
     &.blue {
         background:$color-azul-light url('../img/noise.png');
-        header, footer { 
-            background:$color-azul-dark url('../img/noise.png'); 
+        header, footer {
+            background:$color-azul-dark url('../img/noise.png');
             #bar-pluses, #bar-points, small {color: $color-azul-light; }
             #bar-points { background: $color-azul-light ; }
         }
     }
     &.tomato {
         background:$color-tomato-light url('../img/noise.png');
-        header, footer { 
-            background:$color-tomato-dark url('../img/noise.png'); 
+        header, footer {
+            background:$color-tomato-dark url('../img/noise.png');
             #bar-pluses, #bar-points, small {color: $color-tomato-light; }
             #bar-points { background: $color-tomato-light ; }
         }
@@ -213,15 +214,15 @@ header {
         @include transition();
         color: $color-blanco-light;
         small{
-            
+
             font-size: .5em;
             position:absolute;
             bottom: 3px;left:0;right: 0;
             margin: auto;
-            
+
         }
     }
-    /* PIES */ 
+    /* PIES */
     footer {
         @include transition();
         position: fixed;
@@ -229,10 +230,10 @@ header {
         left: 0;
         right: 0;
         height: 40px;
-        
-        
+
+
         #bar-pluses {
-            
+
             letter-spacing: 0.5em;
             position: absolute;
             bottom:14px;
@@ -289,13 +290,6 @@ header {
     #bricks {
         z-index: 3;
         opacity: 0;
-        // display properties
-        flex-direction: column-reverse;
-        display: flex; /* or inline-flex */
-        flex-wrap: wrap;
-        //justify-content: center;
-        align-items: flex-start;
-        // box properties
         box-sizing: content-box;
         position: fixed;
         top: 0;
@@ -304,27 +298,37 @@ header {
         bottom: 0;
         margin: auto;
         overflow: hidden;
-        background-clip: content-box;
-        text-shadow : 0px 1px 0px rgba(255,255,255,.1);
         @include transition();
+        border:1px solid red;
+        display: flex;
+
+        .brick-col {
+            box-sizing: border-box;
+            width: 40px;
+            //height: 40px;
+            align-self: flex-end;
+
+
+        }
         .brick {
+            position: relative;
+            top:0px;
             width: 35px;
             height: 35px;
             @include border-radius(3px);
             box-sizing: border-box;
             margin-right: 5px;
             margin-bottom: 5px;
-            position: relative;
-            color: $color-negro-light;
+
             font-size: 1.3em;
             font-weight: bold!important;
-            background: #666d78 ;
-            @include transition(1s);
+            background: $color-negro-light ;
             color: $color-blanco-light;
-            bottom:0px;
+            @include transition();
+            border-bottom:3px solid $color-negro-dark;
             &:hover, &:active {
                 top:3px;
-                 @include opacity(.5);
+                border-bottom:none;
             }
         }
 
@@ -345,7 +349,7 @@ header {
 
 
 
-// MODAL 
+// MODAL
 #modal {
 
     z-index: 10;
@@ -356,7 +360,7 @@ header {
     margin: auto;
     color: $color-blanco-light;
     @include text-shadow(0px, 2px, 0px ,rgba(0,0,0,.1));
-    
+
 
     #modal-points,#modal-text {
         position:absolute;
@@ -385,7 +389,7 @@ header {
         height: 30%;
         margin: auto;
     }
-    
+
     #modal-footer {
         position:absolute;
         bottom:0px; left: 0px; right:0px;

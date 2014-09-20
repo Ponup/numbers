@@ -265,11 +265,6 @@ header {
   #game #bricks {
     z-index: 3;
     opacity: 0;
-    flex-direction: column-reverse;
-    display: flex;
-    /* or inline-flex */
-    flex-wrap: wrap;
-    align-items: flex-start;
     box-sizing: content-box;
     position: fixed;
     top: 0;
@@ -278,14 +273,20 @@ header {
     bottom: 0;
     margin: auto;
     overflow: hidden;
-    background-clip: content-box;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
-    transition: 0.2s; }
+    transition: 0.2s;
+    border: 1px solid red;
+    display: flex; }
+    #game #bricks .brick-col {
+      box-sizing: border-box;
+      width: 40px;
+      align-self: flex-end; }
     #game #bricks .brick {
+      position: relative;
+      top: 0px;
       width: 35px;
       height: 35px;
       -webkit-border-radius: 3px;
@@ -297,23 +298,19 @@ header {
       box-sizing: border-box;
       margin-right: 5px;
       margin-bottom: 5px;
-      position: relative;
-      color: #424b52;
       font-size: 1.3em;
       font-weight: bold !important;
-      background: #666d78;
-      -webkit-transition: 1s;
-      -moz-transition: 1s;
-      -ms-transition: 1s;
-      -o-transition: 1s;
-      transition: 1s;
+      background: #424b52;
       color: #f6f7fb;
-      bottom: 0px; }
+      -webkit-transition: 0.2s;
+      -moz-transition: 0.2s;
+      -ms-transition: 0.2s;
+      -o-transition: 0.2s;
+      transition: 0.2s;
+      border-bottom: 3px solid #363c42; }
       #game #bricks .brick:hover, #game #bricks .brick:active {
         top: 3px;
-        opacity: 0.5;
-        filter: alpha(opacity=50);
-        zoom: 1; }
+        border-bottom: none; }
 
 #modal header {
   background: #48cfae url("../img/noise.png");
