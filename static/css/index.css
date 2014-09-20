@@ -278,7 +278,6 @@ header {
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
-    border: 1px solid red;
     display: flex; }
     #game #bricks .brick-col {
       box-sizing: border-box;

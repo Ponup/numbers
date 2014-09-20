@@ -299,7 +299,6 @@ header {
         margin: auto;
         overflow: hidden;
         @include transition();
-        border:1px solid red;
         display: flex;
 
         .brick-col {
