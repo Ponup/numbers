@@ -30,6 +30,10 @@ var game_brick_size = 40;
 
 $(function() {
 
+
+
+
+
     // animaciones de inicio
     $('header').animate({top:'0px'}, 400);
     $('footer').delay(500).animate({bottom:'0px'}, 400);
