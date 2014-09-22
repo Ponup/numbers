@@ -23,13 +23,12 @@ var game_points = 0;
 // var game_width = 320;
 // var game_height = 320;
 // var game_level = 1;
-var game_max_number = 6;
+var game_max_number = 2;
 var game_bricks = 24;
 var game_brick_size = 40;
 
 
 $(function() {
-
 
 
 
@@ -88,14 +87,6 @@ $(function() {
         };
         bricks();
     };
-    // $('.brick').css({
-    //     width: game_brick_size+'px',
-    //     height: game_brick_size+'px'
-    // });
-    //$('#bricks').css('transform', 'scale(1)');
-
-
-
 
     // carga de variables en el campo MOVES
     $('#moves').text(game_moves);
@@ -105,7 +96,6 @@ $(function() {
         event.preventDefault();
         location.reload();
     });
-
 
     function bricks(){
         $('.brick').each(function() {

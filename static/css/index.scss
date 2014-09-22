@@ -1,105 +1,13 @@
 @charset "UTF-8";
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 
-/* :: VARIABLES :: */
-$color-negro-light : #424b52;
-$color-negro-dark : #363c42;
-
-$color-gris-dark : #666d78;
-$color-gris-light : #abb1bd;
-
-$color-blanco-light : #f6f7fb;
-
-$color-rojo-light : #fb6e52;
-$color-verde-light: #48cfae;
-
-$color-rosa-light: #ec87bf;
-$color-rosa-dark: #d272af;
-
-$color-azul-light: #5d9cec;
-$color-azul-dark: #4c89d9;
-
-$color-tomato-light: #fb6e52;
-$color-tomato-dark: #e9573e;
-
-/* :: MIXINS :: */
-@mixin transition($transition:.2s) {
-  -webkit-transition: $transition;
-     -moz-transition: $transition;
-      -ms-transition: $transition;
-       -o-transition: $transition;
-          transition: $transition;
-}
-
-@mixin text-shadow($horizOffset:0px, $vertOffset:1px, $blur:0px, $color:rgba(0,0,0,.1)) {
-     -webkit-text-shadow: $horizOffset $vertOffset $blur $color;
-        -moz-text-shadow: $horizOffset $vertOffset $blur $color;
-         -ms-text-shadow: $horizOffset $vertOffset $blur $color; /* IE 10+ */
-          -o-text-shadow: $horizOffset $vertOffset $blur $color;
-             text-shadow: $horizOffset $vertOffset $blur $color;
-}
-
-@mixin border-radius ( $value: 5px ) {
-  -webkit-border-radius: $value;
-  -moz-border-radius: $value;
-  border-radius: $value;
-
-  // keeps background from busting out of border
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-}
-
-@mixin opacity ( $value: 0.5 ) {
-  opacity: $value;
-  //-ms-filter: “progid:DXImageTransform.Microsoft.Alpha(Opacity=” $value * 100 “)”;
-  filter: alpha(opacity= $value * 100 );
-  zoom: 1;
-}
-
-@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
-  -webkit-box-shadow: $horiz $vert $blur $spread $color;
-  -moz-box-shadow: $horiz $vert $blur $spread $color;
-  box-shadow: $horiz $vert $blur $spread $color;
-}
-
-@mixin hide-text {
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
-}
-
-@mixin font-size( $value: 12 ) {
-  font-size: value + px;
-  font − size: (value / 10) + rem;
-}
+@import "colors";
+@import "mixins";
 
 /* :: CONFIGURACIONES GLOBALES :: */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-    margin: 0; padding: 0;
-
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
 }
-
-
 
 /* MAIN GAME STYLES */
 body {
@@ -108,17 +16,14 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-size:1.2em;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    width:100%;
     text-align: center;
-
 }
-
 
 /*LISTAS*/
 ul { list-style-type: none; li { display: inline;}}
+
+/* TYPOGRAPHY*/
+.text-big {font-size: 1.9em; }
 
 #debug {
     background: rgba(0,0,0,.1);
@@ -134,7 +39,6 @@ ul { list-style-type: none; li { display: inline;}}
     li { @include border-radius(); color: $color-blanco-light; padding: 5px; display:inline-block}
     li:hover, li:active { background: rgba(0,0,0,.1);}
     &:after {
-
         right: 100%;
         top: 70%;
         border: solid transparent;
@@ -156,9 +60,7 @@ header {
     overflow: hidden;
     position:absolute;
     top:-120px; left: 0; right:0;
-
    @include text-shadow();
-
     li {
         position: absolute;
         display: block;
@@ -334,15 +236,8 @@ header {
     }
 }
 
-#modal header{
-    background: $color-verde-light url('../img/noise.png');
-    color: $color-blanco-light;
-}
 
-.text-big {
-    font-size: 1.9em;
-    color: $color-blanco-light;
-}
+
 
 
 
