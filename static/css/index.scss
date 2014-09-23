@@ -193,7 +193,6 @@ header {
         z-index: 3;
         opacity: 0;
         box-sizing: content-box;
-        position: fixed;
         top: 0;
         left:0;
         right: 0;
@@ -317,3 +316,26 @@ header {
         //#plus { display: none;}
     }
 }
+
+#gameLayers {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+#gameLayers > * {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+}
+
+#bricks {
+	z-index: 50;
+}
+
+#bricksOverlay {
+	z-index: 100;
+}
+
+

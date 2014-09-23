@@ -13,11 +13,6 @@ require( [ 'jquery', 'config' ], function( $, config ) {
 	var game_brick_size = config.brick_size;
 
 
-	$(function() {
-
-
-
-
 	    // animaciones de inicio
 	    $('header').animate({top:'0px'}, 400);
 	    $('footer').delay(500).animate({bottom:'0px'}, 400);
@@ -27,7 +22,7 @@ require( [ 'jquery', 'config' ], function( $, config ) {
 
 	    game_size = $('#game').data('size');
 	    // setea el tamaño de la cuadricula y el tamaño de los bricks
-	    $('#bricks').css({
+	    $('#gameLayers').css({
 		width: game_size*game_brick_size,
 		height: game_size*game_brick_size
 	    });
@@ -40,19 +35,13 @@ require( [ 'jquery', 'config' ], function( $, config ) {
 	    $('#config-size li').click(function(event) {
 		//$('#game').removeClass().addClass($(this).data('config-size'));
 		new_game_size = $(this).data('config-size');
-		$('#bricks').css({
+		$('#gameLayers').css({
 		    width: new_game_size*game_brick_size,
 		    height: new_game_size*game_brick_size
 		});
 		console.log(new_game_size);
 		redrawBricks(new_game_size);
 	    });
-
-	    // agrega una cantidad (game_bricks=60) del div "brick" y le asigna un numero random entre el 1 y el (game_max_number=6)
-	    // for (var i = 0; i < game_bricks; i++) {
-	    //   random = Math.floor((Math.random() * game_max_number) + 1);
-	    //   $('#bricks').append('<div class="brick" data-number="'+random+'"></div>')
-	    // };
 
 	    function redrawBricks(game_size_var){
 		$('#bricks').text('');
@@ -126,6 +115,26 @@ require( [ 'jquery', 'config' ], function( $, config ) {
 		    });
 
 		};
-	});
 
+	 var bricksOverlay = document.getElementById( 'bricksOverlay' );
+	 var ctx = bricksOverlay.getContext( '2d' );
+	 ctx.lineWidth = 3;
+	 var isDrawing = false;
+
+	 bricksOverlay.onmousedown = function( ev ) {
+		 isDrawing = true;
+		 ctx.moveTo( ev.pageX, ev.clientY );
+	 };
+
+	 bricksOverlay.onmousemove = function( ev ) {
+		 if( false === isDrawing ) {
+			 return;
+		 }
+		 ctx.lineTo( ev.pageX, ev.clientY );
+		 ctx.stroke();
+	 };
+
+	 bricksOverlay.onmouseup = function( ev ) {
+		 isDrawing = false;
+	 };
 } );

@@ -34,7 +34,6 @@
         </div>
 
         <section id="game" class="pink" data-size="5">
-            <!-- ENCABEZADO JUEGO -->
             <header>
                 <ul class="text-big">
                     <li>&#8592;</li>
@@ -43,11 +42,14 @@
                 </ul>
                 <small>MOVES</small>
             </header>
-            <!-- CUERPO JUEGO -->
-            <section id="bricks"> </section>
+
+	   <div id="gameLayers">
+	    <section id="bricks"></section>
+	    <canvas id="bricksOverlay" width="200" height="200"></canvas>
+	   </div>
 
             <!-- personaje -->
-            <div id="plus"> </div>
+            <div id="plus"></div>
 
             <!-- PIE JUEGO -->
             <footer>
