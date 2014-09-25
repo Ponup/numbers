@@ -287,7 +287,13 @@ header {
       -ms-transition: 0.2s;
       -o-transition: 0.2s;
       transition: 0.2s;
-      border-bottom: 3px solid #363c42; }
+      border-bottom: 3px solid #363c42;
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
+      /* Other transform properties here */ }
       #game #bricks .brick:hover, #game #bricks .brick:active {
         top: 3px;
         border-bottom: none; }
@@ -385,3 +391,5 @@ header {
 
 #bricksOverlay {
   z-index: 100; }
+
+/*# sourceMappingURL=index.css.map */
