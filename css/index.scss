@@ -58,8 +58,6 @@ ul { list-style-type: none; li { display: inline;}}
 header {
     height: 55px;
     overflow: hidden;
-    position:absolute;
-    top:-120px; left: 0; right:0;
    @include text-shadow();
     li {
         position: absolute;
@@ -68,9 +66,6 @@ header {
         width: 33%;
         height: 100%;
         &.header-center{left:0; right:0; font-size:.9em;padding-top:5px;}
-        &:first-child { left:0px;}
-        &:last-child {  right:0px;}
-        &:hover {background: rgba($color-blanco-light,.3);}
     }
 
 }

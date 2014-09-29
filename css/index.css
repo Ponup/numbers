@@ -82,10 +82,6 @@ ul {
 header {
   height: 55px;
   overflow: hidden;
-  position: absolute;
-  top: -120px;
-  left: 0;
-  right: 0;
   -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
   -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
   -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
@@ -103,12 +99,6 @@ header {
       right: 0;
       font-size: .9em;
       padding-top: 5px; }
-    header li:first-child {
-      left: 0px; }
-    header li:last-child {
-      right: 0px; }
-    header li:hover {
-      background: rgba(246, 247, 251, 0.3); }
 
 /*customize headaer */
 #game {
@@ -237,6 +227,13 @@ header {
       #game footer #bar-estrellas .bar-estrellas-3 {
         float: right;
         margin-right: 15%; }
+  #game #plus {
+    height: 116px;
+    width: 116px;
+    position: fixed;
+    bottom: -116px;
+    left: 10%;
+    background: url("../img/char/plus_1.png"); }
   #game #bricks {
     z-index: 3;
     opacity: 0;
@@ -258,7 +255,7 @@ header {
       width: 40px;
       align-self: flex-end; }
     #game #bricks .brick {
-      position: relative;
+      position: absolute;
       top: 0px;
       width: 35px;
       height: 35px;
@@ -384,5 +381,3 @@ header {
 
 #bricksOverlay {
   z-index: 100; }
-
-/*# sourceMappingURL=index.css.map */
