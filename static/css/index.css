@@ -237,13 +237,6 @@ header {
       #game footer #bar-estrellas .bar-estrellas-3 {
         float: right;
         margin-right: 15%; }
-  #game #plus {
-    height: 116px;
-    width: 116px;
-    position: fixed;
-    bottom: -116px;
-    left: 10%;
-    background: url("../img/char/plus_1.png"); }
   #game #bricks {
     z-index: 3;
     opacity: 0;
