@@ -15,7 +15,18 @@ define( [ 'jquery' ], function( $ ) {
 	function Brick()
 	{
 		this.counted = false;
+		this.index = null;
 	}
+
+	Brick.prototype.setIndex = function( index )
+	{
+		this.index = index;
+	};
+
+	Brick.prototype.getIndex = function()
+	{
+		return this.index;
+	};
 
 	Brick.prototype.setValue = function( value )
 	{
@@ -24,9 +35,6 @@ define( [ 'jquery' ], function( $ ) {
 
 	Brick.prototype.getValue = function()
 	{
-		if( this.counted ) { return 0; }
-
-		this.counted = true;
 		return this.value;
 	};
 
@@ -39,6 +47,7 @@ define( [ 'jquery' ], function( $ ) {
 	Brick.prototype.toHtmlNode = function()
 	{
 		var htmlNode = document.createElement( 'div' );
+		htmlNode.id = 'brick_' + this.index;
 		htmlNode.className = 'brick';
 		htmlNode.innerText = this.value;
 		$( htmlNode ).css( bricksConfig[ this.value + 1 ] );
@@ -47,6 +56,11 @@ define( [ 'jquery' ], function( $ ) {
 		htmlNode.style.left = this.x * 35 + 'px';
 		htmlNode.style.top = this.y * 35 + 'px';
 		return htmlNode;
+	};
+
+	Brick.prototype.remove = function()
+	{
+		$( '#brick_' + this.index ).fadeOut();
 	};
 
 	return Brick;

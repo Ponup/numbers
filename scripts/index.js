@@ -1,16 +1,18 @@
 
-require( [ 'jquery', 'config', 'snap', 'bricks' ], function( $, config, snap, Brick ) {
+require( [ 'jquery', 'config', 'snap', 'bricks', 'scullge/utils/arrays' ], function( $, config, snap, Brick, Arrays ) {
+
+	function range( min, max ) {
+		var numbers = [];
+		for( var i = min; i < max; i++ ) numbers.push( i );
+		return numbers;
+	}
 
 	var gameContext = {
-		moves: config.moves,
-		score: 0,
-	};
+		currentTotal: 0,
+       	};
 	var bricksData = [];
-	var game_moves = config.moves;
-	var game_points = config.points;
-	var game_max_number = config.max_number;
-	var game_bricks = config.bricks;
-	var game_brick_size = config.brick_size;
+	var levelIndicator = config.points;
+	var gridSize = 5;
 
 	$('header').animate({top:'0px'}, 400);
 	$('footer').delay(500).animate({bottom:'0px'}, 400);
@@ -18,28 +20,47 @@ require( [ 'jquery', 'config', 'snap', 'bricks' ], function( $, config, snap, Br
 	$('#plus').delay(1500).animate({bottom:'15px'}, 1000);
 	$('#debug').delay(2700).animate({right:'20px',opacity:1}, 1000);
 
-	game_size = $('#game').data('size');
-	drawGrid(game_size);
+	drawGrid( gridSize );
+	var goalNumber = calculateGoalNumber( bricksData );
+	$( '#goalNumber' ).html( 'Goal number: ' + goalNumber );
 	bindEvents();
+
+	function calculateGoalNumber( bricksData )
+	{
+		var numberOfBricks = bricksData.length,
+			numberOfBricksNeeded = parseInt( numberOfBricks * 0.2 ),
+			bricksAvailable = range( 0, numberOfBricks - 1 ),
+			bricksAvailable = Arrays.shuffle( bricksAvailable ),
+			bricksIndexes = bricksAvailable.slice( 0, numberOfBricksNeeded ),
+			goalNumber = 0,
+			i = 0,
+			brickIndex = null;
+		for(; i < bricksIndexes.length; i++ )
+		{
+			brickIndex = bricksIndexes[ i ];
+			goalNumber += bricksData[ brickIndex ].getValue();
+		}
+		return goalNumber;
+	}
 
 	$('#config-theme li').click(function( ev ) {$('#game').removeClass().addClass($(this).data('config-theme')); });
 
 	function drawGrid( gridSize ) {
 		var $bricks = $( document.getElementById( 'bricks' ) );
+		var brickIndex = 0;
 		$bricks.css({
-			width: gridSize * game_brick_size,
-			height: gridSize * game_brick_size
+			width: gridSize * config.brick_size,
+			height: gridSize * config.brick_size
 		});
 
 		$bricks.remove( '.brick' );
 		$bricks[0].style.position = 'relative';
-		game_size = gridSize;
-		for (var y = 0; y < game_size; y++) {
-			for( var x = 0; x < game_size; x++ )
+		for (var y = 0; y < gridSize; y++) {
+			for( var x = 0; x < gridSize; x++ )
 			{
-				var randomValue = Math.floor( ( Math.random() * game_max_number ) + x );
+				var randomValue = Math.floor( ( Math.random() * config.max_number ) + x );
 				var brick = new Brick();
-				console.dir(brick);
+				brick.setIndex( brickIndex++ );
 				brick.setGridLocation( x, y );
 				brick.setValue( randomValue );
 				bricksData.push( brick );
@@ -48,38 +69,28 @@ require( [ 'jquery', 'config', 'snap', 'bricks' ], function( $, config, snap, Br
 				$bricks.append( brickNode );
 			}
 		};
-	    };
+	}
 
-	    $('#moves').text(game_moves);
 
-	    $('.reload').on('click', function(ev) {
+	$('.reload').on('click', function(ev) {
 		ev.preventDefault();
 		location.reload();
-	    });
+	});
 
-	    function bindEvents()
-	    {
-		$('.brick').each(function() {
-
-		    $(this).click(function( ev ) {
+	function bindEvents()
+	{
+		$('.brick').click(function( ev )
+		{
 			$('#points').removeClass('puntos-hey');
 			setTimeout(function(){$('#points').addClass('puntos-hey')} , 1);
 
-			if(game_points>5550){
-			    $('#modal').addClass('win');
-			    $('#modal').animate({right:'0%'}, 200);
-			}
-
 			$(this).fadeOut('fast');
-			game_points=game_points+100;
-			$('#moves').text(--game_moves);
+			levelIndicator = levelIndicator+100;
 
-			$('#points').text(game_points++);
+			$('#points').text(levelIndicator++);
 			$('#bar-points').css('width',"+=25"+'%');
-			});
-		    });
-
-		};
+		});
+	};
 
 	var isDrawing = false;
 	var lastPoint = null;
@@ -110,9 +121,16 @@ require( [ 'jquery', 'config', 'snap', 'bricks' ], function( $, config, snap, Br
 		lines.push( l );
 		lastPoint = [ x, y ];
 		var currentBrick = findBrickByPosition( lastPoint );
-		if( null !== currentBrick )
+		if( null !== currentBrick && false === currentBrick.counted )
 		{
-			$( currentBrick ).fadeOut();
+			gameContext.currentTotal += currentBrick.getValue();
+			currentBrick.counted = true;
+			if( gameContext.currentTotal === goalNumber )
+			{
+				$('#modal').addClass('win');
+				$('#modal').animate({right:'0%'}, 200);
+			}
+			currentBrick.remove();
 		}
 	 };
 
@@ -129,14 +147,14 @@ require( [ 'jquery', 'config', 'snap', 'bricks' ], function( $, config, snap, Br
 	{
 		var x = Math.ceil( point[0] / 35 ),
 		    y = Math.floor( point[1] / 35 ),
-		    index = parseInt( ( game_size * y ) + x ),
-		    brickNode = $( '#bricks').children().eq( index ),
-		    brick = bricksData[ index ];
+		    index = parseInt( ( gridSize * y ) + x );
 
-		game_moves += brick.getValue();
-		$('#moves').text( game_moves );	
+		if( index > -1 && index <= bricksData.length )
+		{
+			return bricksData[ index - 1 ];
+		}
 
-		return brickNode;
+		return null;
 	}
 
 } );

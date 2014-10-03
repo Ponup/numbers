@@ -1,0 +1,3 @@
+[submodule "scripts/scullge"]
+	path = scripts/scullge
+	url = git@github.com:Ponup/scullge.git
