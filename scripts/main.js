@@ -7,5 +7,15 @@ require.config({
 	}
 });
 
-require( [ 'index' ] );
+require( [ 'data/context', 'scullge/scenes/manager', 'scenes/intro', 'scenes/mainMenu', 'scenes/game' ], function( gaco, ScenesManager, IntroScene, MainMenuScene, GameScene ) {
+
+	var introScene = new IntroScene();
+
+	gaco.scenesManager = new ScenesManager();
+	gaco.scenesManager.add( introScene );
+	gaco.scenesManager.add( new MainMenuScene() );
+	gaco.scenesManager.add( new GameScene() );
+	gaco.scenesManager.switchTo( introScene );
+
+});
 

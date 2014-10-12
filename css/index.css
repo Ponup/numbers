@@ -381,3 +381,6 @@ header {
 
 #bricksOverlay {
   z-index: 100; }
+
+.hidden {
+  display: none; }
