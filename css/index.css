@@ -290,15 +290,13 @@ header {
         border-bottom: none; }
 
 #modal {
+  background: rgba(72, 207, 174, 0.9);
   z-index: 10;
   position: fixed;
   width: 100%;
   height: 100%;
-  left: 0;
-  right: -200%;
-  top: 0;
-  bottom: 0;
   margin: auto;
+  display: none;
   color: #f6f7fb;
   -webkit-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
   -moz-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
@@ -350,12 +348,6 @@ header {
         float: right; }
       #modal #modal-footer li:hover {
         background: rgba(246, 247, 251, 0.3); }
-
-.win {
-  background: rgba(72, 207, 174, 0.9); }
-
-.lose {
-  background: rgba(251, 110, 82, 0.9); }
 
 /* :: MEDIA QUERIES :: */
 @media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {

@@ -13,6 +13,8 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 	MainMenu.prototype.switchFrom = function( prevScene )
 	{
+		document.title = 'Numbers menu';
+
 		var $canvas = $( document.getElementById( 'canvas' ) );
 		$canvas.empty().append( tplHtml );
 

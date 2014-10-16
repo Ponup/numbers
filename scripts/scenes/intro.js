@@ -17,7 +17,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/intro.html', '
 		$canvas.empty().append( tplHtml );
 
 		$( 'h1', $canvas ).animate(
-			{ opacity: 100 }, 3000,
+			{ opacity: 100 }, 1500,
 			function() {
 				gaco.scenesManager.switchTo( 'mainMenu' );
 		       	} 
