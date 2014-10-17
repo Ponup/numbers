@@ -10,7 +10,7 @@
           transition: $transition;
 }
 
-@mixin text-shadow($horizOffset:0px, $vertOffset:1px, $blur:0px, $color:rgba(0,0,0,.1)) {
+@mixin text-shadow($horizOffset:0px, $vertOffset:3px, $blur:0px, $color:rgba(0,0,0,.1)) {
      -webkit-text-shadow: $horizOffset $vertOffset $blur $color;
         -moz-text-shadow: $horizOffset $vertOffset $blur $color;
          -ms-text-shadow: $horizOffset $vertOffset $blur $color; /* IE 10+ */
