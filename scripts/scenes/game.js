@@ -18,7 +18,7 @@ define( [ 'jquery', 'underscore', 'scullge/scenes/base', 'text!templates/scenes/
 		var $canvas = $( document.getElementById( 'canvas' ) );
 		$canvas.empty().append( tplHtml );
 		
-		require( [ 'config', 'snap', 'bricks' ], function( config, snap, Brick ) {
+		require( [ 'config', 'snap', 'bricks' ], function( config, Snap, Brick ) {
 
 		var gameContext = {
 			currentTotal: 0,
