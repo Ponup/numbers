@@ -44,3 +44,4 @@ proguard/
 .Spotlight-V100
 .Trashes
 .sass-cache
+/nbproject/private/
