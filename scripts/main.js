@@ -1,6 +1,6 @@
 
 require.config({
-	baseUrl: 'scripts/',
+	baseUrl: 'js/',
 	paths: {
 		jquery: 'jquery-1.11.1.min',
 		snap: 'snap.svg-min',
