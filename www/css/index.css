@@ -82,12 +82,12 @@ section#menu {
     height: 40%;
     text-align: center;
     background: url("../img/menu_cuchara.png") no-repeat 140% 80% #434A54;
-    -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+    -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+    -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+    -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     /* IE 10+ */
-    -o-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1); }
+    -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+    text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
     section#menu footer #startGame {
       font-size: 2em;
       color: #f6f7fb;
@@ -157,12 +157,12 @@ section#menu {
 header {
   height: 55px;
   overflow: hidden;
-  -webkit-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-  -moz-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-  -ms-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
   /* IE 10+ */
-  -o-text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1); }
+  -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
   header li {
     position: absolute;
     display: block;
@@ -451,5 +451,3 @@ header {
 
 .hidden {
   display: none; }
-
-/*# sourceMappingURL=index.css.map */

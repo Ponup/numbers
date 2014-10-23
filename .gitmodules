@@ -1,3 +1,4 @@
-[submodule "scripts/scullge"]
-	path = scripts/scullge
+
+[submodule "www/js/scullge"]
+	path = www/js/scullge
 	url = git@github.com:Ponup/scullge.git

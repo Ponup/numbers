@@ -18,7 +18,7 @@ define( [ 'jquery', 'underscore', 'scullge/scenes/base', 'text!templates/scenes/
 		var $canvas = $( document.getElementById( 'canvas' ) );
 		$canvas.empty().append( tplHtml );
 		
-		require( [ 'config', 'snap', 'bricks' ], function( config, snap, Brick ) {
+		require( [ 'config', 'snap', 'bricks' ], function( config, Snap, Brick ) {
 
 		var gameContext = {
 			currentTotal: 0,
@@ -34,8 +34,9 @@ define( [ 'jquery', 'underscore', 'scullge/scenes/base', 'text!templates/scenes/
 		var lastPoint = null;
 		var lines = [];
 
-		var bricksOverlay = Snap( '#bricksOverlay' );
-		var bricksLayer = document.getElementById( 'bricks' );
+		var bricksOverlay = Snap( '#bricksOverlay' ),
+			bricksLayer = document.getElementById( 'bricks' ),
+			$bricksLayer = $( bricksLayer );
 
 		startLevel();
 		showElements();
@@ -122,25 +123,39 @@ define( [ 'jquery', 'underscore', 'scullge/scenes/base', 'text!templates/scenes/
 				$('#bar-points').css('width',"+=25"+'%');
 			});
 		};
-		
-		 bricksLayer.onmousedown = function( ev ) {
-			 isDrawing = true;
-			 var x = ev.pageX - bricksLayer.offsetLeft,
-			     y = ev.pageY - bricksLayer.offsetTop;
-			 lastPoint = [ x, y ];
-		 };
 
-		 bricksLayer.onmousemove = function( ev ) {
-			 if( false === isDrawing ) {
-				 return;
-			 }
-			 var x = ev.pageX - bricksLayer.offsetLeft,
-			     y = ev.pageY - bricksLayer.offsetTop;
+		function startDrawing( pageX, pageY ) {
+			isDrawing = true;
+			var x = pageX - bricksLayer.offsetLeft,
+				y = pageY - bricksLayer.offsetTop;
+			lastPoint = [ x, y ];			
+		}
+
+		$bricksLayer.on( 'mousedown', function( ev ) {
+			startDrawing( ev.pageX, ev.pageY );
+		} );
+		$bricksLayer.on( 'touchstart', function( ev ) {
+			startDrawing( ev.originalEvent.touches[0].pageX, ev.originalEvent.touches[0].pageY );
+		} );		
+
+		$bricksLayer.on( 'mousemove', function( ev ) {
+			continueDrawing( ev.pageX, ev.pageY );
+		} );
+		$bricksLayer.on( 'touchmove', function( ev ) {
+			continueDrawing( ev.originalEvent.touches[0].pageX, ev.originalEvent.touches[0].pageY );
+		} );
+		
+		function continueDrawing( pageX, pageY ) {
+			if( false === isDrawing ) {
+				return;
+			}
+			var x = pageX - bricksLayer.offsetLeft,
+				y = pageY - bricksLayer.offsetTop;
 			var l = bricksOverlay.line( lastPoint[0], lastPoint[1], x, y );
 			l.attr( {
-				 fill:"#ff0000",
-				 stroke:"#0000ff",
-				 strokeWidth: 5 
+				fill:"#ff0000",
+				stroke:"#0000ff",
+				strokeWidth: 5 
 			});
 			lines.push( l );
 			lastPoint = [ x, y ];
@@ -166,16 +181,16 @@ define( [ 'jquery', 'underscore', 'scullge/scenes/base', 'text!templates/scenes/
 					gaco.scenesManager.switchTo( 'gameOver' );
 				}
 			}
-		 };
+		}
 
-		 bricksLayer.onmouseup = function( ev ) {
+		$bricksLayer.on( 'mouseup touchend', function( ev ) {
 			 isDrawing = false;
 			 lastPoint = null;
 			 var lineGroup = bricksOverlay.g();
-			 lineGroup.add(lines);
-			 lineGroup.animate({opacity:0}, 300);
+			 lineGroup.add( lines );
+			 lineGroup.animate({ opacity: 0 }, 300 );
 			 lineGroup.remove();
-		 };
+		} );
 
 		function findBrickByPosition( point ) 
 		{

@@ -13,13 +13,22 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 	MainMenu.prototype.switchFrom = function( prevScene )
 	{
-		document.title = 'Numbers menu';
-
 		var $canvas = $( document.getElementById( 'canvas' ) );
-		$canvas.empty().append( tplHtml );
 
-		$( '#startGame' ).on( 'click', function() {
+		document.title = 'Numbers menu';
+		
+		$canvas.empty().append( tplHtml );
+		
+		var $menuLayer = $( '#menu' );
+
+		$menuLayer.on( 'click', '#startGame', function() {
 			gaco.scenesManager.switchTo( 'game' );
+		});
+		$menuLayer.on( 'click', '#gotoScores', function() {
+			gaco.scenesManager.switchTo( 'scores' );
+		});
+		$menuLayer.on( 'click', '#gotoOptions', function() {
+			gaco.scenesManager.switchTo( 'options' );
 		});
 	};
 
