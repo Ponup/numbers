@@ -473,3 +473,15 @@ section#gameWon {
     height: 50px; }
   section#gameWon #actions {
     margin-top: 100px; }
+
+#scores h1 {
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 70px;
+  background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
+  background-size: 40%, 20%; }
+#scores th {
+  color: #E35664; }
+#scores td {
+  color: white; }

@@ -4,7 +4,8 @@ require.config({
 	paths: {
 		jquery: 'jquery-1.11.1.min',
 		snap: 'snap.svg-min',
-		underscore: 'underscore-min'
+		underscore: 'underscore-min',
+		handlebars: 'handlebars-v2.0.0'
 	}
 });
 

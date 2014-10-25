@@ -1,8 +1,35 @@
-<div id="dots"></div>
-<section id="intro_ponup">
-	<h1>
-		Scores
-		<img src="img/intro_logo.png" />
-	</h1>
+
+<section id="scores">
+	<h1>Scores</h1>
+
+	<div id="table"></div>
+
+	<p>
+	<img id="gotoBack" src="img/items/level_prev.png" alt="Goto main menu" />
+	</p>
 </section>
+
+<script id="templateHtml" type="text/x-handlebars-template">
+<table>
+	<thead>
+	<tr>
+		<th>Player</th>
+		<th>Score</th>
+	</tr>
+	</thead>
+	<tbody>	
+	{{#each scores}}
+	<tr>
+		<td>{{player}}</td>
+		<td>{{score}}</td>
+	</tr>
+	{{else}}
+	<tr>
+		<td colspan="2">No scores yet</td>
+	</tr>
+	{{/each}}
+	</tbody>
+</table>
+</script>
+
 

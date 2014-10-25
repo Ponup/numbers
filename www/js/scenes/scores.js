@@ -1,5 +1,12 @@
 
-define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/scores.html', 'data/context' ], function( $, BaseScene, tplHtml, gaco ) {
+define( function( require ) {
+	var $ = require( 'jquery' ),
+		BaseScene = require( 'scullge/scenes/base' ),
+		tplHtml = require( 'text!templates/scenes/scores.html' ),
+		gaco = require( 'data/context' ),
+		rankingModel = require( 'data/ranking' ),
+		Handlebars = require( 'handlebars' )
+	;
 
 	function ScoresScene()
 	{
@@ -16,12 +23,16 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/scores.html', 
 		var $canvas = $( document.getElementById( 'canvas' ) );
 		$canvas.empty().append( tplHtml );
 
-		$( 'h1', $canvas ).animate(
-			{ opacity: 100 }, 1500,
-			function() {
-				gaco.scenesManager.switchTo( 'mainMenu' );
-		       	} 
-		);
+		var source = $( '#templateHtml' ).html();
+		var template = Handlebars.compile( source );
+
+		var templateVariables = { scores: rankingModel.getScores() }
+
+		$( '#table' ).append( template( templateVariables ) );
+
+		$( '#scores' ).on( 'click', '#gotoBack', function() {
+			gaco.scenesManager.switchTo( 'mainMenu' );
+		});
 	};
 
 	return ScoresScene;

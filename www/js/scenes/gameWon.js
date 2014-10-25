@@ -27,7 +27,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 			gaco.scenesManager.switchTo( 'game' );
 		});
 		$canvas.on( 'click', '#playNextLevel', function() {
-			$( '#gameWon' ).hide();
+			$( '#gameWon' ).remove();
 			gameScene.startLevel();
 			$( '#game' ).fadeIn();
 		});
