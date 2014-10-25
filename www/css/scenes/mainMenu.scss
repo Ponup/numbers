@@ -42,6 +42,9 @@ section#menu{
                 width: 30%;
                 
             }
+            li.hidden { 
+                display: none;
+            }
         }
     }
 }

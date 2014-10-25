@@ -19,7 +19,9 @@
 
 	<!-- Default splash screen for all platforms -->
 	<splash src="res/splash-screen.png" />
-	
+
+	<preference name="Fullscreen" value="false" />	
 	<preference name="SplashScreenDelay" value="10000" />
+	<preference name="Orientation" value="portrait" />
 
 </widget>

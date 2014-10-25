@@ -29,5 +29,7 @@ define( function( require ) {
 	gaco.scenesManager.add( new GameOverScene() );
 	gaco.scenesManager.add( new ScoresScene() );
 	gaco.scenesManager.add( new OptionsScene() );
-	gaco.scenesManager.switchTo( introScene );
+
+	document.addEventListener( 'deviceready', function() { gaco.scenesManager.switchTo( introScene ); }, false );
 });
+

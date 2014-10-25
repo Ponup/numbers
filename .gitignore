@@ -3,3 +3,5 @@ nbproject
 platforms
 *.css.map
 /www/css/scenes/options.css
+*.keystore
+

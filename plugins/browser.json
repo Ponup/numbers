@@ -1,0 +1,29 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        }
+    },
+    "dependent_plugins": {}
+}
