@@ -5,8 +5,7 @@ require.config({
 		jquery: 'jquery-1.11.1.min',
 		snap: 'snap.svg-min',
 		underscore: 'underscore-min'
-	},
-	urlArgs: 'bust=' + Date.now() // nocache
+	}
 });
 
 define( function( require ) {
@@ -15,7 +14,8 @@ define( function( require ) {
 		IntroScene = require( 'scenes/intro' ),
 		MainMenuScene = require( 'scenes/mainMenu' ),
 		GameScene = require( 'scenes/game' ),
-		GameOverScene = require( 'scenes/gameOver' ),
+		GameWonScene = require( 'scenes/gameWon' ),
+		GameLostScene = require( 'scenes/gameLost' ),
 		ScoresScene = require( 'scenes/scores' ),
 		OptionsScene = require( 'scenes/options' )
 	;
@@ -26,7 +26,8 @@ define( function( require ) {
 	gaco.scenesManager.add( introScene );
 	gaco.scenesManager.add( new MainMenuScene() );
 	gaco.scenesManager.add( new GameScene() );
-	gaco.scenesManager.add( new GameOverScene() );
+	gaco.scenesManager.add( new GameWonScene() );
+	gaco.scenesManager.add( new GameLostScene() );
 	gaco.scenesManager.add( new ScoresScene() );
 	gaco.scenesManager.add( new OptionsScene() );
 

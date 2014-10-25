@@ -1,9 +1,11 @@
 @charset "UTF-8";
 /* :: VARIABLES :: */
-/* :: MIXINS :: */
-html, body, #canvas {
+html, body, #canvas, section {
   width: 100%;
   height: 100%; }
+
+section {
+  max-width: 480px; }
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -138,6 +140,8 @@ section#menu {
       section#menu footer ul li {
         display: inline-block;
         width: 30%; }
+        section#menu footer ul li a {
+          color: #E35664; }
       section#menu footer ul li.hidden {
         display: none; }
 
@@ -188,8 +192,7 @@ section#options div.setting-row {
   -moz-transition: 0.2s;
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;
-  /* PIES */ }
+  transition: 0.2s; }
   #game.black {
     background: #424b52 url("../img/noise.png"); }
     #game.black header, #game.black footer {
@@ -302,13 +305,6 @@ section#options div.setting-row {
       #game footer #bar-estrellas .bar-estrellas-3 {
         float: right;
         margin-right: 15%; }
-  #game #plus {
-    height: 116px;
-    width: 116px;
-    position: fixed;
-    bottom: -116px;
-    left: 10%;
-    background: url("../img/char/plus_1.png"); }
   #game #bricks {
     z-index: 3;
     opacity: 0;
@@ -325,15 +321,10 @@ section#options div.setting-row {
     -o-transition: 0.2s;
     transition: 0.2s;
     display: flex; }
-    #game #bricks .brick-col {
-      box-sizing: border-box;
-      width: 40px;
-      align-self: flex-end; }
     #game #bricks .brick {
       position: absolute;
       top: 0px;
-      width: 35px;
-      height: 35px;
+      vertical-align: middle;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px;
@@ -357,8 +348,7 @@ section#options div.setting-row {
       -moz-transform: translateZ(0);
       -ms-transform: translateZ(0);
       -o-transform: translateZ(0);
-      transform: translateZ(0);
-      /* Other transform properties here */ }
+      transform: translateZ(0); }
       #game #bricks .brick:hover, #game #bricks .brick:active {
         top: 3px;
         border-bottom: none; }
@@ -439,3 +429,47 @@ section#options div.setting-row {
         float: right; }
       #modal #modal-footer li:hover {
         background: rgba(246, 247, 251, 0.3); }
+
+section#gameLost {
+  background: url("../img/items/game_over_bg.png") no-repeat; }
+  section#gameLost h1 {
+    color: #4C535C;
+    padding-top: 90px;
+    font-size: 60px; }
+  section#gameLost #totalScore {
+    color: #4ED1B1;
+    font-size: 80px;
+    margin-top: 100px; }
+  section#gameLost #totalScore {
+    color: #E96473;
+    font-size: 80px;
+    margin-top: 100px; }
+  section#gameLost #stars {
+    margin-top: 100px;
+    text-align: center; }
+  section#gameLost #starLeft, section#gameLost #starRight {
+    height: 50px; }
+  section#gameLost #actions {
+    margin-top: 100px; }
+
+section#gameWon {
+  background: url("../img/items/game_over_bg.png") no-repeat; }
+  section#gameWon h1 {
+    color: #4C535C;
+    padding-top: 90px;
+    font-size: 60px; }
+  section#gameWon #totalScore {
+    color: #4ED1B1;
+    font-size: 80px;
+    margin-top: 100px; }
+  section#gameWon #totalScore {
+    color: #E96473;
+    font-size: 80px;
+    margin-top: 100px; }
+  section#gameWon #stars {
+    margin-top: 100px;
+    text-align: center; }
+  section#gameWon #starLeft, section#gameWon #starRight {
+    height: 50px; }
+  section#gameWon #actions {
+    margin-top: 100px; }

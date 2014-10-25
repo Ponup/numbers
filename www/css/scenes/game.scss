@@ -47,7 +47,7 @@
 
         }
     }
-    /* PIES */
+    
     footer {
         @include transition();
         position: fixed;
@@ -106,12 +106,7 @@
             .bar-estrellas-3 { float: right; margin-right: 15%;}
         }
     }
-    #plus{
-        height: 116px; width: 116px;
-        position: fixed;
-        bottom: -116px; left:10%;
-        background: url('../img/char/plus_1.png');
-    }
+
     #bricks {
         z-index: 3;
         opacity: 0;
@@ -125,17 +120,10 @@
         @include transition();
         display: flex;
 
-        .brick-col {
-            box-sizing: border-box;
-            width: 40px;
-            //height: 40px;
-            align-self: flex-end;
-        }
         .brick {
             position: absolute;
             top:0px;
-            width: 35px;
-            height: 35px;
+	    vertical-align: middle;
             @include border-radius(3px);
             box-sizing: border-box;
             margin-right: 5px;
@@ -156,9 +144,7 @@
            -ms-transform: translateZ(0);
            -o-transform: translateZ(0);
            transform: translateZ(0);
-           /* Other transform properties here */
         }
-
     }
 }
 
@@ -184,9 +170,8 @@
 	z-index: 100;
 }
 
-// MODAL
 #modal {
-background: rgba($color-verde-light,.9);
+    background: rgba($color-verde-light,.9);
     z-index: 10;
     position:fixed;
     width: 100%;
@@ -239,5 +224,5 @@ background: rgba($color-verde-light,.9);
             &:hover {background: rgba($color-blanco-light,.3);}
         }
     }
-
 }
+

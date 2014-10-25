@@ -3,9 +3,13 @@
 @import "colors";
 @import "mixins";
 
-html, body, #canvas {
+html, body, #canvas, section {
 	width: 100%;
 	height: 100%;
+}
+
+section {
+	max-width: 480px;
 }
 
 * {
@@ -39,11 +43,11 @@ header {
 
 }
 
-ul { list-style-type: none; li { display: inline;}}
-a {text-decoration: none; }
+ul { list-style-type: none; li { display: inline; } }
+a { text-decoration: none; }
 
 .hidden { display: none; }
-.text-big {font-size: 1.9em; }
+.text-big { font-size: 1.9em; }
 
 #dots {
     position: fixed;
@@ -67,4 +71,6 @@ a {text-decoration: none; }
 @import 'scenes/mainMenu';
 @import 'scenes/options';
 @import 'scenes/game';
+@import 'scenes/gameLost';
+@import 'scenes/gameWon';
 

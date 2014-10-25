@@ -40,7 +40,10 @@ section#menu{
             li { 
                 display: inline-block;
                 width: 30%;
-                
+
+		a {
+			color: #E35664;
+		}		
             }
             li.hidden { 
                 display: none;

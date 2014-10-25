@@ -1,4 +1,4 @@
-define( [ 'jquery' ], function( $ ) {
+define( [ 'jquery', 'config' ], function( $, config ) {
 
 	var bricksConfig = [
 		{background:'#ed5564','text-shadow' :'0px -2px 0px #da4652', 'border-bottom' :'solid 3px #da4652'},
@@ -53,8 +53,11 @@ define( [ 'jquery' ], function( $ ) {
 		$( htmlNode ).css( bricksConfig[ this.value + 1 ] );
 
 		htmlNode.style.position = 'absolute';
-		htmlNode.style.left = this.x * 35 + 'px';
-		htmlNode.style.top = this.y * 35 + 'px';
+		htmlNode.style.lineHeight = config.brickSize + 'px';
+		htmlNode.style.width = config.brickSize + 'px';
+		htmlNode.style.height = config.brickSize + 'px';
+		htmlNode.style.left = ( this.x * config.brickSize ) + 'px';
+		htmlNode.style.top = ( this.y * config.brickSize ) + 'px';
 		return htmlNode;
 	};
 

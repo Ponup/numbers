@@ -1,5 +1,5 @@
 define({
-	'points': 0,
-	'max_number': 2,
-	'brick_size': 35,
+	points: 0,
+	max_number: 2,
+	brickSize: 50,
 });
