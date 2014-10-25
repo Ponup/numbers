@@ -1,7 +1,6 @@
 @charset "UTF-8";
 /* :: VARIABLES :: */
 /* :: MIXINS :: */
-/* :: CONFIGURACIONES GLOBALES :: */
 * {
   -webkit-tap-highlight-color: transparent;
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -24,6 +23,41 @@ body {
   background-image: url(../img/bg_matel.png);
   background-size: 20%; }
 
+header {
+  height: 55px;
+  overflow: hidden;
+  -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  /* IE 10+ */
+  -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
+  header li {
+    position: absolute;
+    display: block;
+    margin: auto;
+    width: 33%;
+    height: 100%; }
+    header li.header-center {
+      left: 0;
+      right: 0;
+      font-size: .9em;
+      padding-top: 5px; }
+
+ul {
+  list-style-type: none; }
+  ul li {
+    display: inline; }
+
+a {
+  text-decoration: none; }
+
+.hidden {
+  display: none; }
+
+.text-big {
+  font-size: 1.9em; }
+
 #dots {
   position: fixed;
   width: 100%;
@@ -36,19 +70,14 @@ body {
   background: url("../img/bg_noise.png");
   pointer-events: none; }
 
-/*LISTAS*/
-ul {
-  list-style-type: none; }
-  ul li {
-    display: inline; }
-
-a {
-  text-decoration: none; }
-
-/* TYPOGRAPHY*/
-.text-big {
-  font-size: 1.9em; }
-
+@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
+  .app {
+    background-position: left center;
+    padding: 75px 0px 75px 170px;
+    /* padding-top + padding-bottom + text area = image height */
+    margin: -90px 0px 0px -198px;
+    /* offset vertical: half of image height */
+    /* offset horizontal: half of image width and text area width */ } }
 section#intro_ponup img {
   position: absolute;
   top: 0;
@@ -106,76 +135,12 @@ section#menu {
         display: inline-block;
         width: 30%; }
 
-#debug {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 13px;
-  margin: auto;
-  z-index: 10;
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  font-size: .6em;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  zoom: 1;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box; }
-  #debug h6 {
-    color: #f6f7fb;
-    margin-bottom: 5px; }
-  #debug li {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
-    color: #f6f7fb;
-    padding: 5px;
-    display: inline-block; }
-  #debug li:hover, #debug li:active {
-    background: rgba(0, 0, 0, 0.1); }
-  #debug:after {
-    right: 100%;
-    top: 70%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(136, 183, 213, 0);
-    border-right-color: rgba(0, 0, 0, 0.1);
-    border-width: 10px;
-    margin-top: -10px; }
+section#options {
+  background-image: url("../img/menu_header.png"), url("../img/bg_bolado.png");
+  background-repeat: no-repeat, repeat-x;
+  background-position: top left, bottom left;
+  background-size: 90%, 100%; }
 
-/*ENCABEZADOS */
-header {
-  height: 55px;
-  overflow: hidden;
-  -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  /* IE 10+ */
-  -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
-  header li {
-    position: absolute;
-    display: block;
-    margin: auto;
-    width: 33%;
-    height: 100%; }
-    header li.header-center {
-      left: 0;
-      right: 0;
-      font-size: .9em;
-      padding-top: 5px; }
-
-/*customize headaer */
 #game {
   position: absolute;
   top: 0;
@@ -363,6 +328,23 @@ header {
         top: 3px;
         border-bottom: none; }
 
+#gameLayers {
+  position: relative;
+  width: 200px;
+  height: 200px; }
+
+#gameLayers > * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px; }
+
+#bricks {
+  z-index: 50; }
+
+#bricksOverlay {
+  z-index: 100; }
+
 #modal {
   background: rgba(72, 207, 174, 0.9);
   z-index: 10;
@@ -423,31 +405,4 @@ header {
       #modal #modal-footer li:hover {
         background: rgba(246, 247, 251, 0.3); }
 
-/* :: MEDIA QUERIES :: */
-@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
-  .app {
-    background-position: left center;
-    padding: 75px 0px 75px 170px;
-    /* padding-top + padding-bottom + text area = image height */
-    margin: -90px 0px 0px -198px;
-    /* offset vertical: half of image height */
-    /* offset horizontal: half of image width and text area width */ } }
-#gameLayers {
-  position: relative;
-  width: 200px;
-  height: 200px; }
-
-#gameLayers > * {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px; }
-
-#bricks {
-  z-index: 50; }
-
-#bricksOverlay {
-  z-index: 100; }
-
-.hidden {
-  display: none; }
+/*# sourceMappingURL=index.css.map */

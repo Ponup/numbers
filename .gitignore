@@ -1,3 +1,5 @@
 nbproject
 .sass-cache
 platforms
+*.css.map
+/www/css/scenes/options.css

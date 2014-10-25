@@ -15,13 +15,6 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/options.html',
 	{
 		var $canvas = $( document.getElementById( 'canvas' ) );
 		$canvas.empty().append( tplHtml );
-
-		$( 'h1', $canvas ).animate(
-			{ opacity: 100 }, 1500,
-			function() {
-				gaco.scenesManager.switchTo( 'mainMenu' );
-		       	} 
-		);
 	};
 
 	return OptionsScene;

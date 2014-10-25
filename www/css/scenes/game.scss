@@ -1,0 +1,243 @@
+
+#game {
+    position:absolute;
+    top: 0; bottom: 0; left: 0; right:0; width:100%; height:100%;
+    @include transition();
+    &.black {
+        background:$color-negro-light url('../img/noise.png');
+        header, footer {
+            background: $color-negro-dark url('../img/noise.png');
+            #bar-pluses, #bar-points, small {color: $color-negro-light; }
+            #bar-points { background: $color-negro-light ; }
+        }
+    }
+    &.pink {
+        background:$color-rosa-light url('../img/noise.png');
+        header, footer {
+            background:$color-rosa-dark url('../img/noise.png');
+            #bar-pluses, #bar-points, small {color: $color-rosa-light; }
+            #bar-points { background: $color-rosa-light ; }
+        }
+    }
+    &.blue {
+        background:$color-azul-light url('../img/noise.png');
+        header, footer {
+            background:$color-azul-dark url('../img/noise.png');
+            #bar-pluses, #bar-points, small {color: $color-azul-light; }
+            #bar-points { background: $color-azul-light ; }
+        }
+    }
+    &.tomato {
+        background:$color-tomato-light url('../img/noise.png');
+        header, footer {
+            background:$color-tomato-dark url('../img/noise.png');
+            #bar-pluses, #bar-points, small {color: $color-tomato-light; }
+            #bar-points { background: $color-tomato-light ; }
+        }
+    }
+    header{
+        @include transition();
+        color: $color-blanco-light;
+        small{
+
+            font-size: .5em;
+            position:absolute;
+            bottom: 3px;left:0;right: 0;
+            margin: auto;
+
+        }
+    }
+    /* PIES */
+    footer {
+        @include transition();
+        position: fixed;
+        bottom:-40px;
+        left: 0;
+        right: 0;
+        height: 40px;
+
+
+        #bar-pluses {
+
+            letter-spacing: 0.5em;
+            position: absolute;
+            bottom:14px;
+            z-index: -1;
+            font-size: .6em;
+        }
+        #bar-points {
+            background:$color-negro-light url('../img/noise.png');
+            height: 20px;
+            position: absolute;
+            bottom: 10px; left: 0px;
+            width:5%;
+            @include transition();
+            -webkit-border-top-right-radius: 10px;
+            -webkit-border-bottom-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            -moz-border-radius-bottomright: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            #points {
+                position: relative;
+                top:4px;
+                right: 4px;
+                font-size: .55em;
+                font−weight: bold!important;
+                float: right;
+                padding-right: 3px;
+                padding-left: 3px;
+                display: block;
+                height: 12px;
+                text-align: center;
+                background: $color-blanco-light;
+                @include border-radius(6px);
+            }
+
+        }
+        #bar-estrellas {
+            z-index: 15;
+            font-size: .6em;
+            font-weight: 400;
+            color: $color-blanco-light;
+            padding: 13px;
+            .bar-estrellas-1 { float: left; margin-left: 15%;}
+            .bar-estrellas-2 { }
+            .bar-estrellas-3 { float: right; margin-right: 15%;}
+        }
+    }
+    #plus{
+        height: 116px; width: 116px;
+        position: fixed;
+        bottom: -116px; left:10%;
+        background: url('../img/char/plus_1.png');
+    }
+    #bricks {
+        z-index: 3;
+        opacity: 0;
+        box-sizing: content-box;
+        top: 0;
+        left:0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        overflow: hidden;
+        @include transition();
+        display: flex;
+
+        .brick-col {
+            box-sizing: border-box;
+            width: 40px;
+            //height: 40px;
+            align-self: flex-end;
+        }
+        .brick {
+            position: absolute;
+            top:0px;
+            width: 35px;
+            height: 35px;
+            @include border-radius(3px);
+            box-sizing: border-box;
+            margin-right: 5px;
+            margin-bottom: 5px;
+
+            font-size: 1.3em;
+            font-weight: bold!important;
+            background: $color-negro-light ;
+            color: $color-blanco-light;
+            @include transition();
+            border-bottom:3px solid $color-negro-dark;
+            &:hover, &:active {
+                top:3px;
+                border-bottom:none;
+            }
+            -webkit-transform: translateZ(0);
+           -moz-transform: translateZ(0);
+           -ms-transform: translateZ(0);
+           -o-transform: translateZ(0);
+           transform: translateZ(0);
+           /* Other transform properties here */
+        }
+
+    }
+}
+
+
+#gameLayers {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+#gameLayers > * {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+}
+
+#bricks {
+	z-index: 50;
+}
+
+#bricksOverlay {
+	z-index: 100;
+}
+
+// MODAL
+#modal {
+background: rgba($color-verde-light,.9);
+    z-index: 10;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: none;
+    color: $color-blanco-light;
+    @include text-shadow(0px, 2px, 0px ,rgba(0,0,0,.1));
+
+    #modal-points,#modal-text {
+        position:absolute;
+         bottom:0px; left: 0px; right:0px;
+        margin:auto;
+    }
+    #modal-points{
+        font-size: 7em;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 30%;
+        margin: auto;
+        }
+    #modal-text{
+        font-size: 2em;
+        position: absolute;
+        top: -100px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 30%;
+        margin: auto;
+    }
+
+    #modal-footer {
+        position:absolute;
+        bottom:0px; left: 0px; right:0px;
+        width: 100%;
+        font-size: 1.4em;
+        li {
+            display: block;
+            width: 50%;
+            padding:20px ;
+            background: rgba($color-blanco-light,.1);
+            &:first-child { float:left; }
+            &:last-child { float: right;}
+            &:hover {background: rgba($color-blanco-light,.3);}
+        }
+    }
+
+}

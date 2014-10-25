@@ -3,7 +3,6 @@
 @import "colors";
 @import "mixins";
 
-/* :: CONFIGURACIONES GLOBALES :: */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     margin: 0; padding: 0; box-sizing: border-box;
@@ -21,103 +20,7 @@ body {
     background-image : url(../img/bg_matel.png) ;
     background-size: 20%;
 }
-#dots {
-    position: fixed;
-    width: 100%; height: 100%;
-    z-index: 200;
-    top:0; left: 0; bottom: 0; right: 0;
-    background: url('../img/bg_noise.png');
-    pointer-events: none;
 
-}
-/*LISTAS*/
-ul { list-style-type: none; li { display: inline;}}
-a {text-decoration: none; }
-/* TYPOGRAPHY*/
-.text-big {font-size: 1.9em; }
-
-section#intro_ponup {
-    img {
-        position:absolute;
-        top:0;bottom: 0;right: 0; left: 0;
-        margin:auto;
-    }
-}
-section#menu{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0; left: 0;
-    header {
-        position: absolute;
-        top:0; left: 0;
-        width: 100%;
-        height: 60%;
-        background-image: url('../img/menu_header.png'),url('../img/bg_bolado.png');
-        background-repeat: no-repeat, repeat-x;
-        background-position: top left, bottom left;
-        background-size: 90%, 100%;
-    }
-    footer {
-        width: 100%;
-        position: absolute;
-        bottom:0;
-        left: 0;
-        background: #434A54;
-        height: 40%;
-        text-align: center;
-        background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54; 
-        @include text-shadow();
-        #startGame {
-            font-size: 2em;
-            color: $color-blanco-light;
-            position: absolute;
-            margin: auto;
-            top:38%; left: 0; right: 0; bottom:42%;
-        }
-        ul {
-            position: absolute;
-            bottom: 15%;
-            width: 100%;
-            color: $color-rojo-light;
-            li { 
-                display: inline-block;
-                width: 30%;
-                
-            }
-        }
-    }
-}
-#debug {
-    background: rgba(0,0,0,.1);
-    padding: 13px;
-    margin: auto;
-    z-index: 10;
-    position: absolute;
-    bottom: 50px; right: 50px;
-    font-size: .6em;
-    @include opacity(0);
-    @include border-radius();
-    h6 {color: $color-blanco-light; margin-bottom: 5px; }
-    li { @include border-radius(); color: $color-blanco-light; padding: 5px; display:inline-block}
-    li:hover, li:active { background: rgba(0,0,0,.1);}
-    &:after {
-        right: 100%;
-        top: 70%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(136, 183, 213, 0);
-        border-right-color:rgba(0,0,0,.1);
-        border-width: 10px;
-        margin-top: -10px;
-    }
-}
-
-/*ENCABEZADOS */
 header {
     height: 55px;
     overflow: hidden;
@@ -133,231 +36,21 @@ header {
 
 }
 
-/*customize headaer */
-#game {
-    position:absolute;
-    top: 0; bottom: 0; left: 0; right:0; width:100%; height:100%;
-    @include transition();
-    &.black {
-        background:$color-negro-light url('../img/noise.png');
-        header, footer {
-            background: $color-negro-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-negro-light; }
-            #bar-points { background: $color-negro-light ; }
-        }
-    }
-    &.pink {
-        background:$color-rosa-light url('../img/noise.png');
-        header, footer {
-            background:$color-rosa-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-rosa-light; }
-            #bar-points { background: $color-rosa-light ; }
-        }
-    }
-    &.blue {
-        background:$color-azul-light url('../img/noise.png');
-        header, footer {
-            background:$color-azul-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-azul-light; }
-            #bar-points { background: $color-azul-light ; }
-        }
-    }
-    &.tomato {
-        background:$color-tomato-light url('../img/noise.png');
-        header, footer {
-            background:$color-tomato-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-tomato-light; }
-            #bar-points { background: $color-tomato-light ; }
-        }
-    }
-    header{
-        @include transition();
-        color: $color-blanco-light;
-        small{
+ul { list-style-type: none; li { display: inline;}}
+a {text-decoration: none; }
 
-            font-size: .5em;
-            position:absolute;
-            bottom: 3px;left:0;right: 0;
-            margin: auto;
+.hidden { display: none; }
+.text-big {font-size: 1.9em; }
 
-        }
-    }
-    /* PIES */
-    footer {
-        @include transition();
-        position: fixed;
-        bottom:-40px;
-        left: 0;
-        right: 0;
-        height: 40px;
-
-
-        #bar-pluses {
-
-            letter-spacing: 0.5em;
-            position: absolute;
-            bottom:14px;
-            z-index: -1;
-            font-size: .6em;
-        }
-        #bar-points {
-            background:$color-negro-light url('../img/noise.png');
-            height: 20px;
-            position: absolute;
-            bottom: 10px; left: 0px;
-            width:5%;
-            @include transition();
-            -webkit-border-top-right-radius: 10px;
-            -webkit-border-bottom-right-radius: 10px;
-            -moz-border-radius-topright: 10px;
-            -moz-border-radius-bottomright: 10px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            #points {
-                position: relative;
-                top:4px;
-                right: 4px;
-                font-size: .55em;
-                font−weight: bold!important;
-                float: right;
-                padding-right: 3px;
-                padding-left: 3px;
-                display: block;
-                height: 12px;
-                text-align: center;
-                background: $color-blanco-light;
-                @include border-radius(6px);
-            }
-
-        }
-        #bar-estrellas {
-            z-index: 15;
-            font-size: .6em;
-            font-weight: 400;
-            color: $color-blanco-light;
-            padding: 13px;
-            .bar-estrellas-1 { float: left; margin-left: 15%;}
-            .bar-estrellas-2 { }
-            .bar-estrellas-3 { float: right; margin-right: 15%;}
-        }
-    }
-    #plus{
-        height: 116px; width: 116px;
-        position: fixed;
-        bottom: -116px; left:10%;
-        background: url('../img/char/plus_1.png');
-    }
-    #bricks {
-        z-index: 3;
-        opacity: 0;
-        box-sizing: content-box;
-        top: 0;
-        left:0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        overflow: hidden;
-        @include transition();
-        display: flex;
-
-        .brick-col {
-            box-sizing: border-box;
-            width: 40px;
-            //height: 40px;
-            align-self: flex-end;
-
-
-        }
-        .brick {
-            position: absolute;
-            top:0px;
-            width: 35px;
-            height: 35px;
-            @include border-radius(3px);
-            box-sizing: border-box;
-            margin-right: 5px;
-            margin-bottom: 5px;
-
-            font-size: 1.3em;
-            font-weight: bold!important;
-            background: $color-negro-light ;
-            color: $color-blanco-light;
-            @include transition();
-            border-bottom:3px solid $color-negro-dark;
-            &:hover, &:active {
-                top:3px;
-                border-bottom:none;
-            }
-            -webkit-transform: translateZ(0);
-           -moz-transform: translateZ(0);
-           -ms-transform: translateZ(0);
-           -o-transform: translateZ(0);
-           transform: translateZ(0);
-           /* Other transform properties here */
-        }
-
-    }
-}
-
-// MODAL
-#modal {
-background: rgba($color-verde-light,.9);
-    z-index: 10;
-    position:fixed;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: none;
-    color: $color-blanco-light;
-    @include text-shadow(0px, 2px, 0px ,rgba(0,0,0,.1));
-
-    #modal-points,#modal-text {
-        position:absolute;
-         bottom:0px; left: 0px; right:0px;
-        margin:auto;
-    }
-    #modal-points{
-        font-size: 7em;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 30%;
-        margin: auto;
-        }
-    #modal-text{
-        font-size: 2em;
-        position: absolute;
-        top: -100px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 30%;
-        margin: auto;
-    }
-
-    #modal-footer {
-        position:absolute;
-        bottom:0px; left: 0px; right:0px;
-        width: 100%;
-        font-size: 1.4em;
-        li {
-            display: block;
-            width: 50%;
-            padding:20px ;
-            background: rgba($color-blanco-light,.1);
-            &:first-child { float:left; }
-            &:last-child { float: right;}
-            &:hover {background: rgba($color-blanco-light,.3);}
-        }
-    }
+#dots {
+    position: fixed;
+    width: 100%; height: 100%;
+    z-index: 200;
+    top:0; left: 0; bottom: 0; right: 0;
+    background: url('../img/bg_noise.png');
+    pointer-events: none;
 
 }
-
-/* :: MEDIA QUERIES :: */
 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
@@ -365,30 +58,10 @@ background: rgba($color-verde-light,.9);
         padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
         margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
-        //#plus { display: none;}
     }
 }
 
-#gameLayers {
-	position: relative;
-	width: 200px;
-	height: 200px;
-}
-
-#gameLayers > * {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0px;
-}
-
-#bricks {
-	z-index: 50;
-}
-
-#bricksOverlay {
-	z-index: 100;
-}
-
-.hidden { display: none; }
-
+@import 'scenes/intro';
+@import 'scenes/mainMenu';
+@import 'scenes/options';
+@import 'scenes/game';

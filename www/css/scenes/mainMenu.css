@@ -1,0 +1,80 @@
+/*
+Error: Undefined mixin 'text-shadow'.
+        on line 26 of /home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss, in `text-shadow'
+        from line 26 of /home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss
+
+21:         left: 0;
+22:         background: #434A54;
+23:         height: 40%;
+24:         text-align: center;
+25:         background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54; 
+26:         @include text-shadow();
+27:         #startGame {
+28:             font-size: 2em;
+29:             color: $color-blanco-light;
+30:             position: absolute;
+31:             margin: auto;
+
+Backtrace:
+/home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss:26:in `text-shadow'
+/home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss:26
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:338:in `block in visit_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:98:in `block in with_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:98:in `with_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:336:in `visit_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/exec/sass_scss.rb:396:in `run'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/exec/base.rb:52:in `parse'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/exec/base.rb:19:in `parse!'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/bin/sass:13:in `<top (required)>'
+/usr/local/bin/sass:23:in `load'
+/usr/local/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'text-shadow'.\A         on line 26 of /home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss, in `text-shadow'\A         from line 26 of /home/santiago/Projects/numbers/www/css/scenes/mainMenu.scss\A \A 21:         left: 0;\A 22:         background: #434A54;\A 23:         height: 40%;\A 24:         text-align: center;\A 25:         background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54; \A 26:         @include text-shadow();\A 27:         #startGame {\A 28:             font-size: 2em;\A 29:             color: $color-blanco-light;\A 30:             position: absolute;\A 31:             margin: auto;"; }

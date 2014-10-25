@@ -6,11 +6,20 @@
 	<content src="index.html" />
 	<access origin="*" />
 
+	<!-- Default icon for all platforms -->
+	<icon src="res/icon.png" />
+
 	<platform name="android">
 		<icon src="res/android/drawable-mdpi/ic_launcher.png" density="mdpi" />
 		<icon src="res/android/drawable-hdpi/ic_launcher.png" density="hdpi" />
 		<icon src="res/android/drawable-xhdpi/ic_launcher.png" density="xhdpi" />
 		<icon src="res/android/drawable-xxhdpi/ic_launcher.png" density="xxhdpi" />
 		<icon src="res/android/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
-	</platform>    
+	</platform>
+
+	<!-- Default splash screen for all platforms -->
+	<splash src="res/splash-screen.png" />
+	
+	<preference name="SplashScreenDelay" value="10000" />
+
 </widget>
