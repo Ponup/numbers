@@ -1,7 +1,54 @@
 
+div.setting {
+	width: 65px;
+	height: 65px;
+}
+
+div.setting-on {
+	background-image: url('../img/items/setting_on.png');
+}
+
+div.setting-off {
+	background-image: url('../img/items/setting_off.png');
+}
+
 section#options {
-	background-image: url('../img/menu_header.png'), url('../img/bg_bolado.png');
-	background-repeat: no-repeat, repeat-x;
-	background-position: top left, bottom left;
-	background-size: 90%, 100%;
+	
+	h1 {
+		color: white;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		margin-bottom: 70px;
+		background:
+			url('../img/bg_bolado.png') bottom left repeat-x,
+			url('../img/bg_matel.png');
+		background-size: 40%, 20%;
+	}
+	
+	h3 {
+		color: white;
+	}
+	
+	div.setting-row {
+		clear: both;
+		margin-bottom: 20px;
+	
+		div.setting-label {
+			width: 50%;
+			float: left;
+			line-height: 65px;
+			vertical-align: middle;
+			text-align: right;
+		}
+		
+		div.setting-control {
+			width: 50%;
+			float: left;
+			text-align: center;
+			
+			div.setting {
+				margin: auto;
+			}
+		}
+	}
 }
