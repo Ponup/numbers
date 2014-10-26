@@ -5,3 +5,4 @@ platforms
 /www/css/scenes/options.css
 *.keystore
 
+make.sh

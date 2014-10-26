@@ -14,22 +14,25 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 
 	GameWonScene.prototype.switchFrom = function( gameScene )
 	{
-		$( '#game' ).hide();
-		var $canvas = $( '#canvas' );
+		var game = document.getElementById( 'game' ),
+			$canvas = $( document.getElementById( 'canvas' ) );
+
+		game.style.display = 'none';
 		$canvas.append( tplHtml );
 
-		$( '#totalScore' ).html( gameScene.gameContext.score );
+		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;
 
-		$canvas.on( 'click', '#gotoMainMenu', function() {
+		var $gameWon = $( document.getElementById( 'gameWon' ) );
+		$gameWon.on( 'click', '#gotoMainMenu', function() {
 			gaco.scenesManager.switchTo( 'mainMenu' );
 		});
-		$canvas.on( 'click', '#replay', function() {
+		$gameWon.on( 'click', '#replay', function() {
 			gaco.scenesManager.switchTo( 'game' );
 		});
-		$canvas.on( 'click', '#playNextLevel', function() {
-			$( '#gameWon' ).remove();
+		$gameWon.on( 'click', '#playNextLevel', function() {
 			gameScene.startLevel();
-			$( '#game' ).fadeIn();
+			$gameWon.remove();
+			$( game ).fadeIn();
 		});
 
 	};

@@ -1,5 +1,5 @@
 
-section#gameWon {
+#gameWon {
 	background: url('../img/items/game_over_bg.png') no-repeat;
 
 	h1 {
@@ -9,7 +9,6 @@ section#gameWon {
 	}
 
 	#totalScore { color: #4ED1B1; font-size: 80px; margin-top: 100px; }	
-	#totalScore { color: #E96473; font-size: 80px; margin-top: 100px; }
 
 	#stars { margin-top: 100px; text-align: center; }
 	#starLeft, #starRight { height: 50px; }

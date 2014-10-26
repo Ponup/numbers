@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* :: VARIABLES :: */
 html, body, #canvas, section {
   width: 100%;
   height: 100%; }
@@ -82,11 +81,11 @@ a {
     margin: -90px 0px 0px -198px;
     /* offset vertical: half of image height */
     /* offset horizontal: half of image width and text area width */ } }
-section#intro {
+#intro {
   width: 100%;
   height: 100%;
   background: url("../img/bg_matel.png"); }
-  section#intro img {
+  #intro img {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -94,13 +93,13 @@ section#intro {
     left: 0;
     margin: auto; }
 
-section#menu {
+#menu {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0; }
-  section#menu header {
+  #menu header {
     position: absolute;
     top: 0;
     left: 0;
@@ -108,7 +107,7 @@ section#menu {
     height: 60%;
     background: url("../img/menu_header.png") top left no-repeat, url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
     background-size: 90%, 100%, 20%; }
-  section#menu footer {
+  #menu footer {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -123,7 +122,7 @@ section#menu {
     /* IE 10+ */
     -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
-    section#menu footer #startGame {
+    #menu footer #startGame {
       font-size: 2em;
       color: #f6f7fb;
       position: absolute;
@@ -132,17 +131,17 @@ section#menu {
       left: 0;
       right: 0;
       bottom: 42%; }
-    section#menu footer ul {
+    #menu footer ul {
       position: absolute;
       bottom: 15%;
       width: 100%;
       color: #ed5564; }
-      section#menu footer ul li {
+      #menu footer ul li {
         display: inline-block;
         width: 30%; }
-        section#menu footer ul li a {
+        #menu footer ul li a {
           color: #E35664; }
-      section#menu footer ul li.hidden {
+      #menu footer ul li.hidden {
         display: none; }
 
 div.setting {
@@ -155,44 +154,34 @@ div.setting-on {
 div.setting-off {
   background-image: url("../img/items/setting_off.png"); }
 
-section#options h1 {
+#options h1 {
   color: white;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-bottom: 70px;
   background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
   background-size: 40%, 20%; }
-section#options h3 {
+#options h3 {
   color: white; }
-section#options div.setting-row {
+#options div.setting-row {
   clear: both;
   margin-bottom: 20px; }
-  section#options div.setting-row div.setting-label {
+  #options div.setting-row div.setting-label {
     width: 50%;
     float: left;
     line-height: 65px;
     vertical-align: middle;
     text-align: right; }
-  section#options div.setting-row div.setting-control {
+  #options div.setting-row div.setting-control {
     width: 50%;
     float: left;
     text-align: center; }
-    section#options div.setting-row div.setting-control div.setting {
+    #options div.setting-row div.setting-control div.setting {
       margin: auto; }
 
 #game {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   width: 100%;
-  height: 100%;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -ms-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s; }
+  height: 100%; }
   #game.black {
     background: #424b52 url("../img/noise.png"); }
     #game.black header, #game.black footer {
@@ -201,36 +190,7 @@ section#options div.setting-row {
         color: #424b52; }
       #game.black header #bar-points, #game.black footer #bar-points {
         background: #424b52; }
-  #game.pink {
-    background: #ec87bf url("../img/noise.png"); }
-    #game.pink header, #game.pink footer {
-      background: #d272af url("../img/noise.png"); }
-      #game.pink header #bar-pluses, #game.pink header #bar-points, #game.pink header small, #game.pink footer #bar-pluses, #game.pink footer #bar-points, #game.pink footer small {
-        color: #ec87bf; }
-      #game.pink header #bar-points, #game.pink footer #bar-points {
-        background: #ec87bf; }
-  #game.blue {
-    background: #5d9cec url("../img/noise.png"); }
-    #game.blue header, #game.blue footer {
-      background: #4c89d9 url("../img/noise.png"); }
-      #game.blue header #bar-pluses, #game.blue header #bar-points, #game.blue header small, #game.blue footer #bar-pluses, #game.blue footer #bar-points, #game.blue footer small {
-        color: #5d9cec; }
-      #game.blue header #bar-points, #game.blue footer #bar-points {
-        background: #5d9cec; }
-  #game.tomato {
-    background: #fb6e52 url("../img/noise.png"); }
-    #game.tomato header, #game.tomato footer {
-      background: #e9573e url("../img/noise.png"); }
-      #game.tomato header #bar-pluses, #game.tomato header #bar-points, #game.tomato header small, #game.tomato footer #bar-pluses, #game.tomato footer #bar-points, #game.tomato footer small {
-        color: #fb6e52; }
-      #game.tomato header #bar-points, #game.tomato footer #bar-points {
-        background: #fb6e52; }
   #game header {
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
     color: #f6f7fb; }
     #game header small {
       font-size: .5em;
@@ -240,11 +200,6 @@ section#options div.setting-row {
       right: 0;
       margin: auto; }
   #game footer {
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
     position: fixed;
     bottom: -40px;
     left: 0;
@@ -263,11 +218,6 @@ section#options div.setting-row {
       bottom: 10px;
       left: 0px;
       width: 5%;
-      -webkit-transition: 0.2s;
-      -moz-transition: 0.2s;
-      -ms-transition: 0.2s;
-      -o-transition: 0.2s;
-      transition: 0.2s;
       -webkit-border-top-right-radius: 10px;
       -webkit-border-bottom-right-radius: 10px;
       -moz-border-radius-topright: 10px;
@@ -305,173 +255,85 @@ section#options div.setting-row {
       #game footer #bar-estrellas .bar-estrellas-3 {
         float: right;
         margin-right: 15%; }
+  #game #gameLayers {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  #game #bricksOverlay {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 0px; }
   #game #bricks {
-    z-index: 3;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
     opacity: 0;
-    box-sizing: content-box;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
-    overflow: hidden;
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -ms-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-    display: flex; }
+    overflow: hidden; }
     #game #bricks .brick {
-      position: absolute;
-      top: 0px;
-      vertical-align: middle;
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
       border-radius: 3px;
       -webkit-background-clip: padding-box;
       -moz-background-clip: padding;
       background-clip: padding-box;
-      box-sizing: border-box;
+      position: absolute;
+      vertical-align: middle;
       margin-right: 5px;
       margin-bottom: 5px;
       font-size: 1.3em;
-      font-weight: bold !important;
+      font-weight: bold;
       background: #424b52;
       color: #f6f7fb;
-      -webkit-transition: 0.2s;
-      -moz-transition: 0.2s;
-      -ms-transition: 0.2s;
-      -o-transition: 0.2s;
-      transition: 0.2s;
-      border-bottom: 3px solid #363c42;
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0); }
-      #game #bricks .brick:hover, #game #bricks .brick:active {
-        top: 3px;
-        border-bottom: none; }
+      border-bottom: 3px solid #363c42; }
 
-#gameLayers {
-  position: relative;
-  width: 200px;
-  height: 200px; }
+#goalNumber {
+  color: yellow; }
 
-#gameLayers > * {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px; }
+#secondsLeft {
+  color: cyan; }
 
-#bricks {
-  z-index: 50; }
-
-#bricksOverlay {
-  z-index: 100; }
-
-#modal {
-  background: rgba(72, 207, 174, 0.9);
-  z-index: 10;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: none;
-  color: #f6f7fb;
-  -webkit-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  -moz-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  -ms-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  /* IE 10+ */
-  -o-text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1); }
-  #modal #modal-points, #modal #modal-text {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin: auto; }
-  #modal #modal-points {
-    font-size: 7em;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 30%;
-    margin: auto; }
-  #modal #modal-text {
-    font-size: 2em;
-    position: absolute;
-    top: -100px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 30%;
-    margin: auto; }
-  #modal #modal-footer {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    font-size: 1.4em; }
-    #modal #modal-footer li {
-      display: block;
-      width: 50%;
-      padding: 20px;
-      background: rgba(246, 247, 251, 0.1); }
-      #modal #modal-footer li:first-child {
-        float: left; }
-      #modal #modal-footer li:last-child {
-        float: right; }
-      #modal #modal-footer li:hover {
-        background: rgba(246, 247, 251, 0.3); }
-
-section#gameLost {
+#gameLost {
   background: url("../img/items/game_over_bg.png") no-repeat; }
-  section#gameLost h1 {
+  #gameLost h1 {
     color: #4C535C;
     padding-top: 90px;
     font-size: 60px; }
-  section#gameLost #totalScore {
-    color: #4ED1B1;
-    font-size: 80px;
-    margin-top: 100px; }
-  section#gameLost #totalScore {
+  #gameLost #totalScore {
     color: #E96473;
     font-size: 80px;
     margin-top: 100px; }
-  section#gameLost #stars {
+  #gameLost #stars {
     margin-top: 100px;
     text-align: center; }
-  section#gameLost #starLeft, section#gameLost #starRight {
+  #gameLost #starLeft, #gameLost #starRight {
     height: 50px; }
-  section#gameLost #actions {
+  #gameLost #actions {
     margin-top: 100px; }
 
-section#gameWon {
+#gameWon {
   background: url("../img/items/game_over_bg.png") no-repeat; }
-  section#gameWon h1 {
+  #gameWon h1 {
     color: #4C535C;
     padding-top: 90px;
     font-size: 60px; }
-  section#gameWon #totalScore {
+  #gameWon #totalScore {
     color: #4ED1B1;
     font-size: 80px;
     margin-top: 100px; }
-  section#gameWon #totalScore {
-    color: #E96473;
-    font-size: 80px;
-    margin-top: 100px; }
-  section#gameWon #stars {
+  #gameWon #stars {
     margin-top: 100px;
     text-align: center; }
-  section#gameWon #starLeft, section#gameWon #starRight {
+  #gameWon #starLeft, #gameWon #starRight {
     height: 50px; }
-  section#gameWon #actions {
+  #gameWon #actions {
     margin-top: 100px; }
 
 #scores h1 {

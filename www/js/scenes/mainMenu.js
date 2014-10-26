@@ -19,7 +19,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 		
 		$canvas.empty().append( tplHtml );
 		
-		var $menuLayer = $( '#menu' );
+		var $menuLayer = $( document.getElementById( 'menu' ) );
 
 		$menuLayer.on( 'click', '#startGame', function() {
 			gaco.scenesManager.switchTo( 'game' );
@@ -50,12 +50,12 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 	MainMenu.prototype.tryToShareVia = function( message, via )
 	{
-		var $share = $( '#share' ),
-			$canvas = $( document.getElementById( 'canvas' ) );
+		var $share = $( document.getElementById( 'share' ) ),
+			$options = $( document.getElementById( 'options' ) );
 
 		window.plugins.socialsharing.canShareVia( via, message, null, null, null,
 			function() {
-				$canvas.on( 'click', '#share', function() {
+				$options.on( 'click', '#share', function() {
 					window.plugins.socialsharing.shareVia( via, message, null, null, null, function() {}, function( error ) { console.warning( error ); } );
 				});
 

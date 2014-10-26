@@ -16,28 +16,29 @@ define( function( require ) {
 	GameLostScene.prototype = new BaseScene();
 	GameLostScene.prototype.constructor = GameLostScene;
 
-	GameLostScene.prototype.switchFrom = function( prevScene )
+	GameLostScene.prototype.switchFrom = function( gameScene )
 	{
-		var $canvas = $( '#canvas' );
-		$canvas.empty().html( tplHtml );
+		var $canvas = $( document.getElementById( 'canvas' ) ),
+			self = this;
 		
-		$( '#totalScore' ).html( prevScene.gameContext.score );
+		$canvas.empty().html( tplHtml );
 
-		var self = this;
+		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;
 
-		$canvas.on( 'click', '#gotoMainMenu', function() {
-			self.saveScore( prevScene );
+		var $gameLost = $( document.getElementById( 'gameLost' ) );
+		$gameLost.on( 'click', '#gotoMainMenu', function() {
+			self.saveScore( gameScene );
 			gaco.scenesManager.switchTo( 'mainMenu' );
 		});
-		$canvas.on( 'click', '#replay', function() {
-			self.saveScore( prevScene );
+		$gameLost.on( 'click', '#replay', function() {
+			self.saveScore( gameScene );
 			gaco.scenesManager.switchTo( 'game' );
 		});
 	};
 
-	GameLostScene.prototype.saveScore = function( prevScene )
+	GameLostScene.prototype.saveScore = function( gameScene )
 	{
-		rankingModel.saveScore({ player: 'Anonymous', score: prevScene.gameContext.score, recordTime: Date.now() });
+		rankingModel.saveScore({ player: 'Anonymous', score: gameScene.gameContext.score, recordTime: Date.now() });
 	};
 
 	return GameLostScene;

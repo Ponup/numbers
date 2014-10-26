@@ -1,8 +1,6 @@
 
 #game {
-    position:absolute;
-    top: 0; bottom: 0; left: 0; right:0; width:100%; height:100%;
-    @include transition();
+	width:100%; height:100%;
     &.black {
         background:$color-negro-light url('../img/noise.png');
         header, footer {
@@ -11,32 +9,7 @@
             #bar-points { background: $color-negro-light ; }
         }
     }
-    &.pink {
-        background:$color-rosa-light url('../img/noise.png');
-        header, footer {
-            background:$color-rosa-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-rosa-light; }
-            #bar-points { background: $color-rosa-light ; }
-        }
-    }
-    &.blue {
-        background:$color-azul-light url('../img/noise.png');
-        header, footer {
-            background:$color-azul-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-azul-light; }
-            #bar-points { background: $color-azul-light ; }
-        }
-    }
-    &.tomato {
-        background:$color-tomato-light url('../img/noise.png');
-        header, footer {
-            background:$color-tomato-dark url('../img/noise.png');
-            #bar-pluses, #bar-points, small {color: $color-tomato-light; }
-            #bar-points { background: $color-tomato-light ; }
-        }
-    }
     header{
-        @include transition();
         color: $color-blanco-light;
         small{
 
@@ -49,13 +22,11 @@
     }
     
     footer {
-        @include transition();
         position: fixed;
         bottom:-40px;
         left: 0;
         right: 0;
         height: 40px;
-
 
         #bar-pluses {
 
@@ -71,7 +42,6 @@
             position: absolute;
             bottom: 10px; left: 0px;
             width:5%;
-            @include transition();
             -webkit-border-top-right-radius: 10px;
             -webkit-border-bottom-right-radius: 10px;
             -moz-border-radius-topright: 10px;
@@ -107,122 +77,50 @@
         }
     }
 
-    #bricks {
-        z-index: 3;
-        opacity: 0;
-        box-sizing: content-box;
-        top: 0;
-        left:0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        overflow: hidden;
-        @include transition();
-        display: flex;
-
-        .brick {
-            position: absolute;
-            top:0px;
-	    vertical-align: middle;
-            @include border-radius(3px);
-            box-sizing: border-box;
-            margin-right: 5px;
-            margin-bottom: 5px;
-
-            font-size: 1.3em;
-            font-weight: bold!important;
-            background: $color-negro-light ;
-            color: $color-blanco-light;
-            @include transition();
-            border-bottom:3px solid $color-negro-dark;
-            &:hover, &:active {
-                top:3px;
-                border-bottom:none;
-            }
-            -webkit-transform: translateZ(0);
-           -moz-transform: translateZ(0);
-           -ms-transform: translateZ(0);
-           -o-transform: translateZ(0);
-           transform: translateZ(0);
-        }
-    }
-}
-
-
 #gameLayers {
 	position: relative;
-	width: 200px;
-	height: 200px;
-}
-
-#gameLayers > * {
-	position: absolute;
 	width: 100%;
 	height: 100%;
-	left: 0px;
 }
 
-#bricks {
-	z-index: 50;
+	#bricksOverlay {
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+
+	#bricks {
+		width: 100%;
+		height: 100%;
+
+		z-index: 50;
+		opacity: 0;
+		top: 0;
+		left:0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		overflow: hidden;
+
+		.brick {
+			@include border-radius(3px);
+			position: absolute;
+			vertical-align: middle;
+			margin-right: 5px;
+			margin-bottom: 5px;
+
+			font-size: 1.3em;
+			font-weight: bold;
+			background: $color-negro-light;
+			color: $color-blanco-light;
+			border-bottom: 3px solid $color-negro-dark;
+		}
+	}
 }
 
-#bricksOverlay {
-	z-index: 100;
-}
-
-#modal {
-    background: rgba($color-verde-light,.9);
-    z-index: 10;
-    position:fixed;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: none;
-    color: $color-blanco-light;
-    @include text-shadow(0px, 2px, 0px ,rgba(0,0,0,.1));
-
-    #modal-points,#modal-text {
-        position:absolute;
-         bottom:0px; left: 0px; right:0px;
-        margin:auto;
-    }
-    #modal-points{
-        font-size: 7em;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 30%;
-        margin: auto;
-        }
-    #modal-text{
-        font-size: 2em;
-        position: absolute;
-        top: -100px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 30%;
-        margin: auto;
-    }
-
-    #modal-footer {
-        position:absolute;
-        bottom:0px; left: 0px; right:0px;
-        width: 100%;
-        font-size: 1.4em;
-        li {
-            display: block;
-            width: 50%;
-            padding:20px ;
-            background: rgba($color-blanco-light,.1);
-            &:first-child { float:left; }
-            &:last-child { float: right;}
-            &:hover {background: rgba($color-blanco-light,.3);}
-        }
-    }
-}
+#goalNumber { color: yellow; }
+#secondsLeft { color: cyan; }
 
