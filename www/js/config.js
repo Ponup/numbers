@@ -1,5 +1,4 @@
 define({
-	points: 0,
 	maxNumber: 9,
 	brickSize: 50,
 

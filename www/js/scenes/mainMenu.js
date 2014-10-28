@@ -13,11 +13,11 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 	MainMenu.prototype.switchFrom = function( prevScene )
 	{
-		var $canvas = $( document.getElementById( 'canvas' ) );
+		var canvas = document.getElementById( 'canvas' );
 
 		document.title = 'Numbers menu';
-		
-		$canvas.empty().append( tplHtml );
+
+		canvas.innerHTML = tplHtml;
 		
 		var $menuLayer = $( document.getElementById( 'menu' ) );
 

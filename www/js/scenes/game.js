@@ -12,6 +12,8 @@ define( function( require ) {
 	{
 		BaseScene.call( this );
 
+		this.DOUBLE_PI = ( Math.PI * 2 );
+
 		this.setId( 'game' );
 	}
 
@@ -22,8 +24,10 @@ define( function( require ) {
 	{
 		document.title = 'Numbers playing...';
 
-		var $canvas = $( document.getElementById( 'canvas' ) );
-		$canvas.empty().append( tplHtml );
+		var self = this,
+		    canvas = document.getElementById( 'canvas' );
+
+		canvas.innerHTML = tplHtml;
 		
 		this.gameContext = {
 			currentTotal: 0,
@@ -36,10 +40,7 @@ define( function( require ) {
 		this.gridSize = 1;
 		this.goalNumber = null;
 		this.isDrawing = false;
-		this.lastPoint = null;
 		this.timerId = null;
-
-		var self = this;
 
 		this.bricksOverlay = document.getElementById( 'bricksOverlay' );
 		this.context = this.bricksOverlay.getContext( '2d' );
@@ -74,7 +75,6 @@ define( function( require ) {
 
 		$bricksOverlay.on( 'mouseup touchend', function( ev ) {
 			ev.preventDefault();
-
 			self.stopDrawing();
 		} );
 
@@ -92,7 +92,7 @@ define( function( require ) {
 	GameScene.prototype.drawCursor = function( x, y )
 	{
 		this.context.fillStyle = '#5063A7';
-		this.context.arc( x, y, ( config.brickSize >> 2 ), 0, Math.PI * 2, true );
+		this.context.arc( x, y, ( config.brickSize >> 2 ), 0, this.DOUBLE_PI, true );
 		this.context.fill();
 		this.context.beginPath();
 	};
@@ -108,9 +108,7 @@ define( function( require ) {
 
 		this.drawCursor( x, y );
 
-		this.lastPoint = [ x, y ];
-
-		var currentBrick = this.findBrickByPosition( this.lastPoint );
+		var currentBrick = this.findBrickByPosition( [ x, y ] );
 		if( null !== currentBrick && false === currentBrick.counted )
 		{
 			currentBrick.counted = true;
@@ -123,15 +121,16 @@ define( function( require ) {
 	GameScene.prototype.stopDrawing = function()
 	{
 		this.isDrawing = false;
-		this.lastPoint = null;
-		this.context.clearRect( 0, 0, self.bricksOverlay.width, self.bricksOverlay.height );
+		this.context.clearRect( 0, 0, this.bricksOverlay.width, this.bricksOverlay.height );
 
 		// Return if the line drawn was not touching bricks.
 		if( 0 === this.gameContext.selection.length ) {
 			return;
 		}
 
-		for( var i = 0; i < this.gameContext.selection.length; i++ )
+		var i = 0,
+		    selectionLength = this.gameContext.selection.length;
+		for( ; i < selectionLength; i++ )
 		{
 			var currentBrick = this.gameContext.selection[ i ];
 
@@ -160,16 +159,16 @@ define( function( require ) {
 
 	GameScene.prototype.findBrickByPosition = function( point ) 
 	{
-		var 	xx = point[0] - document.getElementById( 'bricks' ).offsetLeft,
+		var 	bricksContainer = document.getElementById( 'bricks' ),
+			l = bricksContainer.offsetLeft,
+			w = parseInt( bricksContainer.style.width ),
+			t = 0,
+			h = parseInt( bricksContainer.style.height );
+			xx = point[0] - l,
 			yy = point[1],
 			x = Math.ceil( xx / config.brickSize ),
 			y = Math.floor( yy / config.brickSize ),
-			index = parseInt( ( this.gridSize * y ) + x ),
-			bricks = document.getElementById( 'bricks' ),
-			l = bricks.offsetLeft,
-			w = parseInt( bricks.style.width ),
-			t = 0,
-			h = parseInt( bricks.style.height );
+			index = parseInt( ( this.gridSize * y ) + x );
 
 		if(
 			point[0] < l || point[0] > l + w ||
@@ -200,17 +199,17 @@ define( function( require ) {
 		    gridWidth = gridSize * config.brickSize,
 		    gridHeight = gridSize * config.brickSize;
 
+		bricks.innerHTML = null;
 		bricks.style.width = gridWidth + 'px';
 		bricks.style.height = gridHeight + 'px';
 		bricks.style.position = 'relative';
 
-		$( '.brick', bricks ).remove();
+		var game = document.getElementById( 'game' );
+		this.bricksOverlay.width = game.offsetWidth;
+		this.bricksOverlay.height = game.offsetHeight;
 
-		var $game = $( '#game' );
-		this.bricksOverlay.width = $game.width();
-		this.bricksOverlay.height = $game.height();
-
-		for( var i = 0; i < this.bricksData.length; i++ )
+		var bricksDataLength = this.bricksData.length;
+		for( var i = 0; i < bricksDataLength; i++ )
 		{
 			var brick = this.bricksData[ i ];
 			var brickNode = brick.toHtmlNode();
@@ -229,7 +228,7 @@ define( function( require ) {
 			i = 0,
 			brickIndex = null;
 
-		for(; i < bricksIndexes.length; i++ )
+		for(; i < numberOfBricksNeeded; i++ )
 		{
 			brickIndex = bricksIndexes[ i ];
 			goalNumber += bricksData[ brickIndex ].getValue();
@@ -264,6 +263,7 @@ define( function( require ) {
 
 	GameScene.prototype.showElements = function()
 	{
+		// @todo optimise this for mobile!
 		$( 'header' ).animate({ top: '0px' }, 200);
 		$( 'footer' ).delay(500).animate({ bottom: '0px' }, 200);
 		$( document.getElementById( 'bricks' ) ).delay( 1000 ).animate({ opacity: 1 }, 500);
@@ -307,7 +307,6 @@ define( function( require ) {
 	GameScene.prototype.endGame = function( nextScene )
 	{
 		this.isDrawing = false;
-		this.lastPoint = null;
 
 		if( null !== this.timerId )
 		{

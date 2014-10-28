@@ -217,13 +217,7 @@ div.setting-off {
       position: absolute;
       bottom: 10px;
       left: 0px;
-      width: 5%;
-      -webkit-border-top-right-radius: 10px;
-      -webkit-border-bottom-right-radius: 10px;
-      -moz-border-radius-topright: 10px;
-      -moz-border-radius-bottomright: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px; }
+      width: 5%; }
       #game footer #bar-points #points {
         position: relative;
         top: 4px;
@@ -236,13 +230,7 @@ div.setting-off {
         display: block;
         height: 12px;
         text-align: center;
-        background: #f6f7fb;
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        border-radius: 6px;
-        -webkit-background-clip: padding-box;
-        -moz-background-clip: padding;
-        background-clip: padding-box; }
+        background: #f6f7fb; }
     #game footer #bar-estrellas {
       z-index: 15;
       font-size: .6em;
@@ -278,12 +266,6 @@ div.setting-off {
     margin: auto;
     overflow: hidden; }
     #game #bricks .brick {
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      -webkit-background-clip: padding-box;
-      -moz-background-clip: padding;
-      background-clip: padding-box;
       position: absolute;
       vertical-align: middle;
       margin-right: 5px;

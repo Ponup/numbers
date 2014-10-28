@@ -42,7 +42,6 @@ define( [ 'jquery', 'config' ], function( $, config ) {
 
 		$( htmlNode ).css( config.brickStyles[ this.value ] );
 
-		htmlNode.style.position = 'absolute';
 		htmlNode.style.lineHeight = config.brickSize + 'px';
 		htmlNode.style.width = config.brickSize + 'px';
 		htmlNode.style.height = config.brickSize + 'px';

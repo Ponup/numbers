@@ -13,10 +13,10 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/intro.html', '
 
 	IntroScene.prototype.switchFrom = function( prevScene )
 	{
-		var $canvas = $( document.getElementById( 'canvas' ) );
-		$canvas.empty().append( tplHtml );
+		var canvas = document.getElementById( 'canvas' );
+		canvas.innerHTML = tplHtml;
 
-		$( 'img', $canvas ).animate(
+		$( 'img', canvas ).animate(
 			{ opacity: 100 }, 500,
 			function() {
 				gaco.scenesManager.switchTo( 'mainMenu' );

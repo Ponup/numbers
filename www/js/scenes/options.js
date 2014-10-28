@@ -13,8 +13,9 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/options.html',
 
 	OptionsScene.prototype.switchFrom = function( prevScene )
 	{
-		var $canvas = $( document.getElementById( 'canvas' ) );
-		$canvas.empty().append( tplHtml );
+		var canvas = document.getElementById( 'canvas' );
+
+		canvas.innerHTML = tplHtml;
 
 		var $options = $( document.getElementById( 'options' ) );
 		$options.on( 'click', '.setting', function() {

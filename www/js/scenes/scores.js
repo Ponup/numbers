@@ -20,17 +20,17 @@ define( function( require ) {
 
 	ScoresScene.prototype.switchFrom = function( prevScene )
 	{
-		var $canvas = $( document.getElementById( 'canvas' ) );
-		$canvas.empty().append( tplHtml );
+		var canvas = document.getElementById( 'canvas' );
 
-		var source = $( '#templateHtml' ).html();
+		canvas.innerHTML = tplHtml;
+
+		var source = document.getElementById( 'templateSource' ).innerHTML;
 		var template = Handlebars.compile( source );
-
 		var templateVariables = { scores: rankingModel.getScores() }
 
-		$( '#table' ).append( template( templateVariables ) );
+		document.getElementById( 'table' ).innerHTML = template( templateVariables );
 
-		$( '#scores' ).on( 'click', '#gotoBack', function() {
+		$( document.getElementById( 'scores' ) ).on( 'click', '#gotoBack', function() {
 			gaco.scenesManager.switchTo( 'mainMenu' );
 		});
 	};

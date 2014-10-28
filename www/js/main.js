@@ -3,7 +3,6 @@ require.config({
 	baseUrl: 'js/',
 	paths: {
 		jquery: 'jquery-1.11.1.min',
-		snap: 'snap.svg-min',
 		underscore: 'underscore-min',
 		handlebars: 'handlebars-v2.0.0'
 	}
@@ -18,10 +17,9 @@ define( function( require ) {
 		GameWonScene = require( 'scenes/gameWon' ),
 		GameLostScene = require( 'scenes/gameLost' ),
 		ScoresScene = require( 'scenes/scores' ),
-		OptionsScene = require( 'scenes/options' )
+		OptionsScene = require( 'scenes/options' ),
+		introScene = new IntroScene()
 	;
-
-	var introScene = new IntroScene();
 
 	gaco.scenesManager = new ScenesManager();
 	gaco.scenesManager.add( introScene );

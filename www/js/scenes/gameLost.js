@@ -18,10 +18,10 @@ define( function( require ) {
 
 	GameLostScene.prototype.switchFrom = function( gameScene )
 	{
-		var $canvas = $( document.getElementById( 'canvas' ) ),
-			self = this;
+		var self = this,
+			canvas = document.getElementById( 'canvas' );
 		
-		$canvas.empty().html( tplHtml );
+		canvas.innerHTML = tplHtml;
 
 		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;
 
