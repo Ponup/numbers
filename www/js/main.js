@@ -35,6 +35,12 @@ define( function( require ) {
 	document.addEventListener( 'deviceready', function() {
 		var basePath = ( 'Android' === device.platform || 'android' === device.platform ? '/android_asset/www/' : '' );
 
+		if( null === device.uuid )
+		{
+			// Disable Media object on browser.
+//			Media = function() { this.play = this.stop = function() {}; };
+		}
+
 		gaco.sounds = {
 			bgmusic: new Media( basePath + 'audio/music.mp3' ),
 			beep: [

@@ -1,5 +1,10 @@
 
-define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html', 'data/context' ], function( $, BaseScene, tplHtml, gaco ) {
+define( function( require ) {
+	var $ = require( 'jquery' ),
+		BaseScene = require( 'scullge/scenes/base' ),
+		tplHtml = require( 'text!templates/scenes/mainMenu.html' ),
+		gaco = require( 'data/context' ),
+		preferences = require( 'data/preferences' );
 
 	function MainMenu()
 	{
@@ -19,7 +24,10 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 		canvas.innerHTML = tplHtml;
 
-		gaco.sounds.bgmusic.play();
+		if( preferences.isMusicEnabled() )
+		{
+			gaco.sounds.bgmusic.play();
+		}
 		
 		var $menuLayer = $( document.getElementById( 'menu' ) );
 
@@ -43,11 +51,14 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 	{
 		var self = this,
 		    vias = [ 'com.apple.social.twitter', 'twitter' ],
-		    message = 'I am playing Ponup Numbers!';
+		    viasLen = vias.length,
+		    message = 'I am playing Ponup Numbers!',
+		    i = 0;
 
-		$.each( vias, function( index, via ) {
-			self.tryToShareVia( message, via );
-		});
+		for( ; i < viasLen; i++ )
+		{
+			this.tryToShareVia( message, viasLen[ i ] );
+		}
 	};
 
 	MainMenu.prototype.tryToShareVia = function( message, via )

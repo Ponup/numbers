@@ -6,7 +6,9 @@ define( function( require ) {
 		tplHtml = require( 'text!templates/scenes/game.html' ),
 		gaco = require( 'data/context' ),
 		config = require( 'config' ),
-		Brick = require( 'bricks' );
+		Brick = require( 'bricks' ),
+		preferences = require( 'data/preferences' )
+	;
 	
 	function GameScene()
 	{
@@ -113,7 +115,10 @@ define( function( require ) {
 		var currentBrick = this.findBrickByPosition( [ x, y ] );
 		if( null !== currentBrick && false === currentBrick.counted )
 		{
-			gaco.sounds.beep[ currentBrick.getIndex() % 4 ].play();
+			if( preferences.isSoundEnabled() )
+			{
+				gaco.sounds.beep[ currentBrick.getIndex() % 4 ].play();
+			}
 			currentBrick.counted = true;
 			currentBrick.remove();
 
