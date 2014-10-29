@@ -1,5 +1,7 @@
 
 #scores {
+	position: relative;
+
 	h1 {
 		color: white;
 		padding-top: 50px;
@@ -11,12 +13,21 @@
 		background-size: 40%, 20%;
 	}
 
+	table { width: 100%; }
+
 	th {
 		color: #E35664;
 	}
 
 	td {
 		color: white;
+	}
+
+	#actions {
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		padding: 5px;
 	}
 }
 

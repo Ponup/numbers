@@ -154,30 +154,37 @@ div.setting-on {
 div.setting-off {
   background-image: url("../img/items/setting_off.png"); }
 
-#options h1 {
-  color: white;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-bottom: 70px;
-  background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
-  background-size: 40%, 20%; }
-#options h3 {
-  color: white; }
-#options div.setting-row {
-  clear: both;
-  margin-bottom: 20px; }
-  #options div.setting-row div.setting-label {
-    width: 50%;
-    float: left;
-    line-height: 65px;
-    vertical-align: middle;
-    text-align: right; }
-  #options div.setting-row div.setting-control {
-    width: 50%;
-    float: left;
-    text-align: center; }
-    #options div.setting-row div.setting-control div.setting {
-      margin: auto; }
+#options {
+  position: relative; }
+  #options h1 {
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 70px;
+    background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
+    background-size: 40%, 20%; }
+  #options h3 {
+    color: white; }
+  #options div.setting-row {
+    clear: both;
+    margin-bottom: 20px; }
+    #options div.setting-row div.setting-label {
+      width: 50%;
+      float: left;
+      line-height: 65px;
+      vertical-align: middle;
+      text-align: right; }
+    #options div.setting-row div.setting-control {
+      width: 50%;
+      float: left;
+      text-align: center; }
+      #options div.setting-row div.setting-control div.setting {
+        margin: auto; }
+  #options #actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 5px; }
 
 #game {
   width: 100%;
@@ -283,6 +290,7 @@ div.setting-off {
   color: cyan; }
 
 #gameLost {
+  position: relative;
   background: url("../img/items/game_over_bg.png") no-repeat; }
   #gameLost h1 {
     color: #4C535C;
@@ -298,15 +306,20 @@ div.setting-off {
   #gameLost #starLeft, #gameLost #starRight {
     height: 50px; }
   #gameLost #actions {
-    margin-top: 100px; }
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    bottom: 0px; }
 
 #gameWon {
+  position: relative;
   background: url("../img/items/game_over_bg.png") no-repeat; }
   #gameWon h1 {
     color: #4C535C;
     padding-top: 90px;
     font-size: 60px; }
   #gameWon #totalScore {
+    transition: font 0.3s ease;
     color: #4ED1B1;
     font-size: 80px;
     margin-top: 100px; }
@@ -316,16 +329,28 @@ div.setting-off {
   #gameWon #starLeft, #gameWon #starRight {
     height: 50px; }
   #gameWon #actions {
-    margin-top: 100px; }
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    bottom: 0px; }
 
-#scores h1 {
-  color: white;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-bottom: 70px;
-  background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
-  background-size: 40%, 20%; }
-#scores th {
-  color: #E35664; }
-#scores td {
-  color: white; }
+#scores {
+  position: relative; }
+  #scores h1 {
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 70px;
+    background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
+    background-size: 40%, 20%; }
+  #scores table {
+    width: 100%; }
+  #scores th {
+    color: #E35664; }
+  #scores td {
+    color: white; }
+  #scores #actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 5px; }

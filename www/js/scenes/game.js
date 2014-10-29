@@ -28,11 +28,12 @@ define( function( require ) {
 		    canvas = document.getElementById( 'canvas' );
 
 		canvas.innerHTML = tplHtml;
-		gaco.audioLoader.stop( 'bgmusic' );
+		gaco.bgmusic.stop();
 		
 		this.gameContext = {
 			currentTotal: 0,
 			score: 0,
+			scoreUpdate: 0,
 			selection: [],
 			requiredBricks: 0.05,
 			secondsLeft: 61,
@@ -112,7 +113,7 @@ define( function( require ) {
 		var currentBrick = this.findBrickByPosition( [ x, y ] );
 		if( null !== currentBrick && false === currentBrick.counted )
 		{
-			gaco.audioLoader.play( 'beep' + currentBrick.getIndex() % 4 );
+			gaco.beep.play();
 			currentBrick.counted = true;
 			currentBrick.remove();
 
@@ -137,7 +138,7 @@ define( function( require ) {
 			var currentBrick = this.gameContext.selection[ i ];
 
 			this.gameContext.currentTotal += currentBrick.getValue();
-			this.gameContext.score += 1;
+			this.gameContext.scoreUpdate += 1;
 		}
 
 		this.gameContext.selection = [];
@@ -282,6 +283,7 @@ define( function( require ) {
 		this.bricksData = this.initializeBricksData( this.gridSize );
 
 		this.gameContext.selection = [];
+		this.gameContext.scoreUpdate = 0;
 		this.gameContext.currentTotal = 0;
 		this.gameContext.requiredBricks = Math.min( .5, this.gameContext.requiredBricks + 0.05 );
 		this.gameContext.secondsLeft = Math.max( 10, this.gameContext.secondsLeft - 1 );

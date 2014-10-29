@@ -23,7 +23,14 @@
         },
         "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.ponup.numbers"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.ponup.numbers"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        }
+    }
 }

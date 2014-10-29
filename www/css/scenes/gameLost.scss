@@ -1,5 +1,6 @@
 
 #gameLost {
+	position: relative;
 	background: url('../img/items/game_over_bg.png') no-repeat;
 
 	h1 {
@@ -13,6 +14,11 @@
 	#stars { margin-top: 100px; text-align: center; }
 	#starLeft, #starRight { height: 50px; }
 
-	#actions { margin-top: 100px; }
+	#actions {
+		position: absolute;
+		width: 100%;
+		padding: 10px;
+		bottom: 0px;
+	}
 }
 
