@@ -4,7 +4,10 @@ html, body, #canvas, section {
   height: 100%; }
 
 section {
-  max-width: 480px; }
+  max-width: 1080px;
+  margin: auto;
+  left: 0%;
+  right: 0%; }
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -81,6 +84,53 @@ a {
     margin: -90px 0px 0px -198px;
     /* offset vertical: half of image height */
     /* offset horizontal: half of image width and text area width */ } }
+#gameWon {
+  position: relative;
+  background: url("../img/bg_matel.png"); }
+  #gameWon h1 {
+    position: absolute;
+    height: 20%;
+    top: 10%;
+    right: 0%;
+    left: 0%;
+    color: #363c42;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  #gameWon #totalScore {
+    position: absolute;
+    height: 20%;
+    top: 40%;
+    bottom: 40%;
+    right: 0%;
+    left: 0%;
+    transition: font 0.3s ease;
+    color: #4ED1B1;
+    font-size: 3em;
+    background: #f6f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  #gameWon #stars {
+    margin-top: 100px;
+    text-align: center; }
+  #gameWon #starLeft, #gameWon #starRight {
+    height: 50px; }
+  #gameWon #actions {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: #363c42; }
+    #gameWon #actions li:first-child {
+      float: left; }
+    #gameWon #actions li:last-child {
+      float: right; }
+
 #intro {
   width: 100%;
   height: 100%;
@@ -311,29 +361,6 @@ div.setting-off {
     padding: 10px;
     bottom: 0px; }
 
-#gameWon {
-  position: relative;
-  background: url("../img/items/game_over_bg.png") no-repeat; }
-  #gameWon h1 {
-    color: #4C535C;
-    padding-top: 90px;
-    font-size: 60px; }
-  #gameWon #totalScore {
-    transition: font 0.3s ease;
-    color: #4ED1B1;
-    font-size: 80px;
-    margin-top: 100px; }
-  #gameWon #stars {
-    margin-top: 100px;
-    text-align: center; }
-  #gameWon #starLeft, #gameWon #starRight {
-    height: 50px; }
-  #gameWon #actions {
-    position: absolute;
-    width: 100%;
-    padding: 10px;
-    bottom: 0px; }
-
 #scores {
   position: relative; }
   #scores h1 {
@@ -354,3 +381,5 @@ div.setting-off {
     width: 100%;
     bottom: 0px;
     padding: 5px; }
+
+/*# sourceMappingURL=index.css.map */

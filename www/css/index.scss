@@ -9,7 +9,9 @@ html, body, #canvas, section {
 }
 
 section {
-	max-width: 480px;
+	max-width: 1080px;
+    margin:auto;
+    left: 0%; right: 0%;
 }
 
 * {
@@ -67,11 +69,61 @@ a { text-decoration: none; }
     }
 }
 
+// :::::::: GAME WON SCENE :::::: // 
+
+#gameWon {
+    position: relative;
+    background: url('../img/bg_matel.png') ;
+
+    h1 {
+        position: absolute;
+        height: 20%;
+        top:10%; right: 0%; left: 0%;
+        color: $color-negro-dark;
+        font-size: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #totalScore {
+        position: absolute;
+        height: 20%;
+        top:40%;bottom:40%; right: 0%; left: 0%;
+        transition: font 0.3s ease;
+        color: #4ED1B1;
+        font-size: 3em;
+        background: $color-blanco-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #stars { margin-top: 100px; text-align: center; }
+    #starLeft, #starRight { height: 50px; }
+
+    #actions {
+        position: absolute;
+        left: 0%;right: 0%; margin:auto;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        
+        background: $color-negro-dark;
+        li:first-child{float: left; }
+        li:last-child{float: right; }
+    }
+}
+// :::::::: FIN GAME WON SCENE :::::: // 
+
+
+
+
 @import 'scenes/intro';
 @import 'scenes/mainMenu';
 @import 'scenes/options';
 @import 'scenes/game';
 @import 'scenes/gameLost';
-@import 'scenes/gameWon';
+//@import 'scenes/gameWon';
 @import 'scenes/scores';
 
