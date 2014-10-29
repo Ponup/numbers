@@ -33,6 +33,7 @@ define( function( require ) {
 		gaco.sounds.bgmusic.stop();
 		
 		this.gameContext = {
+			level: -1,
 			currentTotal: 0,
 			score: 0,
 			scoreUpdate: 0,
@@ -45,6 +46,7 @@ define( function( require ) {
 		this.goalNumber = null;
 		this.isDrawing = false;
 		this.timerId = null;
+		this.nextOpPending = '+';
 
 		this.bricksOverlay = document.getElementById( 'bricksOverlay' );
 		this.context = this.bricksOverlay.getContext( '2d' );
@@ -96,7 +98,7 @@ define( function( require ) {
 	GameScene.prototype.drawCursor = function( x, y )
 	{
 		this.context.fillStyle = '#5063A7';
-		this.context.arc( x, y, ( config.brickSize >> 2 ), 0, this.DOUBLE_PI, true );
+		this.context.arc( x, y, config.quarterBrickSize, 0, this.DOUBLE_PI, true );
 		this.context.fill();
 		this.context.beginPath();
 	};
@@ -138,14 +140,13 @@ define( function( require ) {
 
 		var i = 0,
 		    selectionLength = this.gameContext.selection.length;
-		for( ; i < selectionLength; i++ )
+		
+		this.gameContext.scoreUpdate += selectionLength;
+		this.gameContext.currentTotal = this.doMathWithBricks( this.gameContext.currentTotal, this.gameContext.selection, this.nextOpPending );
+		if( 'string' === typeof( this.gameContext.selection[ selectionLength - 1 ] ) )
 		{
-			var currentBrick = this.gameContext.selection[ i ];
-
-			this.gameContext.currentTotal += currentBrick.getValue();
-			this.gameContext.scoreUpdate += 1;
+			this.nextOpPending = this.gameContext.selection[ selectionLength - 1 ];
 		}
-
 		this.gameContext.selection = [];
 
 		var nextScene = null;
@@ -190,8 +191,8 @@ define( function( require ) {
 		{
 			var brick = this.bricksData[ index - 1 ];
 			if( 'undefined' === typeof( brick ) ) {
-				console.log( 'missing index: ' + ( index - 1 ) );
-				console.log( 'bricks len: ' + this.bricksData.length );
+				console.warn( 'missing index: ' + ( index - 1 ) );
+				console.warn( 'bricks len: ' + this.bricksData.length );
 				return null;
 			}
 
@@ -235,17 +236,49 @@ define( function( require ) {
 			bricksAvailable = _.range( numberOfBricks ),
 			bricksAvailable = _.shuffle( bricksAvailable ),
 			bricksIndexes = bricksAvailable.slice( 0, numberOfBricksNeeded ),
-			goalNumber = 0,
 			i = 0,
-			brickIndex = null;
+			bricks = [];
 
-		for(; i < numberOfBricksNeeded; i++ )
+		for( ; i < numberOfBricksNeeded; i++ )
 		{
-			brickIndex = bricksIndexes[ i ];
-			goalNumber += bricksData[ brickIndex ].getValue();
+			bricks.push( bricksData[ bricksIndexes[ i ] ] );
 		}
 
-		return goalNumber;
+		return this.doMathWithBricks( 0, bricks );
+	};
+
+	GameScene.prototype.doMathWithBricks = function( initialNumber, bricks, nextOpDefault )
+	{
+		var i = 0,
+			bricksLen = bricks.length,
+			nextOp = nextOpDefault || '+',
+			result = initialNumber;
+
+		for(; i < bricksLen; i++ )
+		{
+			var value = bricks[ i ].getValue();
+			if( 'string' === typeof( value ) )
+			{
+				nextOp = value;
+			}
+			else
+			{
+				switch( nextOp )
+				{
+				case '+':
+					result += value; break;
+				case '-':
+					result -= value; break;
+				case '*':
+					result *= value; break;
+				case '/':
+					result /= value; break;
+				}
+				nextOp = '+';
+			}
+		}
+
+		return result;
 	};
 
 	GameScene.prototype.initializeBricksData = function( gridSize )
@@ -254,11 +287,17 @@ define( function( require ) {
 		    brickIndex = 0,
 		    y = 0;
 
+		var dictionary = _.range( 0, 9 );
+
+		if( this.gameContext.level > 0 ) dictionary.push( '-' );
+		if( this.gameContext.level > 1 ) dictionary.push( '*' );
+		if( this.gameContext.level > 2 ) dictionary.push( '/' );
+
 		for( ; y < gridSize; y++ )
 		{
 			for( var x = 0; x < gridSize; x++ )
 			{
-				var randomValue = _.random( 0, config.maxNumber );
+				var randomValue = _.sample( dictionary );
 
 				var brick = new Brick();
 				brick.setIndex( brickIndex++ );
@@ -287,11 +326,12 @@ define( function( require ) {
 
 		this.bricksData = this.initializeBricksData( this.gridSize );
 
+		this.gameContext.level++;
 		this.gameContext.selection = [];
 		this.gameContext.scoreUpdate = 0;
 		this.gameContext.currentTotal = 0;
 		this.gameContext.requiredBricks = Math.min( .5, this.gameContext.requiredBricks + 0.05 );
-		this.gameContext.secondsLeft = Math.max( 10, this.gameContext.secondsLeft - 1 );
+		this.gameContext.secondsLeft = Math.max( 30, this.gameContext.secondsLeft - 1 );
 
 		this.goalNumber = this.calculateGoalNumber( this.bricksData );
 

@@ -1,6 +1,7 @@
 define({
 	maxNumber: 9,
 	brickSize: 50,
+	quarterBrickSize: 50 >> 2,
 
 	brickStyles: [
 		{ background: '#ed5564', 'text-shadow': '0px -2px 0px #da4652', 'border-bottom': 'solid 3px #da4652' },
@@ -13,5 +14,11 @@ define({
 		{ background: '#fb6e52', 'text-shadow': '0px -2px 0px #e9573e', 'border-bottom': 'solid 3px #e9573e' },
 		{ background: '#ec87bf', 'text-shadow': '0px -2px 0px #d272af', 'border-bottom': 'solid 3px #d272af' },
 		{ background: '#ed82a4', 'text-shadow': '0px -2px 0px #aa4652', 'border-bottom': 'solid 3px #da0652' },
-	]
+	],
+
+	specialBrickStyles: {
+		'-': { background: '#1fce51', 'text-shadow': '0px -2px 0px #37ba47', 'border-bottom': 'solid 3px #f71a47' },
+		'*': { background: '#a292ed', 'text-shadow': '0px -2px 0px #927bdc', 'border-bottom': 'solid 3px #9672dc' },
+		'/': { background: '#a03469', 'text-shadow': '0px -2px 0px #8c1051', 'border-bottom': 'solid 3px #8cc031' }
+	}
 });

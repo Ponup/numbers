@@ -40,7 +40,14 @@ define( [ 'jquery', 'config' ], function( $, config ) {
 		htmlNode.className = 'brick';
 		htmlNode.innerText = this.value;
 
-		$( htmlNode ).css( config.brickStyles[ this.value ] );
+		if( this.value in config.specialBrickStyles )
+		{
+			$( htmlNode ).css( config.specialBrickStyles[ this.value ] );
+		}
+		else
+		{
+			$( htmlNode ).css( config.brickStyles[ this.value ] );
+		}
 
 		htmlNode.style.lineHeight = config.brickSize + 'px';
 		htmlNode.style.width = config.brickSize + 'px';
@@ -55,6 +62,7 @@ define( [ 'jquery', 'config' ], function( $, config ) {
 		var htmlNode = document.getElementById( this.getId() ),
 		    $htmlNode = $( htmlNode );
 
+		// @todo optimise this for mobile!
 		$htmlNode.fadeOut( 200, function() { $( this ).remove(); } );
 	};
 
