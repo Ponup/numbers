@@ -10,6 +10,7 @@ require.config({
 
 define( function( require ) {
 	var gaco = require( 'data/context' ),
+		AudioLoader = require( 'scullge/loaders/audio' ),
 		ScenesManager = require( 'scullge/scenes/manager' ),
 		IntroScene = require( 'scenes/intro' ),
 		MainMenuScene = require( 'scenes/mainMenu' ),
@@ -20,6 +21,13 @@ define( function( require ) {
 		OptionsScene = require( 'scenes/options' ),
 		introScene = new IntroScene()
 	;
+
+	gaco.audioLoader = new AudioLoader();
+	gaco.audioLoader.load( 'beep0', 'audio/beep.wav' );
+	gaco.audioLoader.load( 'beep1', 'audio/beep.wav' );
+	gaco.audioLoader.load( 'beep2', 'audio/beep.wav' );
+	gaco.audioLoader.load( 'beep3', 'audio/beep.wav' );
+	gaco.audioLoader.load( 'bgmusic', 'audio/music.wav' );
 
 	gaco.scenesManager = new ScenesManager();
 	gaco.scenesManager.add( introScene );

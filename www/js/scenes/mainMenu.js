@@ -18,6 +18,8 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 		document.title = 'Numbers menu';
 
 		canvas.innerHTML = tplHtml;
+
+		gaco.audioLoader.play( 'bgmusic', true );
 		
 		var $menuLayer = $( document.getElementById( 'menu' ) );
 

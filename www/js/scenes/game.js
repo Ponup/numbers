@@ -28,6 +28,7 @@ define( function( require ) {
 		    canvas = document.getElementById( 'canvas' );
 
 		canvas.innerHTML = tplHtml;
+		gaco.audioLoader.stop( 'bgmusic' );
 		
 		this.gameContext = {
 			currentTotal: 0,
@@ -111,6 +112,7 @@ define( function( require ) {
 		var currentBrick = this.findBrickByPosition( [ x, y ] );
 		if( null !== currentBrick && false === currentBrick.counted )
 		{
+			gaco.audioLoader.play( 'beep' + currentBrick.getIndex() % 4 );
 			currentBrick.counted = true;
 			currentBrick.remove();
 
@@ -204,9 +206,12 @@ define( function( require ) {
 		bricks.style.height = gridHeight + 'px';
 		bricks.style.position = 'relative';
 
-		var game = document.getElementById( 'game' );
-		this.bricksOverlay.width = game.offsetWidth;
-		this.bricksOverlay.height = game.offsetHeight;
+		// It would be nice to use offsetWidth/offsetHeight,
+		// but for some reason was not working as expected all the times.
+		var game = document.getElementById( 'game' ),
+		    $game = $( game );
+		this.bricksOverlay.width = $game.width();
+		this.bricksOverlay.height = $game.height();
 
 		var bricksDataLength = this.bricksData.length;
 		for( var i = 0; i < bricksDataLength; i++ )
