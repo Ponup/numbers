@@ -22,15 +22,6 @@ define( function( require ) {
 		introScene = new IntroScene()
 	;
 
-	var numLoads = 0,
-		mediaLoaded = function() {
-		if( 2 === ++numLoads )
-		{
-			gaco.scenesManager.switchTo( introScene );
-		}
-	},
-		mediaError = function( ev ) { alert( ev ); };
-
 	gaco.scenesManager = new ScenesManager();
 	gaco.scenesManager.add( introScene );
 	gaco.scenesManager.add( new MainMenuScene() );
@@ -40,11 +31,21 @@ define( function( require ) {
 	gaco.scenesManager.add( new ScoresScene() );
 	gaco.scenesManager.add( new OptionsScene() );
  
-	var basePath = 'file:///android_asset/www/';
 
 	document.addEventListener( 'deviceready', function() {
-		gaco.bgmusic = new Media( basePath + 'audio/music.mp3', mediaLoaded, mediaError );
-		gaco.beep = new Media( basePath + 'audio/beep.mp3', mediaLoaded, mediaError );
-	});	
+		var basePath = ( 'Android' === device.platform || 'android' === device.platform ? '/android_asset/www/' : '' );
+
+		gaco.sounds = {
+			bgmusic: new Media( basePath + 'audio/music.mp3' ),
+			beep: [
+				new Media( basePath + 'audio/beep.mp3' ),
+				new Media( basePath + 'audio/beep.mp3' ),
+				new Media( basePath + 'audio/beep.mp3' ),
+				new Media( basePath + 'audio/beep.mp3' )
+			]
+		};
+
+		gaco.scenesManager.switchTo( introScene );
+	}, false);	
 });
 

@@ -28,7 +28,7 @@ define( function( require ) {
 		    canvas = document.getElementById( 'canvas' );
 
 		canvas.innerHTML = tplHtml;
-		gaco.bgmusic.stop();
+		gaco.sounds.bgmusic.stop();
 		
 		this.gameContext = {
 			currentTotal: 0,
@@ -113,7 +113,7 @@ define( function( require ) {
 		var currentBrick = this.findBrickByPosition( [ x, y ] );
 		if( null !== currentBrick && false === currentBrick.counted )
 		{
-			gaco.beep.play();
+			gaco.sounds.beep[ currentBrick.getIndex() % 4 ].play();
 			currentBrick.counted = true;
 			currentBrick.remove();
 

@@ -19,7 +19,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/mainMenu.html'
 
 		canvas.innerHTML = tplHtml;
 
-		gaco.bgmusic.play();
+		gaco.sounds.bgmusic.play();
 		
 		var $menuLayer = $( document.getElementById( 'menu' ) );
 
