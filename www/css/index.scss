@@ -80,7 +80,7 @@ a { text-decoration: none; }
         height: 20%;
         top:10%; right: 0%; left: 0%;
         color: $color-negro-dark;
-        font-size: 2em;
+        font-size: 3em;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -99,7 +99,17 @@ a { text-decoration: none; }
         justify-content: center;
     }
 
-    #stars { margin-top: 100px; text-align: center; }
+    #stars { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: absolute;
+        height: 20%;
+        bottom:30%; right: 0%; left: 0%;
+        z-index: 10;
+        img { margin: 15px;}
+         }
     #starLeft, #starRight { height: 50px; }
 
     #actions {

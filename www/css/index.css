@@ -94,7 +94,7 @@ a {
     right: 0%;
     left: 0%;
     color: #363c42;
-    font-size: 2em;
+    font-size: 3em;
     display: flex;
     align-items: center;
     justify-content: center; }
@@ -113,8 +113,18 @@ a {
     align-items: center;
     justify-content: center; }
   #gameWon #stars {
-    margin-top: 100px;
-    text-align: center; }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    height: 20%;
+    bottom: 30%;
+    right: 0%;
+    left: 0%;
+    z-index: 10; }
+    #gameWon #stars img {
+      margin: 15px; }
   #gameWon #starLeft, #gameWon #starRight {
     height: 50px; }
   #gameWon #actions {
