@@ -276,13 +276,23 @@ define( function( require ) {
 				case '*':
 					result *= value; break;
 				case '/':
-					result /= value; break;
+					// Division by zero returns 0 instead of infinity in this game.
+					if( 0 === value )
+					{
+						result = 0;
+					}
+					else
+					{
+						// Truncates all decimal digits.
+						result = parseInt( result / value );
+					}
+					break;
 				}
 				nextOp = '+';
 			}
 		}
 
-		return result;
+		return result; // Check for isFinite?
 	};
 
 	GameScene.prototype.initializeBricksData = function( gridSize )
@@ -317,10 +327,8 @@ define( function( require ) {
 
 	GameScene.prototype.showElements = function()
 	{
-		// @todo optimise this for mobile!
-		$( 'header' ).animate({ top: '0px' }, 200);
 		$( 'footer' ).delay(500).animate({ bottom: '0px' }, 200);
-		$( document.getElementById( 'bricks' ) ).delay( 1000 ).animate({ opacity: 1 }, 500);
+		document.getElementById( 'bricks' ).style.opacity = 1;
 	};
 
 	GameScene.prototype.startLevel = function()

@@ -11,9 +11,8 @@ html, body, #canvas, section {
 
 section {
 	max-width: 1080px;
-    margin:auto;
-    left: 0%; right: 0%;
-    @include box-shadow(0px, 0px , 15px , 0px , rgba(0,0,0,.5));
+	margin:auto;
+	left: 0%; right: 0%;
 }
 
 * {
@@ -43,12 +42,10 @@ body {
 
 ul.actions {
     position: absolute;
-    left: 0%; right: 0%; bottom: 0;
-    width: 100%; height: 140px;
-    margin:auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    padding-top: 40px;
     color: $color-rojo-light;
     li{width:33.33%; text-align: center; cursor:pointer;}
     li:first-child{float: left; }
@@ -280,7 +277,6 @@ ul.actions {
         url('../img/menu_header.png') top center no-repeat,
         url('../img/bg_bolado.png') bottom center repeat-x,
         url('../img/bg_matel.png');
-    //background: url('../img/menu_header.png') top center no-repeat;
         @include animation(0s, 0.5s, menuHeaderAnim);
     }
     footer {
@@ -293,7 +289,6 @@ ul.actions {
         height: 40%;
         text-align: center;
         @include animation(0.5s, 0.5s, menuFooterAnim);
-        //background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54;
         @include text-shadow();
         #startGame {
             position: absolute;
@@ -401,11 +396,3 @@ ul.actions {
 
 }
 
-
-//@import 'scenes/intro';
-//@import 'scenes/mainMenu';
-//@import 'scenes/options';
-@import 'scenes/game';
-//@import 'scenes/gameLost';
-//@import 'scenes/gameWon';
-//@import 'scenes/scores';
