@@ -7,7 +7,9 @@
 
 .debug {  border: 0px dotted rgba(255,255,255,.5); }
 
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 @font-face {
         font-family: "Fredoka One";

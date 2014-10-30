@@ -12,6 +12,9 @@
 .debug, ul.actions li, ul.actions, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #options .settings, #options dl dt, #options dl dd {
   border: 0px dotted rgba(255, 255, 255, 0.5); }
 
+::-webkit-scrollbar {
+  display: none; }
+
 @font-face {
   font-family: "Fredoka One";
   src: url("../fonts/FredokaOne-Regular.eot");
