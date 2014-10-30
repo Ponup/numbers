@@ -3,6 +3,17 @@
 @import "colors";
 @import "mixins";
 
+@font-face {
+        font-family: "Fredoka One";
+        src: url('../fonts/FredokaOne-Regular.eot');
+        src: url('../fonts/FredokaOne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/FredokaOne-Regular.svg#Fredoka One') format('svg'),
+        url('../fonts/FredokaOne-Regular.woff') format('woff'),
+        url('../fonts/FredokaOne-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
 html, body, #canvas, section {
 	width: 100%;
 	height: 100%;
@@ -13,7 +24,6 @@ section {
 	max-width: 1080px;
     margin:auto;
     left: 0%; right: 0%;
-    @include box-shadow(0px, 0px , 15px , 0px , rgba(0,0,0,.5));
 }
 
 * {
@@ -27,13 +37,14 @@ ul { list-style-type: none; li { display: inline-block; } }
 a { text-decoration: none; }
 
 body {
-    font-family:  'Fredoka One', Fredoka, "Fredoka", Fredoka One, 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:  "Fredoka One", Fredoka, sans, sans-serif;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-size:1.3em;
+    font-size:1.4em;
     text-align: center;
     background-color: $color-negro-light;
+    color: $color-blanco-light;
 }
 
 .hidden { display: none; }
@@ -44,15 +55,21 @@ body {
 ul.actions {
     position: absolute;
     left: 0%; right: 0%; bottom: 0;
-    width: 100%; height: 140px;
+    width: 100%; height: 120px;
     margin:auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .display-flex;
     color: $color-rojo-light;
-    li{width:33.33%; text-align: center; cursor:pointer;}
+    li{
+        @extend .display-flex;
+        width:32%; 
+        height: 92%;
+        cursor:pointer;
+        @extend .debug;
+    }
     li:first-child{float: left; }
     li:last-child{float: right; }
+    @extend .debug;
+
 }
 
 
@@ -68,13 +85,11 @@ ul.actions {
         url('../img/bg_matel.png') ;
 
     header{
-        display: flex;
-    align-items: center;
-    justify-content: center;
+        @extend .display-flex;
         color: $color-rojo-light;
         background: $color-blanco-light;
         height: 55px;
-        @include box-shadow(0px, 4px , 0px, 0px, rgba($color-rojo-light,.5));
+        border-bottom: 5px solid $color-rojo-dark;
     }
 
     footer {
@@ -103,7 +118,6 @@ ul.actions {
     }
 
     #bricks {
-            border: 1px solid cyan;
         width: 100%;
         height: 100%;
 
@@ -123,7 +137,7 @@ ul.actions {
             vertical-align: middle;
             margin-right: 5px;
             margin-bottom: 5px;
-@include border-radius(5px);
+            @include border-radius(5px);
             font-size: 1.3em;
             font-weight: bold;
             background: $color-negro-light;
@@ -159,9 +173,7 @@ ul.actions {
         color: $color-negro-light;
         font-size: 3em;
         @include text-shadow();
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @extend .display-flex;
         @include opacity(0);
         @include transform(scale(.1));
         @include animation (0s,.5s,gameWonHeader);
@@ -170,10 +182,7 @@ ul.actions {
         position: absolute;
         bottom:30%; right: 0%; left: 0%;
         height: 20%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        @extend .display-flex;
         z-index: 10;
         img {
             margin: 15px;
@@ -196,9 +205,7 @@ ul.actions {
         color: $color-verde-light;
         font-size: 3em;
         background: $color-blanco-light;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @extend .display-flex;
         @include text-shadow(0px, 3px, 0px, rgba(0,0,0,.1));
         z-index: 9;
         @include opacity(0);
@@ -241,9 +248,6 @@ ul.actions {
 // :::::::: GAME INTRO SCENE :::::: //
 #intro {
 
-
-
-
     img {
         position: absolute;
         top: 0; bottom: 0; right: 0; left: 0;
@@ -270,50 +274,47 @@ ul.actions {
 #menu{
     position: absolute;
     top:0; left: 0;
-    header {
-        @include opacity(0);
+    header, footer { 
         position: absolute;
-        top:-100%; left: 0;
+        left: 0;
         width: 100%;
+    }
+    header {
+        top:0; 
         height: 60%;
         background:
-        url('../img/menu_header.png') top center no-repeat,
-        url('../img/bg_bolado.png') bottom center repeat-x,
-        url('../img/bg_matel.png');
-    //background: url('../img/menu_header.png') top center no-repeat;
+            url('../img/menu_header.png') top center no-repeat,
+            url('../img/bg_bolado.png') bottom center repeat-x,
+            url('../img/bg_matel.png');
+        @include transform(translateY(-500px));
         @include animation(0s, 0.5s, menuHeaderAnim);
     }
     footer {
-        @include opacity(0);
-        width: 100%;
-        position: absolute;
-        bottom:-50%;
-        left: 0;
-        background: #434A54;
+        bottom:0;
         height: 40%;
-        text-align: center;
+        @include transform(translateY(500px));
         @include animation(0.5s, 0.5s, menuFooterAnim);
-        //background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54;
         @include text-shadow();
         #startGame {
+            cursor: pointer;
             position: absolute;
-            bottom:130px; right: 0%; left: 0%;
-            font-size: 3em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top:0%; width: 100%;
+            height: 50%;
+            font-size: 1.5em;
+            @extend .display-flex;
             color: $color-blanco-light;
+            @extend .debug;
         }
-
     }
 }
 
-@include keyframes(menuHeaderAnim){to {top: 0%; @include opacity(1);} }
-@include keyframes(menuFooterAnim){to {bottom: 0%;  @include opacity(1); } }
+@include keyframes(menuHeaderAnim){to {@include transform(translateY(0px)); } }
+@include keyframes(menuFooterAnim){to {@include transform(translateY(0px)); } }
 
 // :::::::: FIN GAME MENU SCENE :::::: //
 
 #scores, #options {
+    @include text-shadow();
     position: relative;
     h1 {
         color: white;
@@ -322,11 +323,10 @@ ul.actions {
         margin: auto;
         width: 90%;
         top:10%; right: 0%; left: 0%;
-        color: $color-rojo-light;
+        color: $color-blanco-light;
         font-size: 3em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @extend .display-flex;
+        @extend .debug;
     }
 }
 
@@ -338,12 +338,13 @@ ul.actions {
         width: 90%;
         position: absolute;
         margin: auto;
-        height: 60%;
+        height: 50%;
         top: 25%;
         left: 0%;
         right: 0%;
+        @extend .debug;
         }
-    th {color: #E35664; }
+    th {color: #E35664; font-weight:normal; }
     td {color: white; }
 
 }
@@ -357,46 +358,26 @@ ul.actions {
         width: 90%;
         position: absolute;
         margin: auto;
-        height: 60%;
+        height: 50%;
         top: 25%;
         left: 0%;
         right: 0%;
+        @extend .debug;
     }
-    div.setting {
-        width: 65px;
-        height: 65px;
-    }
+    
+    .setting-on {background: url('../img/items/setting_on.png') no-repeat center center; }
+    .setting-off {background: url('../img/items/setting_off.png') no-repeat center center; }
 
-    div.setting-on {
-        background-image: url('../img/items/setting_on.png');
-    }
-
-    div.setting-off {
-        background-image: url('../img/items/setting_off.png');
-    }
-    h3 {color: white; }
-
-    div.setting-row {
-        clear: both;
-        margin-bottom: 50px;
-
-        div.setting-label {
+    dl{
+        dt, dd {
+            @extend .display-flex;
             width: 50%;
+            height: 50%;
             float: left;
-            line-height: 65px;
-            vertical-align: middle;
-            text-align: right;
+            color: $color-blanco-light;
+            @extend .debug;
         }
 
-        div.setting-control {
-            width: 50%;
-            float: left;
-            text-align: center;
-
-            div.setting {
-                margin: auto;
-            }
-        }
     }
 
 }
@@ -405,7 +386,7 @@ ul.actions {
 //@import 'scenes/intro';
 //@import 'scenes/mainMenu';
 //@import 'scenes/options';
-@import 'scenes/game';
+//@import 'scenes/game';
 //@import 'scenes/gameLost';
 //@import 'scenes/gameWon';
 //@import 'scenes/scores';

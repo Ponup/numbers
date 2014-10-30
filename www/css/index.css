@@ -1,3 +1,23 @@
+.display-flex, ul.actions, ul.actions li, #game header, #gameWon h1, #gameLost h1, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
+  display: box;
+  display: flexbox;
+  display: -o-flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.debug, ul.actions li, ul.actions, #menu footer #startGame, #scores h1, #options h1, #scores table, #options .settings, #options dl dt, #options dl dd {
+  border: 1px dotted rgba(255, 255, 255, 0.5); }
+
+@font-face {
+  font-family: "Fredoka One";
+  src: url("../fonts/FredokaOne-Regular.eot");
+  src: url("../fonts/FredokaOne-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/FredokaOne-Regular.svg#Fredoka One") format("svg"), url("../fonts/FredokaOne-Regular.woff") format("woff"), url("../fonts/FredokaOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 html, body, #canvas, section {
   width: 100%;
   height: 100%; }
@@ -6,10 +26,7 @@ section {
   max-width: 1080px;
   margin: auto;
   left: 0%;
-  right: 0%;
-  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5); }
+  right: 0%; }
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -30,16 +47,17 @@ a {
   text-decoration: none; }
 
 body {
-  font-family: 'Fredoka One', Fredoka, "Fredoka", Fredoka One, 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: "Fredoka One", Fredoka, sans, sans-serif;
   -webkit-touch-callout: none;
   /* prevent callout to copy image, etc when tap to hold */
   -webkit-text-size-adjust: none;
   /* prevent webkit from resizing text to fit */
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
-  font-size: 1.3em;
+  font-size: 1.4em;
   text-align: center;
-  background-color: #424b52; }
+  background-color: #424b52;
+  color: #f6f7fb; }
 
 .hidden {
   display: none; }
@@ -50,15 +68,12 @@ ul.actions {
   right: 0%;
   bottom: 0;
   width: 100%;
-  height: 140px;
+  height: 120px;
   margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #ed5564; }
   ul.actions li {
-    width: 33.33%;
-    text-align: center;
+    width: 32%;
+    height: 92%;
     cursor: pointer; }
   ul.actions li:first-child {
     float: left; }
@@ -68,15 +83,10 @@ ul.actions {
 #game {
   background: url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png"); }
   #game header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #ed5564;
     background: #f6f7fb;
     height: 55px;
-    -webkit-box-shadow: 0px 4px 0px 0px rgba(237, 85, 100, 0.5);
-    -moz-box-shadow: 0px 4px 0px 0px rgba(237, 85, 100, 0.5);
-    box-shadow: 0px 4px 0px 0px rgba(237, 85, 100, 0.5); }
+    border-bottom: 5px solid #db4453; }
   #game footer {
     position: fixed;
     left: 0;
@@ -94,7 +104,6 @@ ul.actions {
     top: 0px;
     left: 0px; }
   #game #bricks {
-    border: 1px solid cyan;
     width: 100%;
     height: 100%;
     z-index: 50;
@@ -156,9 +165,6 @@ ul.actions {
     /* IE 10+ */
     -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
     filter: alpha(opacity=0);
     zoom: 1;
@@ -193,10 +199,6 @@ ul.actions {
     right: 0%;
     left: 0%;
     height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     z-index: 10;
     opacity: 0;
     filter: alpha(opacity=0);
@@ -270,9 +272,6 @@ ul.actions {
     color: #48cfae;
     font-size: 3em;
     background: #f6f7fb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
@@ -550,16 +549,19 @@ ul.actions {
   position: absolute;
   top: 0;
   left: 0; }
-  #menu header {
-    opacity: 0;
-    filter: alpha(opacity=0);
-    zoom: 1;
+  #menu header, #menu footer {
     position: absolute;
-    top: -100%;
     left: 0;
-    width: 100%;
+    width: 100%; }
+  #menu header {
+    top: 0;
     height: 60%;
     background: url("../img/menu_header.png") top center no-repeat, url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png");
+    -webkit-transform: translateY(-500px);
+    -ms-transform: translateY(-500px);
+    -moz-transform: translateY(-500px);
+    -o-transform: translateY(-500px);
+    transform: translateY(-500px);
     -webkit-animation-delay: 0s;
     -webkit-animation-duration: 0.5s;
     -webkit-animation-name: menuHeaderAnim;
@@ -581,16 +583,13 @@ ul.actions {
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */ }
   #menu footer {
-    opacity: 0;
-    filter: alpha(opacity=0);
-    zoom: 1;
-    width: 100%;
-    position: absolute;
-    bottom: -50%;
-    left: 0;
-    background: #434A54;
+    bottom: 0;
     height: 40%;
-    text-align: center;
+    -webkit-transform: translateY(500px);
+    -ms-transform: translateY(500px);
+    -moz-transform: translateY(500px);
+    -o-transform: translateY(500px);
+    transform: translateY(500px);
     -webkit-animation-delay: 0.5s;
     -webkit-animation-duration: 0.5s;
     -webkit-animation-name: menuFooterAnim;
@@ -618,65 +617,77 @@ ul.actions {
     -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2); }
     #menu footer #startGame {
+      cursor: pointer;
       position: absolute;
-      bottom: 130px;
-      right: 0%;
-      left: 0%;
-      font-size: 3em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 0%;
+      width: 100%;
+      height: 50%;
+      font-size: 1.5em;
       color: #f6f7fb; }
 
 @-webkit-keyframes menuHeaderAnim {
   to {
-    top: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @-moz-keyframes menuHeaderAnim {
   to {
-    top: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @-ms-keyframes menuHeaderAnim {
   to {
-    top: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @keyframes menuHeaderAnim {
   to {
-    top: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @-webkit-keyframes menuFooterAnim {
   to {
-    bottom: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @-moz-keyframes menuFooterAnim {
   to {
-    bottom: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @-ms-keyframes menuFooterAnim {
   to {
-    bottom: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 @keyframes menuFooterAnim {
   to {
-    bottom: 0%;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    zoom: 1; } }
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px); } }
 #scores, #options {
+  -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  /* IE 10+ */
+  -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
   position: relative; }
   #scores h1, #options h1 {
     color: white;
@@ -687,22 +698,20 @@ ul.actions {
     top: 10%;
     right: 0%;
     left: 0%;
-    color: #ed5564;
-    font-size: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
+    color: #f6f7fb;
+    font-size: 3em; }
 
 #scores table {
   width: 90%;
   position: absolute;
   margin: auto;
-  height: 60%;
+  height: 50%;
   top: 25%;
   left: 0%;
   right: 0%; }
 #scores th {
-  color: #E35664; }
+  color: #E35664;
+  font-weight: normal; }
 #scores td {
   color: white; }
 
@@ -710,33 +719,18 @@ ul.actions {
   width: 90%;
   position: absolute;
   margin: auto;
-  height: 60%;
+  height: 50%;
   top: 25%;
   left: 0%;
   right: 0%; }
-#options div.setting {
-  width: 65px;
-  height: 65px; }
-#options div.setting-on {
-  background-image: url("../img/items/setting_on.png"); }
-#options div.setting-off {
-  background-image: url("../img/items/setting_off.png"); }
-#options h3 {
-  color: white; }
-#options div.setting-row {
-  clear: both;
-  margin-bottom: 50px; }
-  #options div.setting-row div.setting-label {
-    width: 50%;
-    float: left;
-    line-height: 65px;
-    vertical-align: middle;
-    text-align: right; }
-  #options div.setting-row div.setting-control {
-    width: 50%;
-    float: left;
-    text-align: center; }
-    #options div.setting-row div.setting-control div.setting {
-      margin: auto; }
+#options .setting-on {
+  background: url("../img/items/setting_on.png") no-repeat center center; }
+#options .setting-off {
+  background: url("../img/items/setting_off.png") no-repeat center center; }
+#options dl dt, #options dl dd {
+  width: 50%;
+  height: 50%;
+  float: left;
+  color: #f6f7fb; }
 
 /*# sourceMappingURL=index.css.map */
