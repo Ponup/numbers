@@ -98,3 +98,18 @@
     @content;
   }
 }
+
+
+// FLEX SUPPORT MIXING
+.display-flex {
+  display: box;     // OLD SYNTAXIS
+  display: flexbox; // OLD SYNTAXIS
+  display: -o-flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+}
+
