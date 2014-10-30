@@ -19,6 +19,14 @@ section {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
+ul {
+  list-style-type: none; }
+  ul li {
+    display: inline-block; }
+
+a {
+  text-decoration: none; }
+
 body {
   font-family: 'Fredoka One', Fredoka, "Fredoka", Fredoka One, 'HelveticaNeue', Helvetica, Arial, sans-serif;
   -webkit-touch-callout: none;
@@ -29,55 +37,10 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   font-size: 1.3em;
   text-align: center;
-  background-color: #434A54;
-  background-size: 20%; }
-
-header {
-  height: 55px;
-  overflow: hidden;
-  -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  /* IE 10+ */
-  -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
-  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
-  header li {
-    position: absolute;
-    display: block;
-    margin: auto;
-    width: 33%;
-    height: 100%; }
-    header li.header-center {
-      left: 0;
-      right: 0;
-      font-size: .9em;
-      padding-top: 5px; }
-
-ul {
-  list-style-type: none; }
-  ul li {
-    display: inline-block; }
-
-a {
-  text-decoration: none; }
+  background-color: #424b52; }
 
 .hidden {
   display: none; }
-
-.text-big {
-  font-size: 1.9em; }
-
-#dots {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 200;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: url("../img/bg_noise.png");
-  pointer-events: none; }
 
 @media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
   .app {
@@ -98,18 +61,17 @@ ul.actions {
   bottom: 0;
   width: 100%;
   height: 140px;
-  color: #f6f7fb; }
+  color: #ed5564; }
   ul.actions li img {
     margin-bottom: 5px; }
   ul.actions li {
     width: 33%;
-    text-align: center; }
+    text-align: center;
+    cursor: pointer; }
   ul.actions li:first-child {
     float: left; }
   ul.actions li:last-child {
     float: right; }
-  ul.actions li a {
-    color: #ed5564; }
   ul.actions li.hidden {
     display: none; }
 
@@ -147,8 +109,18 @@ ul.actions {
   #gameWon #starLeft, #gameWon #starRight, #gameLost #starLeft, #gameLost #starRight {
     height: 50px; }
   #gameWon #totalScore, #gameLost #totalScore {
+    width: 50%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
     position: absolute;
+    border: 4px solid #ed5564;
+    border-bottom: 4px solid #db4453;
     height: 20%;
+    margin: auto;
     top: 40%;
     bottom: 40%;
     right: 0%;
@@ -172,48 +144,44 @@ ul.actions {
   text-shadow: none;
   color: transparent; }
 
-#intro {
-  width: 100%;
-  height: 100%;
-  background: #424b52; }
-  #intro img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    zoom: 1;
-    -webkit-transform: rotate(-9deg) scale(0.5);
-    -ms-transform: rotate(-9deg) scale(0.5);
-    -moz-transform: rotate(-9deg) scale(0.5);
-    -o-transform: rotate(-9deg) scale(0.5);
-    transform: rotate(-9deg) scale(0.5);
-    -webkit-animation-delay: 0s;
-    -webkit-animation-duration: 0.2s;
-    -webkit-animation-name: introAnim;
-    -webkit-animation-fill-mode: forwards;
-    /* this prevents the animation from restarting! */
-    -moz-animation-delay: 0s;
-    -moz-animation-duration: 0.2s;
-    -moz-animation-name: introAnim;
-    -moz-animation-fill-mode: forwards;
-    /* this prevents the animation from restarting! */
-    -o-animation-delay: 0s;
-    -o-animation-duration: 0.2s;
-    -o-animation-name: introAnim;
-    -o-animation-fill-mode: forwards;
-    /* this prevents the animation from restarting! */
-    animation-delay: 0s;
-    animation-duration: 0.2s;
-    animation-name: introAnim;
-    animation-fill-mode: forwards;
-    /* this prevents the animation from restarting! */
-    -webkit-animation-timing-function: ease-in-out;
-    /* Chrome, Safari, Opera */
-    animation-timing-function: ease-in-out; }
+#intro img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  zoom: 1;
+  -webkit-transform: rotate(-9deg) scale(0.5);
+  -ms-transform: rotate(-9deg) scale(0.5);
+  -moz-transform: rotate(-9deg) scale(0.5);
+  -o-transform: rotate(-9deg) scale(0.5);
+  transform: rotate(-9deg) scale(0.5);
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 0.2s;
+  -webkit-animation-name: introAnim;
+  -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-name: introAnim;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0s;
+  -o-animation-duration: 0.2s;
+  -o-animation-name: introAnim;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0s;
+  animation-duration: 0.2s;
+  animation-name: introAnim;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -webkit-animation-timing-function: ease-in-out;
+  /* Chrome, Safari, Opera */
+  animation-timing-function: ease-in-out; }
 
 @-webkit-keyframes introAnim {
   to {
@@ -256,12 +224,13 @@ ul.actions {
     -o-transform: rotate(0deg) scale(1.1);
     transform: rotate(0deg) scale(1.1); } }
 #menu {
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0; }
   #menu header {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    zoom: 1;
     position: absolute;
     top: -100%;
     left: 0;
@@ -289,6 +258,9 @@ ul.actions {
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */ }
   #menu footer {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    zoom: 1;
     width: 100%;
     position: absolute;
     bottom: -50%;
@@ -335,34 +307,58 @@ ul.actions {
 
 @-webkit-keyframes menuHeaderAnim {
   to {
-    top: 0%; } }
+    top: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @-moz-keyframes menuHeaderAnim {
   to {
-    top: 0%; } }
+    top: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @-ms-keyframes menuHeaderAnim {
   to {
-    top: 0%; } }
+    top: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @keyframes menuHeaderAnim {
   to {
-    top: 0%; } }
+    top: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @-webkit-keyframes menuFooterAnim {
   to {
-    bottom: 0%; } }
+    bottom: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @-moz-keyframes menuFooterAnim {
   to {
-    bottom: 0%; } }
+    bottom: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @-ms-keyframes menuFooterAnim {
   to {
-    bottom: 0%; } }
+    bottom: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
 @keyframes menuFooterAnim {
   to {
-    bottom: 0%; } }
-#scores {
+    bottom: 0%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1; } }
+#scores, #options {
   position: relative; }
-  #scores h1 {
+  #scores h1, #options h1 {
     color: white;
     position: absolute;
-    height: 20%;
+    height: 10%;
     margin: auto;
     width: 90%;
     top: 10%;
@@ -373,54 +369,52 @@ ul.actions {
     display: flex;
     align-items: center;
     justify-content: center; }
-  #scores table {
-    width: 100%; }
-  #scores th {
-    color: #E35664; }
-  #scores td {
-    color: white; }
 
-div.setting {
+#scores table {
+  width: 90%;
+  position: absolute;
+  margin: auto;
+  height: 60%;
+  top: 25%;
+  left: 0%;
+  right: 0%; }
+#scores th {
+  color: #E35664; }
+#scores td {
+  color: white; }
+
+#options .settings {
+  width: 90%;
+  position: absolute;
+  margin: auto;
+  height: 60%;
+  top: 25%;
+  left: 0%;
+  right: 0%; }
+#options div.setting {
   width: 65px;
   height: 65px; }
-
-div.setting-on {
+#options div.setting-on {
   background-image: url("../img/items/setting_on.png"); }
-
-div.setting-off {
+#options div.setting-off {
   background-image: url("../img/items/setting_off.png"); }
-
-#options {
-  position: relative; }
-  #options h1 {
-    color: white;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 70px;
-    background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
-    background-size: 40%, 20%; }
-  #options h3 {
-    color: white; }
-  #options div.setting-row {
-    clear: both;
-    margin-bottom: 20px; }
-    #options div.setting-row div.setting-label {
-      width: 50%;
-      float: left;
-      line-height: 65px;
-      vertical-align: middle;
-      text-align: right; }
-    #options div.setting-row div.setting-control {
-      width: 50%;
-      float: left;
-      text-align: center; }
-      #options div.setting-row div.setting-control div.setting {
-        margin: auto; }
-  #options #actions {
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    padding: 5px; }
+#options h3 {
+  color: white; }
+#options div.setting-row {
+  clear: both;
+  margin-bottom: 50px; }
+  #options div.setting-row div.setting-label {
+    width: 50%;
+    float: left;
+    line-height: 65px;
+    vertical-align: middle;
+    text-align: right; }
+  #options div.setting-row div.setting-control {
+    width: 50%;
+    float: left;
+    text-align: center; }
+    #options div.setting-row div.setting-control div.setting {
+      margin: auto; }
 
 #game {
   width: 100%;
