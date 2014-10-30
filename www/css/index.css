@@ -17,6 +17,9 @@ section {
   padding: 0;
   box-sizing: border-box; }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
 body {
   font-family: 'Fredoka One', Fredoka, "Fredoka", Fredoka One, 'HelveticaNeue', Helvetica, Arial, sans-serif;
   -webkit-touch-callout: none;
@@ -85,10 +88,38 @@ a {
     margin: -90px 0px 0px -198px;
     /* offset vertical: half of image height */
     /* offset horizontal: half of image width and text area width */ } }
-#gameWon {
+ul.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  margin: auto;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  color: #f6f7fb; }
+  ul.actions li img {
+    margin-bottom: 5px; }
+  ul.actions li {
+    width: 33%;
+    text-align: center; }
+  ul.actions li:first-child {
+    float: left; }
+  ul.actions li:last-child {
+    float: right; }
+  ul.actions li a {
+    color: #ed5564; }
+  ul.actions li.hidden {
+    display: none; }
+
+#gameWon, #gameLost {
   position: relative;
-  background: url("../img/bg_matel.png"); }
-  #gameWon h1 {
+  background: url("../img/bg_matel.png"), url("../img/bg_bolado.png") bottom center repeat-x; }
+  #gameWon ul.actions, #gameLost ul.actions {
+    background: #424b52; }
+  #gameWon h1, #gameLost h1 {
     position: absolute;
     height: 20%;
     margin: auto;
@@ -101,7 +132,22 @@ a {
     display: flex;
     align-items: center;
     justify-content: center; }
-  #gameWon #totalScore {
+  #gameWon #stars, #gameLost #stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    height: 20%;
+    bottom: 30%;
+    right: 0%;
+    left: 0%;
+    z-index: 10; }
+    #gameWon #stars img, #gameLost #stars img {
+      margin: 15px; }
+  #gameWon #starLeft, #gameWon #starRight, #gameLost #starLeft, #gameLost #starRight {
+    height: 50px; }
+  #gameWon #totalScore, #gameLost #totalScore {
     position: absolute;
     height: 20%;
     top: 40%;
@@ -116,130 +162,16 @@ a {
     align-items: center;
     justify-content: center;
     z-index: 9; }
-  #gameWon #stars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    height: 20%;
-    bottom: 30%;
-    right: 0%;
-    left: 0%;
-    z-index: 10; }
-    #gameWon #stars img {
-      margin: 15px; }
-  #gameWon #starLeft, #gameWon #starRight {
-    height: 50px; }
-  #gameWon #bolado {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    margin: auto;
-    bottom: 140px;
-    height: 125px;
-    background: url("../img/bg_bolado.png"); }
-  #gameWon #actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    margin: auto;
-    bottom: 0;
-    width: 100%;
-    height: 140px;
-    background: #424b52;
-    color: #666d78;
-    font-size: .7em; }
-    #gameWon #actions li img {
-      margin-bottom: 5px; }
-    #gameWon #actions li {
-      width: 33%;
-      text-align: center; }
-    #gameWon #actions li:first-child {
-      float: left; }
-    #gameWon #actions li:last-child {
-      float: right; }
 
-#gameLost {
-  position: relative;
-  background: url("../img/bg_matel.png"); }
-  #gameLost h1 {
-    position: absolute;
-    height: 20%;
-    margin: auto;
-    width: 90%;
-    top: 10%;
-    right: 0%;
-    left: 0%;
-    color: #363c42;
-    font-size: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-  #gameLost #totalScore {
-    position: absolute;
-    height: 20%;
-    top: 40%;
-    bottom: 40%;
-    right: 0%;
-    left: 0%;
-    transition: font 0.3s ease;
-    color: #db4453;
-    font-size: 3em;
-    background: #f6f7fb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9; }
-  #gameLost #stars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    height: 20%;
-    bottom: 30%;
-    right: 0%;
-    left: 0%;
-    z-index: 10; }
-    #gameLost #stars img {
-      margin: 15px; }
-  #gameLost #starLeft, #gameLost #starRight {
-    height: 50px; }
-  #gameLost #bolado {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    margin: auto;
-    bottom: 140px;
-    height: 125px;
-    background: url("../img/bg_bolado.png"); }
-  #gameLost #actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    margin: auto;
-    bottom: 0;
-    width: 100%;
-    height: 140px;
-    background: #424b52;
-    color: #666d78;
-    font-size: .7em; }
-    #gameLost #actions li img {
-      margin-bottom: 5px; }
-    #gameLost #actions li {
-      width: 33%;
-      text-align: center; }
-    #gameLost #actions li:first-child {
-      float: left; }
-    #gameLost #actions li:last-child {
-      float: right; }
+#gameWon #totalScore {
+  color: #48cfae; }
+
+#gameLost #totalScore {
+  color: #db4453; }
+#gameLost ul.actions li:last-child {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent; }
 
 #intro {
   width: 100%;
@@ -401,31 +333,6 @@ a {
       align-items: center;
       justify-content: center;
       color: #f6f7fb; }
-    #menu footer ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      left: 0%;
-      right: 0%;
-      margin: auto;
-      bottom: 0;
-      width: 100%;
-      height: 140px;
-      color: #ed5564; }
-      #menu footer ul li img {
-        margin-bottom: 5px; }
-      #menu footer ul li {
-        width: 33%;
-        text-align: center; }
-      #menu footer ul li:first-child {
-        float: left; }
-      #menu footer ul li:last-child {
-        float: right; }
-      #menu footer ul li a {
-        color: #E35664; }
-      #menu footer ul li.hidden {
-        display: none; }
 
 @-webkit-keyframes menuHeaderAnim {
   to {
@@ -451,6 +358,29 @@ a {
 @keyframes menuFooterAnim {
   to {
     bottom: 0%; } }
+#scores {
+  position: relative; }
+  #scores h1 {
+    color: white;
+    position: absolute;
+    height: 20%;
+    margin: auto;
+    width: 90%;
+    top: 10%;
+    right: 0%;
+    left: 0%;
+    color: #ed5564;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  #scores table {
+    width: 100%; }
+  #scores th {
+    color: #E35664; }
+  #scores td {
+    color: white; }
+
 div.setting {
   width: 65px;
   height: 65px; }
@@ -595,26 +525,5 @@ div.setting-off {
 
 #secondsLeft {
   color: cyan; }
-
-#scores {
-  position: relative; }
-  #scores h1 {
-    color: white;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 70px;
-    background: url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
-    background-size: 40%, 20%; }
-  #scores table {
-    width: 100%; }
-  #scores th {
-    color: #E35664; }
-  #scores td {
-    color: white; }
-  #scores #actions {
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    padding: 5px; }
 
 /*# sourceMappingURL=index.css.map */
