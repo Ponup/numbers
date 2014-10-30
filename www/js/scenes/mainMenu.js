@@ -52,12 +52,12 @@ define( function( require ) {
 		var self = this,
 		    vias = [ 'com.apple.social.twitter', 'twitter' ],
 		    viasLen = vias.length,
-		    message = 'I am playing Ponup Numbers!',
+		    message = 'I am playing @Ponup Numbers!',
 		    i = 0;
 
 		for( ; i < viasLen; i++ )
 		{
-			this.tryToShareVia( message, viasLen[ i ] );
+			this.tryToShareVia( message, vias[ i ] );
 		}
 	};
 

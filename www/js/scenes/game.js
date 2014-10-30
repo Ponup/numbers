@@ -147,6 +147,10 @@ define( function( require ) {
 		{
 			this.nextOpPending = this.gameContext.selection[ selectionLength - 1 ];
 		}
+		else
+		{
+			this.nextOpPending = '+';
+		}
 		this.gameContext.selection = [];
 
 		var nextScene = null;
