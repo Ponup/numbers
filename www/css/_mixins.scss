@@ -8,7 +8,7 @@
           transition: $transition;
 }
 
-@mixin text-shadow($horizOffset:0px, $vertOffset:3px, $blur:0px, $color:rgba(0,0,0,.1)) {
+@mixin text-shadow($horizOffset:0px, $vertOffset:3px, $blur:0px, $color:rgba(0,0,0,.2)) {
      -webkit-text-shadow: $horizOffset $vertOffset $blur $color;
         -moz-text-shadow: $horizOffset $vertOffset $blur $color;
          -ms-text-shadow: $horizOffset $vertOffset $blur $color; /* IE 10+ */
@@ -44,7 +44,7 @@
 
 
 
-@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+@mixin box-shadow( $horiz : 0px , $vert : 3px , $blur : 0px , $spread : 0px , $color : rgba(0,0,0,0.2) ){
   -webkit-box-shadow: $horiz $vert $blur $spread $color;
   -moz-box-shadow: $horiz $vert $blur $spread $color;
   box-shadow: $horiz $vert $blur $spread $color;

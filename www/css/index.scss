@@ -6,12 +6,14 @@
 html, body, #canvas, section {
 	width: 100%;
 	height: 100%;
+
 }
 
 section {
 	max-width: 1080px;
     margin:auto;
     left: 0%; right: 0%;
+    @include box-shadow(0px, 0px , 15px , 0px , rgba(0,0,0,.5));
 }
 
 * {
@@ -20,8 +22,8 @@ section {
 }
 h1,h2,h3,h4,h5,h6 { font-weight: normal;}
 
-
 ul { list-style-type: none; li { display: inline-block; } }
+
 a { text-decoration: none; }
 
 body {
@@ -34,76 +36,159 @@ body {
     background-color: $color-negro-light;
 }
 
-
 .hidden { display: none; }
 
-
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
 
 // definiciones para el menu de acciones comunes a todas las escenas //
 
 ul.actions {
-            
+    position: absolute;
+    left: 0%; right: 0%; bottom: 0;
+    width: 100%; height: 140px;
+    margin:auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: 0%;right: 0%; margin:auto;
-    bottom: 0;
-    width: 100%;
-    height: 140px;
     color: $color-rojo-light;
-    li img {margin-bottom:5px;}
-    li{width:33%; text-align: center; cursor:pointer;}
+    li{width:33.33%; text-align: center; cursor:pointer;}
     li:first-child{float: left; }
     li:last-child{float: right; }
-    li.hidden {display: none; }
 }
+
+
+
+
+// GAME //
+
+
+#game {
+
+    background:
+        url('../img/bg_bolado.png') bottom center repeat-x,
+        url('../img/bg_matel.png') ;
+
+    header{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+        color: $color-rojo-light;
+        background: $color-blanco-light;
+        height: 55px;
+        @include box-shadow(0px, 4px , 0px, 0px, rgba($color-rojo-light,.5));
+    }
+
+    footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 100px;
+    }
+
+#gameLayers {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+    #bricksOverlay {
+
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    #bricks {
+            border: 1px solid cyan;
+        width: 100%;
+        height: 100%;
+
+        z-index: 50;
+        opacity: 0;
+        top: 0%;
+        left:0%;
+        right: 0%;
+        bottom:0%;
+        margin: auto;
+        padding:60px;
+        background: #fff;
+        @include border-radius(10px);
+        @include box-shadow();
+        .brick {
+            position: absolute;
+            vertical-align: middle;
+            margin-right: 5px;
+            margin-bottom: 5px;
+@include border-radius(5px);
+            font-size: 1.3em;
+            font-weight: bold;
+            background: $color-negro-light;
+            color: $color-blanco-light;
+            border-bottom: 3px solid $color-negro-dark;
+        }
+    }
+}
+
+#goalNumber ,#secondsLeft { color: $color-verde-light; }
+
+
+
+// FIN GAME //
+
+
 
 
 // fin definiciones menu
 
 #gameWon, #gameLost {
     position: relative;
-    background: url('../img/bg_matel.png'), url('../img/bg_bolado.png') bottom center repeat-x;
-    ul.actions {background: $color-negro-light; } 
+    background:
+    url('../img/bg_matel.png'),
+    url('../img/bg_bolado.png') bottom center repeat-x;
+    ul.actions {background: $color-negro-light; }
     h1 {
         position: absolute;
         height: 20%;
         margin: auto;
         width: 90%;
         top:10%; right: 0%; left: 0%;
-        color: $color-negro-dark;
+        color: $color-negro-light;
         font-size: 3em;
+        @include text-shadow();
         display: flex;
         align-items: center;
         justify-content: center;
+        @include opacity(0);
+        @include transform(scale(.1));
+        @include animation (0s,.5s,gameWonHeader);
     }
-    #stars { 
+    #stars {
+        position: absolute;
+        bottom:30%; right: 0%; left: 0%;
+        height: 20%;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        position: absolute;
-        height: 20%;
-        bottom:30%; right: 0%; left: 0%;
         z-index: 10;
-        img { margin: 15px;}
-         }
+        img {
+            margin: 15px;
+            @include animation (1.5s,2s,gameStar);
+        }
+        @include opacity(0);
+        @include transform(scale(.1));
+        @include animation (1.5s,1s,gameStars);
+    }
     #starLeft, #starRight { height: 50px; }
     #totalScore {
         width: 50%;
-        @include border-radius();
+        @include border-radius(10px);
         position: absolute;
-        border: 4px solid $color-rojo-light;
-        border-bottom: 4px solid $color-rojo-dark;
+        border: 4px solid rgba($color-rojo-light,.5);
         height: 20%;
         margin: auto;
         top:40%;bottom:40%; right: 0%; left: 0%;
@@ -114,7 +199,11 @@ ul.actions {
         display: flex;
         align-items: center;
         justify-content: center;
+        @include text-shadow(0px, 3px, 0px, rgba(0,0,0,.1));
         z-index: 9;
+        @include opacity(0);
+        @include transform(scale(.1));
+        @include animation (.5s,.5s,gameTotalScore);
     }
 }
 
@@ -129,14 +218,32 @@ ul.actions {
 }
 
 
+@include keyframes(gameWonHeader){
+    to {
+        @include opacity(1);
+        @include transform(scale(1));
+    }
+}
+@include keyframes(gameTotalScore){
+    to {
+        @include opacity(1);
+        @include transform(scale(1));
+    }
+}
+@include keyframes(gameStars){
+    to {
+        @include opacity(1);
+        @include transform(scale(1));
+    }
+}
+@include keyframes(gameStar){to {@include transform(rotate(720deg)); } }
 
-
-// :::::::: GAME INTRO SCENE :::::: // 
+// :::::::: GAME INTRO SCENE :::::: //
 #intro {
 
 
-    
-    
+
+
     img {
         position: absolute;
         top: 0; bottom: 0; right: 0; left: 0;
@@ -153,13 +260,13 @@ ul.actions {
     to {
         @include opacity(1);
         @include transform(rotate(0deg) scale(1.1));
-    } 
+    }
 }
 
-// :::::::: FIN GAME LOST SCENE :::::: // 
+// :::::::: FIN GAME LOST SCENE :::::: //
 
 
-// :::::::: GAME MENU SCENE :::::: // 
+// :::::::: GAME MENU SCENE :::::: //
 #menu{
     position: absolute;
     top:0; left: 0;
@@ -186,7 +293,7 @@ ul.actions {
         height: 40%;
         text-align: center;
         @include animation(0.5s, 0.5s, menuFooterAnim);
-        //background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54; 
+        //background: url('../img/menu_cuchara.png') no-repeat 140% 80% #434A54;
         @include text-shadow();
         #startGame {
             position: absolute;
@@ -197,14 +304,14 @@ ul.actions {
             justify-content: center;
             color: $color-blanco-light;
         }
-        
+
     }
 }
 
 @include keyframes(menuHeaderAnim){to {top: 0%; @include opacity(1);} }
 @include keyframes(menuFooterAnim){to {bottom: 0%;  @include opacity(1); } }
 
-// :::::::: FIN GAME MENU SCENE :::::: // 
+// :::::::: FIN GAME MENU SCENE :::::: //
 
 #scores, #options {
     position: relative;
@@ -223,12 +330,12 @@ ul.actions {
     }
 }
 
-// :::::::: GAME SCORES SCENE :::::: // 
+// :::::::: GAME SCORES SCENE :::::: //
 
 #scores {
-    
-    table { 
-        width: 90%; 
+
+    table {
+        width: 90%;
         position: absolute;
         margin: auto;
         height: 60%;
@@ -241,13 +348,13 @@ ul.actions {
 
 }
 
-// :::::::: FIN GAME SCORES SCENE :::::: // 
+// :::::::: FIN GAME SCORES SCENE :::::: //
 
 
 
 #options {
     .settings {
-        width: 90%; 
+        width: 90%;
         position: absolute;
         margin: auto;
         height: 60%;
@@ -268,11 +375,11 @@ ul.actions {
         background-image: url('../img/items/setting_off.png');
     }
     h3 {color: white; }
-    
+
     div.setting-row {
         clear: both;
         margin-bottom: 50px;
-    
+
         div.setting-label {
             width: 50%;
             float: left;
@@ -280,12 +387,12 @@ ul.actions {
             vertical-align: middle;
             text-align: right;
         }
-        
+
         div.setting-control {
             width: 50%;
             float: left;
             text-align: center;
-            
+
             div.setting {
                 margin: auto;
             }
@@ -295,12 +402,10 @@ ul.actions {
 }
 
 
-
 //@import 'scenes/intro';
 //@import 'scenes/mainMenu';
-@import 'scenes/options';
+//@import 'scenes/options';
 @import 'scenes/game';
 //@import 'scenes/gameLost';
 //@import 'scenes/gameWon';
 //@import 'scenes/scores';
-
