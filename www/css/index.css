@@ -1,7 +1,8 @@
 @charset "UTF-8";
 html, body, #canvas, section {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 section {
   max-width: 1080px;
@@ -243,15 +244,86 @@ a {
 #intro {
   width: 100%;
   height: 100%;
-  background: url("../img/bg_matel.png"); }
+  background: #424b52; }
   #intro img {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    margin: auto; }
+    margin: auto;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    zoom: 1;
+    -webkit-transform: rotate(-9deg) scale(0.5);
+    -ms-transform: rotate(-9deg) scale(0.5);
+    -moz-transform: rotate(-9deg) scale(0.5);
+    -o-transform: rotate(-9deg) scale(0.5);
+    transform: rotate(-9deg) scale(0.5);
+    -webkit-animation-delay: 0s;
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-name: introAnim;
+    -webkit-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -moz-animation-delay: 0s;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-name: introAnim;
+    -moz-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -o-animation-delay: 0s;
+    -o-animation-duration: 0.2s;
+    -o-animation-name: introAnim;
+    -o-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    animation-delay: 0s;
+    animation-duration: 0.2s;
+    animation-name: introAnim;
+    animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -webkit-animation-timing-function: ease-in-out;
+    /* Chrome, Safari, Opera */
+    animation-timing-function: ease-in-out; }
 
+@-webkit-keyframes introAnim {
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1;
+    -webkit-transform: rotate(0deg) scale(1.1);
+    -ms-transform: rotate(0deg) scale(1.1);
+    -moz-transform: rotate(0deg) scale(1.1);
+    -o-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1); } }
+@-moz-keyframes introAnim {
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1;
+    -webkit-transform: rotate(0deg) scale(1.1);
+    -ms-transform: rotate(0deg) scale(1.1);
+    -moz-transform: rotate(0deg) scale(1.1);
+    -o-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1); } }
+@-ms-keyframes introAnim {
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1;
+    -webkit-transform: rotate(0deg) scale(1.1);
+    -ms-transform: rotate(0deg) scale(1.1);
+    -moz-transform: rotate(0deg) scale(1.1);
+    -o-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1); } }
+@keyframes introAnim {
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    zoom: 1;
+    -webkit-transform: rotate(0deg) scale(1.1);
+    -ms-transform: rotate(0deg) scale(1.1);
+    -moz-transform: rotate(0deg) scale(1.1);
+    -o-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1); } }
 #menu {
   width: 100%;
   height: 100%;
@@ -260,21 +332,59 @@ a {
   left: 0; }
   #menu header {
     position: absolute;
-    top: 0;
+    top: -100%;
     left: 0;
     width: 100%;
     height: 60%;
-    background: url("../img/menu_header.png") top left no-repeat, url("../img/bg_bolado.png") bottom left repeat-x, url("../img/bg_matel.png");
-    background-size: 90%, 100%, 20%; }
+    background: url("../img/menu_header.png") top center no-repeat, url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png");
+    -webkit-animation-delay: 0s;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: menuHeaderAnim;
+    -webkit-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -moz-animation-delay: 0s;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-name: menuHeaderAnim;
+    -moz-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -o-animation-delay: 0s;
+    -o-animation-duration: 0.5s;
+    -o-animation-name: menuHeaderAnim;
+    -o-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    animation-delay: 0s;
+    animation-duration: 0.5s;
+    animation-name: menuHeaderAnim;
+    animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */ }
   #menu footer {
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: -50%;
     left: 0;
     background: #434A54;
     height: 40%;
     text-align: center;
-    background: url("../img/menu_cuchara.png") no-repeat 140% 80% #434A54;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: menuFooterAnim;
+    -webkit-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -moz-animation-delay: 0.5s;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-name: menuFooterAnim;
+    -moz-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    -o-animation-delay: 0.5s;
+    -o-animation-duration: 0.5s;
+    -o-animation-name: menuFooterAnim;
+    -o-animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
+    animation-delay: 0.5s;
+    animation-duration: 0.5s;
+    animation-name: menuFooterAnim;
+    animation-fill-mode: forwards;
+    /* this prevents the animation from restarting! */
     -webkit-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     -moz-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
@@ -282,27 +392,65 @@ a {
     -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1);
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.1); }
     #menu footer #startGame {
-      font-size: 2em;
-      color: #f6f7fb;
       position: absolute;
-      margin: auto;
-      top: 38%;
-      left: 0;
-      right: 0;
-      bottom: 42%; }
+      bottom: 130px;
+      right: 0%;
+      left: 0%;
+      font-size: 3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f6f7fb; }
     #menu footer ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      bottom: 15%;
+      left: 0%;
+      right: 0%;
+      margin: auto;
+      bottom: 0;
       width: 100%;
+      height: 140px;
       color: #ed5564; }
+      #menu footer ul li img {
+        margin-bottom: 5px; }
       #menu footer ul li {
-        display: inline-block;
-        width: 30%; }
-        #menu footer ul li a {
-          color: #E35664; }
+        width: 33%;
+        text-align: center; }
+      #menu footer ul li:first-child {
+        float: left; }
+      #menu footer ul li:last-child {
+        float: right; }
+      #menu footer ul li a {
+        color: #E35664; }
       #menu footer ul li.hidden {
         display: none; }
 
+@-webkit-keyframes menuHeaderAnim {
+  to {
+    top: 0%; } }
+@-moz-keyframes menuHeaderAnim {
+  to {
+    top: 0%; } }
+@-ms-keyframes menuHeaderAnim {
+  to {
+    top: 0%; } }
+@keyframes menuHeaderAnim {
+  to {
+    top: 0%; } }
+@-webkit-keyframes menuFooterAnim {
+  to {
+    bottom: 0%; } }
+@-moz-keyframes menuFooterAnim {
+  to {
+    bottom: 0%; } }
+@-ms-keyframes menuFooterAnim {
+  to {
+    bottom: 0%; } }
+@keyframes menuFooterAnim {
+  to {
+    bottom: 0%; } }
 div.setting {
   width: 65px;
   height: 65px; }
