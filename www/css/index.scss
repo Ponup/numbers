@@ -3,6 +3,12 @@
 @import "colors";
 @import "mixins";
 
+
+
+.debug {  border: 0px dotted rgba(255,255,255,.5); }
+
+
+
 @font-face {
         font-family: "Fredoka One";
         src: url('../fonts/FredokaOne-Regular.eot');
@@ -43,7 +49,9 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-size:1.4em;
     text-align: center;
-    background-color: $color-negro-light;
+    
+    background: url('../img/pattern_cloth.png') $color-negro-light;
+
     color: $color-blanco-light;
 }
 
@@ -81,6 +89,7 @@ ul.actions {
 #game {
 
     background:
+        url('../img/pattern_cloth.png'),
         url('../img/bg_bolado.png') bottom center repeat-x,
         url('../img/bg_matel.png') ;
 
@@ -88,8 +97,9 @@ ul.actions {
         @extend .display-flex;
         color: $color-rojo-light;
         background: $color-blanco-light;
-        height: 55px;
+        height: 100px;
         border-bottom: 5px solid $color-rojo-dark;
+        margin-bottom: 20%;
     }
 
     footer {
@@ -98,14 +108,45 @@ ul.actions {
         right: 0;
         height: 100px;
     }
+    #secondsLeft { 
+        position: absolute;
+        right: 23px;
+        top:23px;
+        font-size: 1.3em;
+        padding-top: 8px;
+        
+        width: 50px;
+        height: 50px;
+        color: $color-blanco-light;
+        @include border-radius(50%);
+        background: $color-rojo-light;
+    }
 
-#gameLayers {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-
-}
+    #goalLabel {
+        position: absolute;
+        margin: auto;
+        left: 0%; 
+        top:35px;
+        font-size: 1em;
+        width: 50%;
+        padding-right: 40px;
+        text-align: right;
+        color: $color-gris-light;
+    }
+    #goalNumber {
+        position: absolute;
+        margin: auto;
+        left: 45%; right: 45%;
+        top:10px;
+        font-size: 3em;
+        width: 10%;
+        color: $color-verde-light;
+    }
+    #gameLayers {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 
     #bricksOverlay {
 
@@ -147,7 +188,8 @@ ul.actions {
     }
 }
 
-#goalNumber ,#secondsLeft { color: $color-verde-light; }
+
+
 
 
 
@@ -283,17 +325,42 @@ ul.actions {
         top:0; 
         height: 60%;
         background:
-            url('../img/menu_header.png') top center no-repeat,
+            
+            url('../img/pattern_cloth.png') ,
             url('../img/bg_bolado.png') bottom center repeat-x,
             url('../img/bg_matel.png');
         @include transform(translateY(-500px));
         @include animation(0s, 0.5s, menuHeaderAnim);
+        @extend .debug;
+        #logo {
+            background: url('../img/menu_header.png') center center no-repeat ;
+            position: absolute;
+            margin: auto;
+            left: 0%; right: 0%; top:-50px;
+            width: 359px; height: 361px;
+            max-width: 100%;
+            background-size: cover;
+            @include transform(rotate(-120deg));
+            @include animation(0.2s, .6s, menuLogoAnim);
+            @extend .debug;
+        }
+        #fork {
+            background: url('../img/item_tenedor.png') top right ;
+            position: absolute;
+            
+            right: 60%;  top:250px;
+            width: 449px; height: 140px;
+            background-size: cover;
+            @include transform(rotate(0deg) translate(-200px,-100px) );
+            @include animation(0.5s, 1s, menuForkAnim);
+            @extend .debug;
+        }
     }
     footer {
         bottom:0;
         height: 40%;
         @include transform(translateY(500px));
-        @include animation(0.5s, 0.5s, menuFooterAnim);
+        @include animation(0.3s, 0.3s, menuFooterAnim);
         @include text-shadow();
         #startGame {
             cursor: pointer;
@@ -309,6 +376,12 @@ ul.actions {
 }
 
 @include keyframes(menuHeaderAnim){to {@include transform(translateY(0px)); } }
+@include keyframes(menuLogoAnim){to {@include transform(rotate(0deg)); } }
+@include keyframes(menuForkAnim){
+    to {
+        @include transform(rotate(-30deg) translate(0px,0px) );
+    } 
+}
 @include keyframes(menuFooterAnim){to {@include transform(translateY(0px)); } }
 
 // :::::::: FIN GAME MENU SCENE :::::: //

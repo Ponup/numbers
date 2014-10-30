@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center; }
 
-.debug, ul.actions li, ul.actions, #menu footer #startGame, #scores h1, #options h1, #scores table, #options .settings, #options dl dt, #options dl dd {
-  border: 1px dotted rgba(255, 255, 255, 0.5); }
+.debug, ul.actions li, ul.actions, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #options .settings, #options dl dt, #options dl dd {
+  border: 0px dotted rgba(255, 255, 255, 0.5); }
 
 @font-face {
   font-family: "Fredoka One";
@@ -56,7 +56,7 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   font-size: 1.4em;
   text-align: center;
-  background-color: #424b52;
+  background: url("../img/pattern_cloth.png") #424b52;
   color: #f6f7fb; }
 
 .hidden {
@@ -81,17 +81,53 @@ ul.actions {
     float: right; }
 
 #game {
-  background: url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png"); }
+  background: url("../img/pattern_cloth.png"), url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png"); }
   #game header {
     color: #ed5564;
     background: #f6f7fb;
-    height: 55px;
-    border-bottom: 5px solid #db4453; }
+    height: 100px;
+    border-bottom: 5px solid #db4453;
+    margin-bottom: 20%; }
   #game footer {
     position: fixed;
     left: 0;
     right: 0;
     height: 100px; }
+  #game #secondsLeft {
+    position: absolute;
+    right: 23px;
+    top: 23px;
+    font-size: 1.3em;
+    padding-top: 8px;
+    width: 50px;
+    height: 50px;
+    color: #f6f7fb;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    background: #ed5564; }
+  #game #goalLabel {
+    position: absolute;
+    margin: auto;
+    left: 0%;
+    top: 35px;
+    font-size: 1em;
+    width: 50%;
+    padding-right: 40px;
+    text-align: right;
+    color: #abb1bd; }
+  #game #goalNumber {
+    position: absolute;
+    margin: auto;
+    left: 45%;
+    right: 45%;
+    top: 10px;
+    font-size: 3em;
+    width: 10%;
+    color: #48cfae; }
   #game #gameLayers {
     position: relative;
     width: 100%;
@@ -140,9 +176,6 @@ ul.actions {
       background: #424b52;
       color: #f6f7fb;
       border-bottom: 3px solid #363c42; }
-
-#goalNumber, #secondsLeft {
-  color: #48cfae; }
 
 #gameWon, #gameLost {
   position: relative;
@@ -556,7 +589,7 @@ ul.actions {
   #menu header {
     top: 0;
     height: 60%;
-    background: url("../img/menu_header.png") top center no-repeat, url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png");
+    background: url("../img/pattern_cloth.png"), url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png");
     -webkit-transform: translateY(-500px);
     -ms-transform: translateY(-500px);
     -moz-transform: translateY(-500px);
@@ -582,6 +615,75 @@ ul.actions {
     animation-name: menuHeaderAnim;
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */ }
+    #menu header #logo {
+      background: url("../img/menu_header.png") center center no-repeat;
+      position: absolute;
+      margin: auto;
+      left: 0%;
+      right: 0%;
+      top: -50px;
+      width: 359px;
+      height: 361px;
+      max-width: 100%;
+      background-size: cover;
+      -webkit-transform: rotate(-120deg);
+      -ms-transform: rotate(-120deg);
+      -moz-transform: rotate(-120deg);
+      -o-transform: rotate(-120deg);
+      transform: rotate(-120deg);
+      -webkit-animation-delay: 0.2s;
+      -webkit-animation-duration: 0.6s;
+      -webkit-animation-name: menuLogoAnim;
+      -webkit-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      -moz-animation-delay: 0.2s;
+      -moz-animation-duration: 0.6s;
+      -moz-animation-name: menuLogoAnim;
+      -moz-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      -o-animation-delay: 0.2s;
+      -o-animation-duration: 0.6s;
+      -o-animation-name: menuLogoAnim;
+      -o-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      animation-delay: 0.2s;
+      animation-duration: 0.6s;
+      animation-name: menuLogoAnim;
+      animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */ }
+    #menu header #fork {
+      background: url("../img/item_tenedor.png") top right;
+      position: absolute;
+      right: 60%;
+      top: 250px;
+      width: 449px;
+      height: 140px;
+      background-size: cover;
+      -webkit-transform: rotate(0deg) translate(-200px, -100px);
+      -ms-transform: rotate(0deg) translate(-200px, -100px);
+      -moz-transform: rotate(0deg) translate(-200px, -100px);
+      -o-transform: rotate(0deg) translate(-200px, -100px);
+      transform: rotate(0deg) translate(-200px, -100px);
+      -webkit-animation-delay: 0.5s;
+      -webkit-animation-duration: 1s;
+      -webkit-animation-name: menuForkAnim;
+      -webkit-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      -moz-animation-delay: 0.5s;
+      -moz-animation-duration: 1s;
+      -moz-animation-name: menuForkAnim;
+      -moz-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      -o-animation-delay: 0.5s;
+      -o-animation-duration: 1s;
+      -o-animation-name: menuForkAnim;
+      -o-animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */
+      animation-delay: 0.5s;
+      animation-duration: 1s;
+      animation-name: menuForkAnim;
+      animation-fill-mode: forwards;
+      /* this prevents the animation from restarting! */ }
   #menu footer {
     bottom: 0;
     height: 40%;
@@ -590,23 +692,23 @@ ul.actions {
     -moz-transform: translateY(500px);
     -o-transform: translateY(500px);
     transform: translateY(500px);
-    -webkit-animation-delay: 0.5s;
-    -webkit-animation-duration: 0.5s;
+    -webkit-animation-delay: 0.3s;
+    -webkit-animation-duration: 0.3s;
     -webkit-animation-name: menuFooterAnim;
     -webkit-animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */
-    -moz-animation-delay: 0.5s;
-    -moz-animation-duration: 0.5s;
+    -moz-animation-delay: 0.3s;
+    -moz-animation-duration: 0.3s;
     -moz-animation-name: menuFooterAnim;
     -moz-animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */
-    -o-animation-delay: 0.5s;
-    -o-animation-duration: 0.5s;
+    -o-animation-delay: 0.3s;
+    -o-animation-duration: 0.3s;
     -o-animation-name: menuFooterAnim;
     -o-animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */
-    animation-delay: 0.5s;
-    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    animation-duration: 0.3s;
     animation-name: menuFooterAnim;
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */
@@ -653,6 +755,62 @@ ul.actions {
     -moz-transform: translateY(0px);
     -o-transform: translateY(0px);
     transform: translateY(0px); } }
+@-webkit-keyframes menuLogoAnim {
+  to {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+@-moz-keyframes menuLogoAnim {
+  to {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+@-ms-keyframes menuLogoAnim {
+  to {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+@keyframes menuLogoAnim {
+  to {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+@-webkit-keyframes menuForkAnim {
+  to {
+    -webkit-transform: rotate(-30deg) translate(0px, 0px);
+    -ms-transform: rotate(-30deg) translate(0px, 0px);
+    -moz-transform: rotate(-30deg) translate(0px, 0px);
+    -o-transform: rotate(-30deg) translate(0px, 0px);
+    transform: rotate(-30deg) translate(0px, 0px); } }
+@-moz-keyframes menuForkAnim {
+  to {
+    -webkit-transform: rotate(-30deg) translate(0px, 0px);
+    -ms-transform: rotate(-30deg) translate(0px, 0px);
+    -moz-transform: rotate(-30deg) translate(0px, 0px);
+    -o-transform: rotate(-30deg) translate(0px, 0px);
+    transform: rotate(-30deg) translate(0px, 0px); } }
+@-ms-keyframes menuForkAnim {
+  to {
+    -webkit-transform: rotate(-30deg) translate(0px, 0px);
+    -ms-transform: rotate(-30deg) translate(0px, 0px);
+    -moz-transform: rotate(-30deg) translate(0px, 0px);
+    -o-transform: rotate(-30deg) translate(0px, 0px);
+    transform: rotate(-30deg) translate(0px, 0px); } }
+@keyframes menuForkAnim {
+  to {
+    -webkit-transform: rotate(-30deg) translate(0px, 0px);
+    -ms-transform: rotate(-30deg) translate(0px, 0px);
+    -moz-transform: rotate(-30deg) translate(0px, 0px);
+    -o-transform: rotate(-30deg) translate(0px, 0px);
+    transform: rotate(-30deg) translate(0px, 0px); } }
 @-webkit-keyframes menuFooterAnim {
   to {
     -webkit-transform: translateY(0px);
