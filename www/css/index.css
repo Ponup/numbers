@@ -1,4 +1,4 @@
-.display-flex, ul.actions, ul.actions li, #game header, #gameWon h1, #gameLost h1, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
+.display-flex, ul.actions, ul.actions li, #gameWon h1, #gameLost h1, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
   display: box;
   display: flexbox;
   display: -o-flex;
@@ -140,33 +140,24 @@ ul.actions {
     width: 10%;
     color: #48cfae; }
   #game #gameLayers {
-    position: absolute;
     width: 100%;
-    margin: auto;
     height: 100%;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%; }
+    position: relative; }
   #game #bricksOverlay {
     position: absolute;
     width: 100%;
-    margin: auto;
     height: 100%;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
+    top: 0px;
+    left: 0px;
     z-index: 100; }
   #game #bricks {
+    position: absolute;
     width: 100%;
     height: 100%;
     z-index: 50;
     opacity: 0;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
+    top: 0px;
+    left: 0px;
     margin: auto;
     padding: 60px;
     background: #fff;
@@ -887,8 +878,7 @@ ul.actions {
   color: #E35664;
   font-weight: normal; }
 #scores td {
-  color: white;
-  width: 50%; }
+  color: white; }
 
 #options .settings {
   width: 90%;

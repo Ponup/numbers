@@ -43,6 +43,11 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 	GameWonScene.prototype.updateScore = function( gameContext, refreshInterval )
 	{
 		var totalScore = document.getElementById( 'totalScore' );
+		// It might be null if the updateScore is called just after the user clicks on one action button.
+		if( null === totalScore )
+		{
+			return;
+		}
 
 		if( gameContext.scoreUpdate > 0 )
 		{

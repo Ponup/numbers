@@ -100,7 +100,6 @@ ul.actions {
         url('../img/bg_matel.png') ;
 
     header{
-        @extend .display-flex;
         color: $color-rojo-light;
         background: $color-blanco-light;
         height: 100px;
@@ -153,40 +152,29 @@ ul.actions {
         color: $color-verde-light;
     }
     #gameLayers {
-        position: absolute;
         width: 100%;
-        margin: auto;
         height: 100%;
-        top: 0%;
-        left:0%;
-        right: 0%;
-        bottom:0%;
+	position: relative;
     }
 
     #bricksOverlay { //canvas layer
-
-       position: absolute;
+	position: absolute;
         width: 100%;
-        margin: auto;
         height: 100%;
-        top: 0%;
-        left:0%;
-        right: 0%;
-        bottom:0%;
+	top: 0px;
+	left: 0px;
         z-index: 100;
-        
     }
 
     #bricks {
+	position: absolute;
         width: 100%;
         height: 100%;
 
         z-index: 50;
         opacity: 0;
-        top: 0%;
-        left:0%;
-        right: 0%;
-        bottom:0%;
+        top: 0px;
+        left: 0px;
         margin: auto;
         padding:60px;
         background: #fff;
@@ -435,7 +423,7 @@ ul.actions {
         @extend .debug;
         }
     th {color: #E35664; font-weight:normal; }
-    td {color: white; @extend .debug; width: 50%;}
+    td {color: white; @extend .debug; }
 
 }
 

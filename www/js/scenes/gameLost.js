@@ -38,7 +38,12 @@ define( function( require ) {
 
 	GameLostScene.prototype.saveScore = function( gameScene )
 	{
-		rankingModel.saveScore({ player: 'Anonymous', score: gameScene.gameContext.score, recordTime: Date.now() });
+		rankingModel.saveScore({
+			player: 'Anonymous',
+			score: gameScene.gameContext.score,
+			recordTime: Date.now(),
+			level: ( gameScene.gameContext.level + 1 ),
+		});
 	};
 
 	return GameLostScene;

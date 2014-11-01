@@ -5,7 +5,8 @@ require.config({
 		jquery: 'jquery-1.11.1.min',
 		underscore: 'underscore-min',
 		handlebars: 'handlebars-v2.0.0'
-	}
+	},
+	urlArgs: "bust=" + Date.now()
 });
 
 define( function( require ) {
@@ -23,6 +24,7 @@ define( function( require ) {
 	;
 
 	gaco.scenesManager = new ScenesManager();
+
 	gaco.scenesManager.add( introScene );
 	gaco.scenesManager.add( new MainMenuScene() );
 	gaco.scenesManager.add( new GameScene() );
@@ -30,7 +32,6 @@ define( function( require ) {
 	gaco.scenesManager.add( new GameLostScene() );
 	gaco.scenesManager.add( new ScoresScene() );
 	gaco.scenesManager.add( new OptionsScene() );
- 
 
 	document.addEventListener( 'deviceready', function() {
 		var basePath = ( 'Android' === device.platform || 'android' === device.platform ? '/android_asset/www/' : '' );
@@ -44,6 +45,12 @@ define( function( require ) {
 				new Media( basePath + 'audio/beep.mp3' )
 			]
 		};
+
+		/*
+		document.addEventListener( 'pause', , false );
+		document.addEventListener( 'resume', , false );
+		document.addEventListener( 'backbutton', , false );
+		*/
 
 		gaco.scenesManager.switchTo( introScene );
 	}, false);	

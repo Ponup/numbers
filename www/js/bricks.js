@@ -46,7 +46,7 @@ define( [ 'jquery', 'config' ], function( $, config ) {
 		}
 		else
 		{
-			$( htmlNode ).css( config.brickStyles[ this.value ] );
+			$( htmlNode ).css( config.brickStyles[ Math.abs( this.value ) ] );
 		}
 
 		htmlNode.style.lineHeight = config.brickSize + 'px';

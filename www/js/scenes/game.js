@@ -42,7 +42,6 @@ define( function( require ) {
 			secondsLeft: 61,
 		};
 		this.bricksData = null;
-		this.gridSize = 1;
 		this.goalNumber = null;
 		this.isDrawing = false;
 		this.timerId = null;
@@ -158,7 +157,7 @@ define( function( require ) {
 		{
 			nextScene = 'gameWon';
 		}
-		else if( this.gameContext.currentTotal > this.goalNumber )
+		else if( Math.abs( this.gameContext.currentTotal ) > Math.abs( this.goalNumber ) )
 		{
 			nextScene = 'gameLost';
 		}
@@ -271,8 +270,6 @@ define( function( require ) {
 				{
 				case '+':
 					result += value; break;
-				case '-':
-					result -= value; break;
 				case '*':
 					result *= value; break;
 				case '/':
@@ -300,12 +297,13 @@ define( function( require ) {
 		var bricksData = [],
 		    brickIndex = 0,
 		    y = 0;
+		
+		var maxNumber = Math.max( 1, ( this.gameContext.level % 10 ) );
+		var minNumber = ( this.gameContext.level < 10 ? 0 : -maxNumber );
+		var dictionary = _.range( minNumber, maxNumber + 1 );
 
-		var dictionary = _.range( 0, 9 );
-
-		if( this.gameContext.level > 0 ) dictionary.push( '-' );
-		if( this.gameContext.level > 1 ) dictionary.push( '*' );
-		if( this.gameContext.level > 2 ) dictionary.push( '/' );
+		if( this.gameContext.level > 19 ) dictionary.push( '*' );
+		if( this.gameContext.level > 29 ) dictionary.push( '/' );
 
 		for( ; y < gridSize; y++ )
 		{
@@ -333,17 +331,17 @@ define( function( require ) {
 
 	GameScene.prototype.startLevel = function()
 	{
-		this.gridSize++;
-		this.gridSize = Math.min( 7, this.gridSize );
+		this.gameContext.level++;
+
+		this.gridSize = Math.min( 7, ( this.gameContext.level % 10 ) + 2 );
 
 		this.bricksData = this.initializeBricksData( this.gridSize );
 
-		this.gameContext.level++;
 		this.gameContext.selection = [];
 		this.gameContext.scoreUpdate = 0;
 		this.gameContext.currentTotal = 0;
-		this.gameContext.requiredBricks = Math.min( .5, this.gameContext.requiredBricks + 0.05 );
-		this.gameContext.secondsLeft = Math.max( 30, this.gameContext.secondsLeft - 1 );
+		this.gameContext.requiredBricks = Math.min( .5, this.gameContext.requiredBricks + 0.01 );
+		this.gameContext.secondsLeft = ( 60 - ( ( this.gameContext.level % 10 ) * 3 ) );
 
 		this.goalNumber = this.calculateGoalNumber( this.bricksData );
 

@@ -1,5 +1,4 @@
 define({
-	maxNumber: 9,
 	brickSize: 50,
 	quarterBrickSize: 50 >> 2,
 
