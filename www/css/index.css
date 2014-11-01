@@ -9,8 +9,11 @@
   align-items: center;
   justify-content: center; }
 
-.debug, ul.actions li, ul.actions, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #options .settings, #options dl dt, #options dl dd {
-  border: 0px dotted rgba(255, 255, 255, 0.5); }
+.debug, section, ul.actions li, ul.actions, #game footer, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #scores td, #options .settings, #options dl dt, #options dl dd {
+  border: 0px dashed rgba(255, 255, 255, 0.2); }
+
+::-webkit-scrollbar {
+  display: none; }
 
 @font-face {
   font-family: "Fredoka One";
@@ -23,10 +26,15 @@ html, body, #canvas, section {
   height: 100%; }
 
 section {
+  position: absolute;
   max-width: 1080px;
+  max-height: 720px;
   margin: auto;
   left: 0%;
-  right: 0%; }
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: url("../img/pattern_cloth.png") #424b52; }
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -56,7 +64,7 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   font-size: 1.4em;
   text-align: center;
-  background: url("../img/pattern_cloth.png") #424b52;
+  background: #363c42;
   color: #f6f7fb; }
 
 .hidden {
@@ -72,8 +80,8 @@ ul.actions {
   margin: auto;
   color: #ed5564; }
   ul.actions li {
-    width: 32%;
-    height: 92%;
+    width: 33%;
+    height: 100%;
     cursor: pointer; }
   ul.actions li:first-child {
     float: left; }
@@ -81,18 +89,21 @@ ul.actions {
     float: right; }
 
 #game {
-  background: url("../img/pattern_cloth.png"), url("../img/bg_bolado.png") bottom center repeat-x, url("../img/bg_matel.png"); }
+  background: url("../img/pattern_cloth.png"), url("../img/bg_bolado.png") 50% 85% repeat-x, url("../img/bg_matel.png"); }
   #game header {
     color: #ed5564;
     background: #f6f7fb;
     height: 100px;
-    border-bottom: 5px solid #db4453;
-    margin-bottom: 20%; }
+    border-bottom: 5px solid #db4453; }
   #game footer {
-    position: fixed;
+    position: absolute;
+    width: 100%;
     left: 0;
     right: 0;
-    height: 100px; }
+    bottom: 0;
+    height: 100px;
+    background: #424b52;
+    color: #abb1bd; }
   #game #secondsLeft {
     position: absolute;
     right: 23px;
@@ -129,16 +140,24 @@ ul.actions {
     width: 10%;
     color: #48cfae; }
   #game #gameLayers {
-    position: relative;
-    width: 100%;
-    height: 100%; }
-  #game #bricksOverlay {
-    width: 100%;
-    height: 100%;
-    z-index: 100;
     position: absolute;
-    top: 0px;
-    left: 0px; }
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%; }
+  #game #bricksOverlay {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 100; }
   #game #bricks {
     width: 100%;
     height: 100%;
@@ -163,8 +182,7 @@ ul.actions {
     #game #bricks .brick {
       position: absolute;
       vertical-align: middle;
-      margin-right: 5px;
-      margin-bottom: 5px;
+      margin: 10px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px;
@@ -178,7 +196,6 @@ ul.actions {
       border-bottom: 3px solid #363c42; }
 
 #gameWon, #gameLost {
-  position: relative;
   background: url("../img/bg_matel.png"), url("../img/bg_bolado.png") bottom center repeat-x; }
   #gameWon ul.actions, #gameLost ul.actions {
     background: #424b52; }
@@ -845,8 +862,7 @@ ul.actions {
   -ms-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
   /* IE 10+ */
   -o-text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
-  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
-  position: relative; }
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2); }
   #scores h1, #options h1 {
     color: white;
     position: absolute;
@@ -871,7 +887,8 @@ ul.actions {
   color: #E35664;
   font-weight: normal; }
 #scores td {
-  color: white; }
+  color: white;
+  width: 50%; }
 
 #options .settings {
   width: 90%;

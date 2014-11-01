@@ -5,9 +5,11 @@
 
 
 
-.debug {  border: 0px dotted rgba(255,255,255,.5); }
+.debug {  border: 0px dashed rgba(255,255,255,.2); }
 
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 @font-face {
         font-family: "Fredoka One";
@@ -27,9 +29,14 @@ html, body, #canvas, section {
 }
 
 section {
-	max-width: 1080px;
+    position: absolute;
+    max-width: 1080px;
+	max-height: 720px;
     margin:auto;
-    left: 0%; right: 0%;
+    left: 0%; right: 0%; top: 0%; bottom: 0%;
+    @extend .debug;
+    background: url('../img/pattern_cloth.png') $color-negro-light;
+
 }
 
 * {
@@ -49,8 +56,7 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-size:1.4em;
     text-align: center;
-    
-    background: url('../img/pattern_cloth.png') $color-negro-light;
+    background: $color-negro-dark;
 
     color: $color-blanco-light;
 }
@@ -69,8 +75,8 @@ ul.actions {
     color: $color-rojo-light;
     li{
         @extend .display-flex;
-        width:32%; 
-        height: 92%;
+        width:33%; 
+        height: 100%;
         cursor:pointer;
         @extend .debug;
     }
@@ -87,10 +93,10 @@ ul.actions {
 
 
 #game {
-
+    
     background:
         url('../img/pattern_cloth.png'),
-        url('../img/bg_bolado.png') bottom center repeat-x,
+        url('../img/bg_bolado.png') 50% 85%  repeat-x,
         url('../img/bg_matel.png') ;
 
     header{
@@ -99,14 +105,18 @@ ul.actions {
         background: $color-blanco-light;
         height: 100px;
         border-bottom: 5px solid $color-rojo-dark;
-        margin-bottom: 20%;
     }
 
     footer {
-        position: fixed;
+        position: absolute;
+        width: 100%;
         left: 0;
         right: 0;
+        bottom: 0;
         height: 100px;
+        @extend .debug;
+        background: $color-negro-light;
+        color: $color-gris-light;
     }
     #secondsLeft { 
         position: absolute;
@@ -143,19 +153,28 @@ ul.actions {
         color: $color-verde-light;
     }
     #gameLayers {
-        position: relative;
+        position: absolute;
         width: 100%;
+        margin: auto;
         height: 100%;
+        top: 0%;
+        left:0%;
+        right: 0%;
+        bottom:0%;
     }
 
-    #bricksOverlay {
+    #bricksOverlay { //canvas layer
 
+       position: absolute;
         width: 100%;
+        margin: auto;
         height: 100%;
+        top: 0%;
+        left:0%;
+        right: 0%;
+        bottom:0%;
         z-index: 100;
-        position: absolute;
-        top: 0px;
-        left: 0px;
+        
     }
 
     #bricks {
@@ -173,11 +192,11 @@ ul.actions {
         background: #fff;
         @include border-radius(10px);
         @include box-shadow();
+
         .brick {
             position: absolute;
             vertical-align: middle;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            margin: 10px;
             @include border-radius(5px);
             font-size: 1.3em;
             font-weight: bold;
@@ -201,7 +220,6 @@ ul.actions {
 // fin definiciones menu
 
 #gameWon, #gameLost {
-    position: relative;
     background:
     url('../img/bg_matel.png'),
     url('../img/bg_bolado.png') bottom center repeat-x;
@@ -388,7 +406,6 @@ ul.actions {
 
 #scores, #options {
     @include text-shadow();
-    position: relative;
     h1 {
         color: white;
         position: absolute;
@@ -418,7 +435,7 @@ ul.actions {
         @extend .debug;
         }
     th {color: #E35664; font-weight:normal; }
-    td {color: white; }
+    td {color: white; @extend .debug; width: 50%;}
 
 }
 
