@@ -14,11 +14,10 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 
 	GameWonScene.prototype.switchFrom = function( gameScene )
 	{
-		var game = document.getElementById( 'game' ),
-			$canvas = $( document.getElementById( 'canvas' ) );
-
+		var game = document.getElementById( 'game' );
 		game.style.display = 'none';
-		$canvas.append( tplHtml );
+
+		document.body.insertAdjacentHTML( 'beforeend', tplHtml );
 
 		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;
 

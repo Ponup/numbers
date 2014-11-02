@@ -20,13 +20,11 @@ define( function( require ) {
 
 	ScoresScene.prototype.switchFrom = function( prevScene )
 	{
-		var canvas = document.getElementById( 'canvas' );
+		document.body.innerHTML = tplHtml;
 
-		canvas.innerHTML = tplHtml;
-
-		var source = document.getElementById( 'templateSource' ).innerHTML;
-		var template = Handlebars.compile( source );
-		var templateVariables = { scores: rankingModel.getScores() }
+		var source = document.getElementById( 'templateSource' ).innerHTML,
+		    template = Handlebars.compile( source ),
+		    templateVariables = { scores: rankingModel.getScores() }
 
 		document.getElementById( 'table' ).innerHTML = template( templateVariables );
 

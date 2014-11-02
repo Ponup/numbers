@@ -25,11 +25,10 @@ define( function( require ) {
 	GameScene.prototype.switchFrom = function( prevScene )
 	{
 		document.title = 'Numbers playing...';
+		document.body.innerHTML = tplHtml;
 
-		var self = this,
-		    canvas = document.getElementById( 'canvas' );
+		var self = this;
 
-		canvas.innerHTML = tplHtml;
 		gaco.sounds.bgmusic.stop();
 		
 		this.gameContext = {

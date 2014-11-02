@@ -18,11 +18,8 @@ define( function( require ) {
 
 	MainMenu.prototype.switchFrom = function( prevScene )
 	{
-		var canvas = document.getElementById( 'canvas' );
-
 		document.title = 'Numbers menu';
-
-		canvas.innerHTML = tplHtml;
+		document.body.innerHTML = tplHtml;
 
 		if( preferences.isMusicEnabled() )
 		{

@@ -19,9 +19,7 @@ define( function( require ) {
 
 	OptionsScene.prototype.switchFrom = function( prevScene )
 	{
-		var canvas = document.getElementById( 'canvas' );
-
-		canvas.innerHTML = tplHtml;
+		document.body.innerHTML = tplHtml;
 
 		document.getElementById( 'soundEnabled' ).className += ( preferences.isSoundEnabled() ? ' setting-on' : ' setting-off' );
 		document.getElementById( 'musicEnabled' ).className += ( preferences.isMusicEnabled() ? ' setting-on' : ' setting-off' );
