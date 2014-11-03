@@ -45,6 +45,7 @@ define( function( require ) {
 		this.isDrawing = false;
 		this.timerId = null;
 		this.nextOpPending = '+';
+		this.paused = false;
 
 		this.bricksOverlay = document.getElementById( 'bricksOverlay' );
 		this.context = this.bricksOverlay.getContext( '2d' );
@@ -346,7 +347,7 @@ define( function( require ) {
 
 		this.drawGrid( this.gridSize );
 
-		this.timerId = setInterval( $.proxy( this.timer, this ), 1000 );
+		this.startTimer();
 
 		this.context.clearRect( 0, 0, this.bricksOverlay.width, this.bricksOverlay.height );
 
@@ -375,6 +376,25 @@ define( function( require ) {
 		}
 
 		gaco.scenesManager.switchTo( nextScene );
+	};
+
+	GameScene.prototype.pause = function()
+	{
+		clearInterval( this.timerId );
+		this.paused = true;
+	};
+
+	GameScene.prototype.resume = function()
+	{
+		if( true === this.paused )
+		{
+			this.startTimer();
+		}
+	};
+
+	GameScene.prototype.startTimer = function()
+	{
+		this.timerId = setInterval( $.proxy( this.timer, this ), 1000 );
 	};
 
 	return GameScene;

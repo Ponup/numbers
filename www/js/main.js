@@ -46,11 +46,21 @@ define( function( require ) {
 			]
 		};
 
-		/*
-		document.addEventListener( 'pause', , false );
-		document.addEventListener( 'resume', , false );
-		document.addEventListener( 'backbutton', , false );
-		*/
+		document.addEventListener( 'pause', function() {
+			var scene = gaco.scenesManager.getCurrentScene();
+			if( 'game' === scene.getId() )
+			{
+				scene.pause();
+			}
+		}, false );
+		document.addEventListener( 'resume', function() {
+			var scene = gaco.scenesManager.getCurrentScene();
+			if( 'game' === scene.getId() )
+			{
+				scene.resume();
+			}
+		}, false );
+		document.addEventListener( 'backbutton', function() { gaco.scenesManager.switchTo( 'mainMenu' ); }, false );
 
 		gaco.scenesManager.switchTo( introScene );
 	}, false);	
