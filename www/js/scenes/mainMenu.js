@@ -38,43 +38,24 @@ define( function( require ) {
 			gaco.scenesManager.switchTo( 'options' );
 		});
 
-		if( 'undefined' !== typeof( device ) && null !== device.uuid )
-		{
-			this.tryToShare();
-		}
+		window.plugins.socialsharing.available( this.shareIfAvailable );
 	};
 
-	MainMenu.prototype.tryToShare = function()
+	MainMenu.prototype.shareIfAvailable = function( isAvailable )
 	{
-		var self = this,
-		    vias = [ 'com.apple.social.twitter', 'twitter' ],
-		    viasLen = vias.length,
-		    message = 'I am playing @Ponup Numbers!',
-		    i = 0;
-
-		for( ; i < viasLen; i++ )
+		if( false === isAvailable )
 		{
-			this.tryToShareVia( message, vias[ i ] );
+			return;
 		}
-	};
 
-	MainMenu.prototype.tryToShareVia = function( message, via )
-	{
 		var $share = $( document.getElementById( 'share' ) ),
-			$options = $( document.getElementById( 'options' ) );
+			$options = $( '.actions' );
 
-		window.plugins.socialsharing.canShareVia( via, message, null, null, null,
-			function() {
-				$options.on( 'click', '#share', function() {
-					window.plugins.socialsharing.shareVia( via, message, null, null, null, function() {}, function( error ) { console.warning( error ); } );
-				});
+		$options.on( 'click', '#share', function() {
+			window.plugins.socialsharing.share( 'Play the @Ponup Numbers game for free in your phone. More info http://www.ponup.com', '@Ponup Numbers' );
+		});
 
-				$share.parent( 'li' )[0].style.display = 'inline-block';
-			},
-			function( error ) {
-				console.error( error );
-			}
-		);
+		$share.parent( 'li' )[0].style.display = 'inline-block';
 	};
 
 	return MainMenu;
