@@ -28,6 +28,13 @@ html, body, section {
 
 }
 
+@mixin numbersSprite ($posX:0px, $posY:0px, $width:48px, $height:48px) { 
+        background: url('../img/numbers_sprite.png') no-repeat; 
+        background-position: $posX $posY;
+        width: $width;
+        height: $height;
+    }
+
 section {
     position: absolute;
     max-width: 1080px;
@@ -296,7 +303,8 @@ ul.actions {
 // :::::::: GAME INTRO SCENE :::::: //
 #intro {
 
-    img {
+    #ponupLogo {
+        @include numbersSprite(-288px, -368px, 155px, 96px);
         position: absolute;
         top: 0; bottom: 0; right: 0; left: 0;
         margin:auto;
@@ -339,13 +347,11 @@ ul.actions {
         @include animation(0s, 0.5s, menuHeaderAnim);
         @extend .debug;
         #logo {
-            background: url('../img/menu_header.png') center center no-repeat ;
+            @include numbersSprite(-144px, 0px, 368px, 368px);
             position: absolute;
             margin: auto;
             left: 0%; right: 0%; top:-50px;
-            width: 359px; height: 361px;
             max-width: 100%;
-            background-size: cover;
             @include transform(rotate(-120deg));
             @include animation(0.2s, .6s, menuLogoAnim);
             @extend .debug;
@@ -378,8 +384,24 @@ ul.actions {
             color: $color-blanco-light;
             @extend .debug;
         }
+        .actions {@include hide-text(); }
     }
 }
+
+// icons declarations 
+
+i.scores {@include numbersSprite(-48px, -416px); }
+i.options {@include numbersSprite(-96px, -416px); }
+i.share {@include numbersSprite(-0px, -416px); }
+i.arrow-left {@include numbersSprite(-0px, -368px); }
+i.arrow-right {@include numbersSprite(-96px, -368px); }
+i.replay {@include numbersSprite(-48px, -368px); }
+i.hamburguer {@include numbersSprite(-0px, -320px); }
+i.true {@include numbersSprite(-48px, -320px); }
+i.false {@include numbersSprite(-96px, -320px); }
+
+// fin icons
+
 
 @include keyframes(menuHeaderAnim){to {@include transform(translateY(0px)); } }
 @include keyframes(menuLogoAnim){to {@include transform(rotate(0deg)); } }

@@ -21,7 +21,7 @@
   src: url("../fonts/FredokaOne-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/FredokaOne-Regular.svg#Fredoka One") format("svg"), url("../fonts/FredokaOne-Regular.woff") format("woff"), url("../fonts/FredokaOne-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
-html, body, #canvas, section {
+html, body, section {
   width: 100%;
   height: 100%; }
 
@@ -507,7 +507,11 @@ ul.actions {
     -moz-transform: rotate(720deg);
     -o-transform: rotate(720deg);
     transform: rotate(720deg); } }
-#intro img {
+#intro #ponupLogo {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -288px -368px;
+  width: 155px;
+  height: 96px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -624,16 +628,16 @@ ul.actions {
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */ }
     #menu header #logo {
-      background: url("../img/menu_header.png") center center no-repeat;
+      background: url("../img/numbers_sprite.png") no-repeat;
+      background-position: -144px 0px;
+      width: 368px;
+      height: 368px;
       position: absolute;
       margin: auto;
       left: 0%;
       right: 0%;
       top: -50px;
-      width: 359px;
-      height: 361px;
       max-width: 100%;
-      background-size: cover;
       -webkit-transform: rotate(-120deg);
       -ms-transform: rotate(-120deg);
       -moz-transform: rotate(-120deg);
@@ -734,6 +738,64 @@ ul.actions {
       height: 50%;
       font-size: 1.5em;
       color: #f6f7fb; }
+    #menu footer .actions {
+      font: 0/0 a;
+      text-shadow: none;
+      color: transparent; }
+
+i.scores {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -48px -416px;
+  width: 48px;
+  height: 48px; }
+
+i.options {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -96px -416px;
+  width: 48px;
+  height: 48px; }
+
+i.share {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: 0px -416px;
+  width: 48px;
+  height: 48px; }
+
+i.arrow-left {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: 0px -368px;
+  width: 48px;
+  height: 48px; }
+
+i.arrow-right {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -96px -368px;
+  width: 48px;
+  height: 48px; }
+
+i.replay {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -48px -368px;
+  width: 48px;
+  height: 48px; }
+
+i.hamburguer {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: 0px -320px;
+  width: 48px;
+  height: 48px; }
+
+i.true {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -48px -320px;
+  width: 48px;
+  height: 48px; }
+
+i.false {
+  background: url("../img/numbers_sprite.png") no-repeat;
+  background-position: -96px -320px;
+  width: 48px;
+  height: 48px; }
 
 @-webkit-keyframes menuHeaderAnim {
   to {
@@ -897,3 +959,5 @@ ul.actions {
   height: 50%;
   float: left;
   color: #f6f7fb; }
+
+/*# sourceMappingURL=index.css.map */
