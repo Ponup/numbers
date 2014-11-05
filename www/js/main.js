@@ -5,8 +5,7 @@ require.config({
 		jquery: 'jquery-1.11.1.min',
 		underscore: 'underscore-min',
 		handlebars: 'handlebars-v2.0.0'
-	},
-	urlArgs: "bust=" + Date.now()
+	}
 });
 
 define( function( require ) {
@@ -60,7 +59,17 @@ define( function( require ) {
 				scene.resume();
 			}
 		}, false );
-		document.addEventListener( 'backbutton', function() { gaco.scenesManager.switchTo( 'mainMenu' ); }, false );
+		document.addEventListener( 'backbutton', function() {
+			var scene = gaco.scenesManager.getCurrentScene();
+			if( 'mainMenu' === scene.getId() )
+			{
+				navigator.app.exitApp();
+			}
+			else
+			{
+				gaco.scenesManager.switchTo( 'mainMenu' );
+			}
+		}, false );
 
 		gaco.scenesManager.switchTo( introScene );
 	}, false);	

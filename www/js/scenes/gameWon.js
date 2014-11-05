@@ -20,6 +20,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 		document.body.insertAdjacentHTML( 'beforeend', tplHtml );
 
 		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;
+		document.getElementById( 'level' ).innerHTML = ( gameScene.gameContext.level + 1 );
 
 		gameScene.gameContext.scoreUpdate += gameScene.gameContext.secondsLeft;
 		this.updateScore( gameScene.gameContext, 100 );

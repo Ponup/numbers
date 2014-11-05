@@ -1,4 +1,4 @@
-.display-flex, ul.actions, ul.actions li, #gameWon h1, #gameLost h1, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
+.display-flex, ul.actions, ul.actions li, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
   display: box;
   display: flexbox;
   display: -o-flex;
@@ -234,6 +234,8 @@ ul.actions {
     animation-name: gameWonHeader;
     animation-fill-mode: forwards;
     /* this prevents the animation from restarting! */ }
+    #gameWon h1 span, #gameLost h1 span {
+      color: lightgreen; }
   #gameWon #stars, #gameLost #stars {
     position: absolute;
     bottom: 30%;
@@ -959,5 +961,3 @@ i.false {
   height: 50%;
   float: left;
   color: #f6f7fb; }
-
-/*# sourceMappingURL=index.css.map */
