@@ -51,11 +51,11 @@ define( function( require ) {
 		var $share = $( document.getElementById( 'share' ) ),
 			$options = $( '.actions' );
 
+		$share.removeClass( 'hidden' );
+
 		$options.on( 'click', '#share', function() {
 			window.plugins.socialsharing.share( 'Play the @Ponup Numbers game for free in your phone. More info http://www.ponup.com', '@Ponup Numbers' );
 		});
-
-		$share.parent( 'li' )[0].style.display = 'inline-block';
 	};
 
 	return MainMenu;

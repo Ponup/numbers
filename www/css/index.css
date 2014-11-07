@@ -512,6 +512,7 @@ ul.actions {
 #intro #ponupLogo {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -288px -368px;
+  display: inline-block;
   width: 155px;
   height: 96px;
   position: absolute;
@@ -632,6 +633,7 @@ ul.actions {
     #menu header #logo {
       background: url("../img/numbers_sprite.png") no-repeat;
       background-position: -144px 0px;
+      display: inline-block;
       width: 368px;
       height: 368px;
       position: absolute;
@@ -748,54 +750,63 @@ ul.actions {
 i.scores {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -48px -416px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.options {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -96px -416px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.share {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: 0px -416px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.arrow-left {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: 0px -368px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.arrow-right {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -96px -368px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.replay {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -48px -368px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.hamburguer {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: 0px -320px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.true {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -48px -320px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 
 i.false {
   background: url("../img/numbers_sprite.png") no-repeat;
   background-position: -96px -320px;
+  display: inline-block;
   width: 48px;
   height: 48px; }
 

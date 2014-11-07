@@ -49,37 +49,50 @@ define( function( require ) {
 
 		this.bricksOverlay = document.getElementById( 'bricksOverlay' );
 		this.context = this.bricksOverlay.getContext( '2d' );
+		
+		var canvasOffsetLeft = document.getElementById( 'game' ).offsetLeft,
+		    canvasOffsetTop = document.getElementById( 'game' ).offsetTop + document.getElementById( 'gameLayers' ).offsetTop;
 
 		var $bricksOverlay = $( this.bricksOverlay );
 
 		$bricksOverlay.on( 'touchstart', function( ev ) {
 			ev.preventDefault();
 
-			var x = ev.originalEvent.changedTouches[0].clientX,
-				y = ev.originalEvent.changedTouches[0].clientY;
+			var x = ev.originalEvent.changedTouches[0].pageX - canvasOffsetLeft,
+				y = ev.originalEvent.changedTouches[0].pageY - canvasOffsetTop;
 
 			self.startDrawing( x, y );
 		} );
 		$bricksOverlay.on( 'mousedown', function( ev ) {
 			ev.preventDefault();
-			self.startDrawing( ev.clientX, ev.clientY );
+			console.log(canvasOffsetLeft,canvasOffsetTop);
+
+			var x = ev.pageX - canvasOffsetLeft,
+				y = ev.pageY - canvasOffsetTop;
+
+			self.startDrawing( x, y );
 		} );
 
 		$bricksOverlay.on( 'touchmove', function( ev ) {
 			ev.preventDefault();
 
-			var x = ev.originalEvent.changedTouches[0].clientX,
-				y = ev.originalEvent.changedTouches[0].clientY;
+			var x = ev.originalEvent.changedTouches[0].pageX - canvasOffsetLeft,
+				y = ev.originalEvent.changedTouches[0].pageY - canvasOffsetTop;
 
 			self.continueDrawing( x, y );
 		} );
 		$bricksOverlay.on( 'mousemove', function( ev ) {
 			ev.preventDefault();
-			self.continueDrawing( ev.clientX, ev.clientY );
+
+			var x = ev.pageX - canvasOffsetLeft,
+				y = ev.pageY - canvasOffsetTop;
+
+			self.continueDrawing( x, y );
 		} );
 
 		$bricksOverlay.on( 'mouseup touchend', function( ev ) {
 			ev.preventDefault();
+
 			self.stopDrawing();
 		} );
 
@@ -87,11 +100,11 @@ define( function( require ) {
 		this.showElements();
 	};
 
-	GameScene.prototype.startDrawing = function( clientX, clientY )
+	GameScene.prototype.startDrawing = function( x, y )
 	{
 		this.isDrawing = true;
 
-		this.continueDrawing( clientX, clientY );
+		this.continueDrawing( x, y );
 	};
 
 	GameScene.prototype.drawCursor = function( x, y )
@@ -102,14 +115,11 @@ define( function( require ) {
 		this.context.beginPath();
 	};
 
-	GameScene.prototype.continueDrawing = function( clientX, clientY )
+	GameScene.prototype.continueDrawing = function( x, y )
 	{
 		if( false === this.isDrawing ) {
 			return;
 		}
-
-		var x = clientX,
-			y = clientY - document.getElementById( 'gameLayers' ).offsetTop;
 
 		this.drawCursor( x, y );
 
