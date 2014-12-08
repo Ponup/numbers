@@ -1,4 +1,4 @@
-.display-flex, ul.actions, ul.actions li, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
+.display-flex, #gameWon #stars, #gameLost #stars, #gameWon #totalScore, #gameLost #totalScore, #menu footer #startGame, #scores h1, #options h1, #options dl dt, #options dl dd {
   display: box;
   display: flexbox;
   display: -o-flex;
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center; }
 
-.debug, section, ul.actions li, ul.actions, #game footer, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #scores td, #options .settings, #options dl dt, #options dl dd {
+.debug, section, #game footer, #menu header, #menu header #logo, #menu header #fork, #menu footer #startGame, #scores h1, #options h1, #scores table, #scores td, #options .settings, #options dl dt, #options dl dd {
   border: 0px dashed rgba(255, 255, 255, 0.2); }
 
 ::-webkit-scrollbar {
@@ -64,7 +64,7 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   font-size: 1.4em;
   text-align: center;
-  background: #363c42;
+  background: url("../img/pattern_cloth.png") #424b52;
   color: #f6f7fb; }
 
 .hidden {
@@ -82,6 +82,7 @@ ul.actions {
   ul.actions li {
     width: 33%;
     height: 100%;
+    display: inline-block;
     cursor: pointer; }
   ul.actions li:first-child {
     float: left; }
@@ -102,7 +103,7 @@ ul.actions {
     right: 0;
     bottom: 0;
     height: 100px;
-    background: #424b52;
+    background: url("../img/pattern_cloth.png") #424b52;
     color: #abb1bd; }
   #game #secondsLeft {
     position: absolute;
@@ -189,7 +190,7 @@ ul.actions {
 #gameWon, #gameLost {
   background: url("../img/bg_matel.png"), url("../img/bg_bolado.png") bottom center repeat-x; }
   #gameWon ul.actions, #gameLost ul.actions {
-    background: #424b52; }
+    background: url("../img/pattern_cloth.png") #424b52; }
   #gameWon h1, #gameLost h1 {
     position: absolute;
     height: 20%;

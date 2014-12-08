@@ -54,7 +54,7 @@ define( function( require ) {
 		$share.removeClass( 'hidden' );
 
 		$options.on( 'click', '#share', function() {
-			window.plugins.socialsharing.share( 'Play the @Ponup Numbers game for free in your phone. More info http://www.ponup.com', '@Ponup Numbers' );
+			window.plugins.socialsharing.share( 'Play the @Ponup Numbers game for free in your phone. More info http://ponup.com', '@Ponup Numbers' );
 		});
 	};
 

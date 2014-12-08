@@ -1,0 +1,49 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "www/config.xml": {
+                "parents": {
+                    "/widget": [
+                        {
+                            "xml": "<feature name=\"Device\" value=\"Device\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\" value=\"File\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\" value=\"Media\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/widget/rim:permissions": [
+                        {
+                            "xml": "<rim:permit>read_device_identifying_information</rim:permit>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        },
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.ponup.numbers"
+        }
+    },
+    "dependent_plugins": {}
+}
