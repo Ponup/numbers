@@ -18,7 +18,7 @@ define( function( require ) {
 
 	MainMenu.prototype.switchFrom = function( prevScene )
 	{
-		document.title = 'Numbers menu';
+		document.title = 'Numbers';
 		document.body.innerHTML = tplHtml;
 
 		if( preferences.isMusicEnabled() )

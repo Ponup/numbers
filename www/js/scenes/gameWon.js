@@ -17,6 +17,7 @@ define( [ 'jquery', 'scullge/scenes/base', 'text!templates/scenes/gameWon.html',
 		var game = document.getElementById( 'game' );
 		game.style.display = 'none';
 
+		document.title = 'Numbers :: Level ' + ( gameScene.gameContext.level + 1 ) + ' completed';
 		document.body.insertAdjacentHTML( 'beforeend', tplHtml );
 
 		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;

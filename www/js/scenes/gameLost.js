@@ -20,6 +20,7 @@ define( function( require ) {
 	{
 		var self = this;
 		
+		document.title = 'Numbers :: Game lost';
 		document.body.insertAdjacentHTML( 'beforeend', tplHtml );
 
 		document.getElementById( 'totalScore' ).innerHTML = gameScene.gameContext.score;

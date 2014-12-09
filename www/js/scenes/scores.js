@@ -20,6 +20,7 @@ define( function( require ) {
 
 	ScoresScene.prototype.switchFrom = function( prevScene )
 	{
+		document.title = 'Numbers :: Scores';
 		document.body.innerHTML = tplHtml;
 
 		var source = document.getElementById( 'templateSource' ).innerHTML,

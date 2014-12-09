@@ -19,6 +19,7 @@ define( function( require ) {
 
 	OptionsScene.prototype.switchFrom = function( prevScene )
 	{
+		document.title = 'Numbers :: Options';
 		document.body.innerHTML = tplHtml;
 
 		document.getElementById( 'soundEnabled' ).className += ( preferences.isSoundEnabled() ? ' setting-on' : ' setting-off' );
