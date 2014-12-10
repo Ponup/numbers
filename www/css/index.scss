@@ -25,6 +25,30 @@ html, body, section {
 	height: 100%;
 }
 
+body {
+	overflow: hidden;
+	-ms-content-zooming: none;
+	font-family:  "Fredoka One", Fredoka, sans, sans-serif;
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+	-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	font-size:1.4em;
+	text-align: center;
+	background: url('../img/pattern_cloth.png') $color-negro-light;
+	color: $color-blanco-light;
+}
+
+html {
+	-ms-touch-action: pan-x;
+	touch-action: pan-x;
+}
+
+body {
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-ms-content-zooming: none;
+}
+
 @mixin numbersSprite ($posX:0px, $posY:0px, $width:48px, $height:48px) { 
         background: url('../img/numbers_sprite.png') no-repeat; 
         background-position: $posX $posY;
@@ -52,17 +76,6 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal; }
 ul { list-style-type: none; li { display: inline-block; } }
 
 a { text-decoration: none; }
-
-body {
-	font-family:  "Fredoka One", Fredoka, sans, sans-serif;
-	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-	-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-	font-size:1.4em;
-	text-align: center;
-	background: url('../img/pattern_cloth.png') $color-negro-light;
-	color: $color-blanco-light;
-}
 
 .hidden { display: none; }
 

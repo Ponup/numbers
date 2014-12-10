@@ -44,7 +44,9 @@ define( function( require ) {
 				new Media( basePath + 'audio/beep.mp3' )
 			]
 		};
-
+		document.body.addEventListener( 'touchmove', function( ev ) {
+			ev.preventDefault();
+		}, false );
 		document.addEventListener( 'pause', function() {
 			var scene = gaco.scenesManager.getCurrentScene();
 			if( 'game' === scene.getId() )
