@@ -21,10 +21,10 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.ponup.numbers"
         },
-        "nl.x-services.plugins.socialsharing": {
+        "org.apache.cordova.media": {
             "PACKAGE_NAME": "com.ponup.numbers"
         },
-        "org.apache.cordova.media": {
+        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.ponup.numbers"
         }
     },

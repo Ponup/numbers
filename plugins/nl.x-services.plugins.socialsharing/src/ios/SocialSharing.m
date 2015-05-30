@@ -17,7 +17,10 @@
 }
 
 - (void)available:(CDVInvokedUrlCommand*)command {
-  BOOL avail = NSClassFromString(@"UIActivityViewController");
+  BOOL avail = NO;
+  if (NSClassFromString(@"UIActivityViewController")) {
+    avail = YES;
+  }
   CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:avail];
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
@@ -218,6 +221,17 @@
 
 - (void)shareViaEmail:(CDVInvokedUrlCommand*)command {
   if ([self isEmailAvailable]) {
+    
+    if (TARGET_IPHONE_SIMULATOR && IsAtLeastiOSVersion(@"8.0")) {
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SocialSharing plugin"
+                                                      message:@"Sharing via email is not supported on the iOS 8 simulator."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+      [alert show];
+      return;
+    }
+
     self.globalMailComposer.mailComposeDelegate = self;
     
     if ([command.arguments objectAtIndex:0] != (id)[NSNull null]) {
@@ -315,22 +329,30 @@
 
 - (void)shareViaSMS:(CDVInvokedUrlCommand*)command {
   if ([self canShareViaSMS]) {
+    NSDictionary* options = [command.arguments objectAtIndex:0];
+    NSString *phonenumbers = [command.arguments objectAtIndex:1];
+    NSString *message = [options objectForKey:@"message"];
+    NSString *subject = [options objectForKey:@"subject"];
+    NSString *image = [options objectForKey:@"image"];
+
     MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
     picker.messageComposeDelegate = (id) self;
-    picker.body = [command.arguments objectAtIndex:0];
-    
-    // TODO this needs work
-    /*
-     BOOL canSendAttachments = [[MFMessageComposeViewController class] respondsToSelector:@selector(canSendAttachments)];
-     if (canSendAttachments) {
-     //        NSURL *theurl = [NSURL URLWithString:@"https://www.google.nl/images/srpr/logo4w.png"];
-     NSURL *theurl = [NSURL URLWithString:@"www/img/logo.png"];
-     BOOL attached = [picker addAttachmentURL:theurl withAlternateFilename:nil];
-     //        NSArray *arr = picker.attachments;
-     }
-     */
-    
-    NSString *phonenumbers = [command.arguments objectAtIndex:1];
+    if (message != (id)[NSNull null]) {
+      picker.body = message;
+    }
+    if (subject != (id)[NSNull null]) {
+      [picker setSubject:subject];
+    }
+    if (image != nil && image != (id)[NSNull null]) {
+      BOOL canSendAttachments = [[MFMessageComposeViewController class] respondsToSelector:@selector(canSendAttachments)];
+      if (canSendAttachments) {
+        NSURL *file = [self getFile:image];
+        if (file != nil) {
+          [picker addAttachmentURL:file withAlternateFilename:nil];
+        }
+      }
+    }
+
     if (phonenumbers != (id)[NSNull null]) {
       [picker setRecipients:[phonenumbers componentsSeparatedByString:@","]];
     }

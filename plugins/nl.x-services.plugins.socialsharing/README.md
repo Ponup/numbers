@@ -32,7 +32,7 @@ by [@EddyVerbruggen](http://www.twitter.com/eddyverbruggen), [read my blog about
 This plugin allows you to use the native sharing window of your mobile device.
 
 * Works on Android, version 2.3.3 and higher (probably 2.2 as well).
-* Works on iOS6 and iOS7.
+* Works on iOS6 and up.
 * Works on Windows Phone 8 since v4.0 of this plugin (maybe even WP7, but I have no such testdevice).
 * Share text, a link, a images (or other files like pdf or ics). Subject is also supported, when the receiving app supports it.
 * Supports sharing files from the internet, the local filesystem, or from the www folder.
@@ -206,15 +206,18 @@ WhatsApp
 <button onclick="window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via WhatsApp (with errcallback)</button>
 ```
 
-SMS (note that on Android SMS via Hangouts may not behave correctly)
+SMS (note that on Android, SMS via Hangouts may not behave correctly)
 ```html
 <!-- Want to share a prefilled SMS text? -->
 <button onclick="window.plugins.socialsharing.shareViaSMS('My cool message', null /* see the note below */, function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 <!-- Want to prefill some phonenumbers as well? Pass this instead of null. Important notes: For stable usage of shareViaSMS on Android 4.4 and up you require to add at least one phonenumber! Also, on Android make sure you use v4.0.3 or higher of this plugin, otherwise sharing multiple numbers to non-Samsung devices will fail -->
 <button onclick="window.plugins.socialsharing.shareViaSMS('My cool message', '0612345678,0687654321', function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
+<!-- Need a subject and even image sharing? It's only supported on iOS for now and falls back to just message sharing on Android -->
+<button onclick="window.plugins.socialsharing.shareViaSMS({'message':'My cool message', 'subject':'The subject', 'image':'https://www.google.nl/images/srpr/logo4w.png'}, '0612345678,0687654321', function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 ```
 
-Email - code inspired by the [EmailComposer plugin](https://github.com/katzer/cordova-plugin-email-composer)
+Email - code inspired by the [EmailComposer plugin](https://github.com/katzer/cordova-plugin-email-composer),
+note that this is not supported on the iOS 8 simulator (an alert will be shown if your try to).
 ```js
 window.plugins.socialsharing.shareViaEmail(
   'Message', // can contain HTML tags, but support on Android is rather limited:  http://stackoverflow.com/questions/15136480/how-to-send-html-content-with-image-through-android-default-email-client
