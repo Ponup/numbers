@@ -1,25 +1,21 @@
-<widget id="com.ponup.numbers" 
-  xmlns="http://www.w3.org/ns/widgets" 
-  xmlns:cdv="http://cordova.apache.org/ns/1.0" version="1.1.2">
-  <name>Numbers</name>
-  <description>A simple math game. Are you fast doing simple arithmetic operations? Prove it!</description>
-  <author email="numbers@ponup.com" href="http://ponup.com/numbers.html">Ponup Games</author>
-  <preference name="permissions" value="none"/>
-  <preference name="Fullscreen" value="false"/>
-  <preference name="SplashScreenDelay" value="10000"/>
-  <preference name="Orientation" value="portrait"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <access origin="*"/>
-  <splash src="res/splash-screen.png"/>
-  <icon src="res/icon.png"/>
-  <platform name="android">
-    <icon src="res/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
-    <icon src="res/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
-    <icon src="res/android/drawable-xhdpi/ic_launcher.png" density="xhdpi"/>
-    <icon src="res/android/drawable-xxhdpi/ic_launcher.png" density="xxhdpi"/>
-    <icon src="res/android/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi"/>
-  </platform>
-  <content src="index.html"/>
-  <!--Default icon for all platforms-->
-  <!--Default splash screen for all platforms-->
+<widget id="com.ponup.numbers"  xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" version="1.1.2">
+	<name>Numbers</name>
+	<description>A simple math game. Are you fast doing simple arithmetic operations? Prove it!</description>
+	<author email="numbers@ponup.com" href="http://ponup.com/numbers.html">Ponup Games</author>
+	<preference name="permissions" value="none"/>
+	<preference name="Fullscreen" value="false"/>
+	<preference name="SplashScreenDelay" value="10000"/>
+	<preference name="Orientation" value="portrait"/>
+	<preference name="DisallowOverscroll" value="true"/>
+	<access origin="*"/>
+	<splash src="res/splash-screen.png"/>
+	<icon src="res/icon.png"/>
+	<platform name="android">
+		<icon src="res/android/drawable-mdpi/ic_launcher.png" density="mdpi"/>
+		<icon src="res/android/drawable-hdpi/ic_launcher.png" density="hdpi"/>
+		<icon src="res/android/drawable-xhdpi/ic_launcher.png" density="xhdpi"/>
+		<icon src="res/android/drawable-xxhdpi/ic_launcher.png" density="xxhdpi"/>
+		<icon src="res/android/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi"/>
+	</platform>
+	<content src="index.html"/>
 </widget>

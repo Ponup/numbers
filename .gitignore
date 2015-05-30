@@ -6,3 +6,4 @@ platforms
 *.keystore
 
 make.sh
+.DS_Store
