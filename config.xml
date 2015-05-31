@@ -1,4 +1,4 @@
-<widget id="com.ponup.numbers"  xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" version="1.1.2">
+<widget id="com.ponup.numbers"  xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" version="1.2">
 	<name>Numbers</name>
 	<description>A simple math game. Are you fast doing simple arithmetic operations? Prove it!</description>
 	<author email="numbers@ponup.com" href="http://ponup.com/numbers.html">Ponup Games</author>
