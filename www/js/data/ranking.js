@@ -1,25 +1,20 @@
 
-define({
+define( [ 'api' ], function( Api ) {
 
-	LIST_LIMIT: 10,
+	return {
+		saveScore: function( score )
+		{
+			Api.saveScore( 'numbers', {
+				'game_level_number': score.level,
+				'player_name': score.player,
+				'value': score.score
+			});
+		},
 
-	scores: [],
-
-	saveScore: function( score )
-	{
-		this.scores.push( score );
-	},
-
-	getScores: function()
-	{
-		return this.scores.sort( this.scoreSorting ).slice( 0, this.LIST_LIMIT );
-	},
-
-	scoreSorting: function( a, b )
-	{
-		if( a.score < b.score ) return 1;
-		if( a.score === b.score ) return 0;
-		return -1;
-	}
+		retrieveScores: function( callback )
+		{
+			Api.retrieveScores( 'numbers', 10, callback );
+		}
+	};
 });
 

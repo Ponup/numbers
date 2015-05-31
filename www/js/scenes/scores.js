@@ -24,13 +24,16 @@ define( function( require ) {
 		document.body.innerHTML = tplHtml;
 
 		var source = document.getElementById( 'templateSource' ).innerHTML,
-		    template = Handlebars.compile( source ),
-		    templateVariables = { scores: rankingModel.getScores() }
+		    template = Handlebars.compile( source );
 
-		document.getElementById( 'table' ).innerHTML = template( templateVariables );
+		rankingModel.retrieveScores( function( scores ) {
+			var templateVariables = { scores: scores }
 
-		$( document.getElementById( 'scores' ) ).on( 'click', '#gotoBack', function() {
-			gaco.scenesManager.switchTo( 'mainMenu' );
+			document.getElementById( 'table' ).innerHTML = template( templateVariables );
+
+			$( document.getElementById( 'scores' ) ).on( 'click', '#gotoBack', function() {
+				gaco.scenesManager.switchTo( 'mainMenu' );
+			});
 		});
 	};
 

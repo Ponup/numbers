@@ -65,7 +65,6 @@ define( function( require ) {
 		} );
 		$bricksOverlay.on( 'mousedown', function( ev ) {
 			ev.preventDefault();
-			console.log(canvasOffsetLeft,canvasOffsetTop);
 
 			var x = ev.pageX - canvasOffsetLeft,
 				y = ev.pageY - canvasOffsetTop;
