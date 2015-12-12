@@ -7,3 +7,4 @@ platforms
 
 make.sh
 .DS_Store
+plugins/cordova-custom-config/backup/android
