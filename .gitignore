@@ -7,3 +7,5 @@ platforms
 
 make.sh
 .DS_Store
+release-signing.properties
+plugins
