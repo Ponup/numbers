@@ -1,6 +1,7 @@
 nbproject
 .sass-cache
 platforms
+plugins
 *.css.map
 /www/css/scenes/options.css
 *.keystore
@@ -8,4 +9,6 @@ platforms
 make.sh
 .DS_Store
 release-signing.properties
-plugins
+*.log
+node_modules
+
