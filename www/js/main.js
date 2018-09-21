@@ -2,7 +2,7 @@
 require.config({
 	baseUrl: 'js/',
 	paths: {
-		jquery: 'jquery-1.11.1.min',
+		jquery: 'jquery.min',
 		underscore: 'underscore-min',
 		handlebars: 'handlebars-v2.0.0'
 	}
