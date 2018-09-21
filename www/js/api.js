@@ -1,4 +1,4 @@
-define( [ 'jquery' ], function( $ ) {
+define( [], function() {
 
 	function Api() {
 	}
@@ -10,23 +10,25 @@ define( [ 'jquery' ], function( $ ) {
 			'player_name': score.player_name,
 			'value': score.value
 		};
-		$.ajax({
-			type: 'POST',
-			url: 'http://api.ponup.com/score/add',
-			data: params
+		fetch('http://api.ponup.com/score/add', {
+			method: 'post',
+			body: new URLSearchParams(params)
 		});
 	};
 
 	Api.retrieveScores = function( gameName, limit, callback ) {
-		var params = {
+		var params = new URLSearchParams({
 			'game_name': gameName,
 			'limit': limit
-		};
-		$.ajax({
-			url: 'http://api.ponup.com/score/list',
-			data: params,
-			success: callback
 		});
+		var request = new URL('http://api.ponup.com/score/list');
+		request.search = params;
+		fetch(request)
+			.then(function(response) { return response.json(); })
+			.then(callback)
+			.catch(function(err) {
+				console.error('connection failed', err);
+			});
 	};
 
 	return Api;
